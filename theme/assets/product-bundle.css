@@ -39,6 +39,7 @@
   width: 100%;
   position: relative;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .productBundle__item-pic img {

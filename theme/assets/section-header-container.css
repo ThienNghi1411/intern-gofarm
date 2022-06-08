@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.headerCont__logoCont{
+  cursor: pointer;
+}
+
 .headerCont__btnToggleMenu {
   display: flex;
   justify-content: center;
@@ -81,6 +85,7 @@
 .headerCont__userCont-like,
 .headerCont__userCont-cartList {
   position: relative;
+  cursor: pointer;
 }
 
 .quantityCircle {

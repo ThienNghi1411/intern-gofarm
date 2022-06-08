@@ -27,9 +27,13 @@
                 <div class="cart__itemProduct">
                   <div class="cart__btnRemove" index="{{ forloop.index }}">x</div>
                   <div class="cart__itemProductImg">
-                    <img src="{{ item.image | img_url: 'medium' }}" alt="" width height>
+                    <a href="{{ item.url }}" class="">
+                      <img src="{{ item.image | img_url: 'medium' }}" alt="" width height>
+                    </a>
                   </div>
-                  <div class="cart__itemProductName">{{ item.title }}</div>
+                  <div class="cart__itemProductName">
+                    <a href="{{ item.url }}" class="">{{ item.title }}</a>
+                  </div>
                 </div>
                 <div class="cart__itemPrice">
                   <div class="cart__itemLastPrice">{{ item.price | money }}</div>

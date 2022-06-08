@@ -43,6 +43,7 @@ input:focus {
   width: 100%;
   position: relative;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .productCard__pic img {

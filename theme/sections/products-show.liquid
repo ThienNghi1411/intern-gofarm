@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="{{ 'products-show.css' | asset_url }}" media="print" onload="this.media='all'">
+<section class="products-show" >
+    <div class="products-show__inner container">
+        <div class="products-show__mainTitle">Featured products</div>
+        <div class="products-show__container">
+            {% for product in collections['all_product'].products limit: 4 %}
+                {% render 'card-product' with product.variants[0] %}
+            {% endfor %}
+        </div>
+        <div class="products-show__mainTitle products-show__link" style="margin-top: 50px">
+            <a href="/cart" class="">Cart Page</a>
+        </div>
+        <div class="products-show__mainTitle products-show__link">
+            <a href="/collections/all_product" class="">Collection Page</a>
+        </div>
+        
+
+    </div>
+</section>
+{% schema %}
+{
+  "name": "Product Feature",
+  "tag": "section",
+  "presets": [
+    {
+      "name": "Product Feature"
+    }
+  ],
+  "settings": [
+    {
+    "type": "text",
+    "id": "title",
+    "label": "Input Title"
+    }
+    
+  ]
+}
+{% endschema %}

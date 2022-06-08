@@ -1,0 +1,25 @@
+.products-show__inner{
+    padding: 100px 0px;
+}
+.products-show__mainTitle{
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 1.2;
+    color: #191919;
+    margin-bottom: 30px;
+}
+
+.products-show__container{
+    display: flex;
+    gap: 30px;
+}
+
+.products-show__link{
+    cursor: pointer;
+    color: #05A845;
+    transition: all .2s linear;
+}
+
+.products-show__link:hover{
+    opacity: .5;
+}

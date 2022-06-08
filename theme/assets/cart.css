@@ -80,6 +80,7 @@
 .cart__itemProductImg {
   width: 90px;
   height: 90px;
+  cursor: pointer;
 }
 
 .cart__itemProductImg img {
@@ -104,6 +105,7 @@
   font-size: 15px;
   line-height: 1.5;
   color: #191919;
+  cursor: pointer;
 }
 
 .cart__itemLastPrice,
