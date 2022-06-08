@@ -1,0 +1,122 @@
+/* .filter-form{
+    max-width: 1270px !important;
+    margin: 0 auto !important;
+    display: flex;
+    gap: 30px;
+    position: relative;
+}
+.filter-group-summary div
+{
+    cursor: pointer;
+}
+.filter-group-display
+{
+    position: absolute;
+    bottom: -200px;
+    width: 350px;
+    height: 200px;
+    background-color: white;
+    color: black;
+    border: 1px solid #f0f2f5;
+    z-index: 99999;
+   
+}
+
+.filter-group-display__header
+{
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    border-bottom: 1px solid #f0f2f5;
+}
+.filter-group-display__header-selected
+{
+    width: 90%;
+}
+.filter-group-display__header-reset
+{
+    display: flex;
+    width: 10%;
+    justify-content: flex-end;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.filter-group-display__list
+{
+    padding: 0.5rem 2rem;
+}
+.filter-group-display__list-item
+{
+    padding: 10px;
+    
+}
+.filter-group-display__list-item label{
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    align-items: center;
+}
+.filter-group-display__submit
+{
+
+} */
+
+.filter-group {
+    padding: 30px 0px 40px 0px;
+    border-top: 1px solid #F0F0F0;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.filter-group-summary {
+    display: flex;
+}
+
+.filter-group-summary>div>h4 {
+    font-size: 17px;
+    line-height: 1.5em;
+    font-weight: 500;
+    margin-bottom: 15px
+}
+
+.checkbox_container {
+    font-size: 14px;
+}
+
+.checkmark {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.filter-group-display__list-item {
+    display: flex;
+    align-items: center;
+}
+
+.filter-group-display__price-range {
+    display: flex;
+    gap: 20px;
+}
+
+.filter-group-display__price-range-from {
+    display: flex;
+    width: 85px;
+    height: 34px;
+    justify-content: center;
+    align-items: center;
+    background: #F0F0F0;
+    border-radius: 5px;
+}
+
+.filter-group-display__price-range-to {
+    display: flex;
+    width: 85px;
+    height: 34px;
+    justify-content: center;
+    align-items: center;
+    background: #F0F0F0;
+    border-radius: 5px;
+}
+
+
+
+

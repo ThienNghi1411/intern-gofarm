@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="{{ 'product-bundle.css' | asset_url }}" media="print" onload="this.media='all'">
+<section class="productBundle" data-section-type="product-bundle" data-section-id="{{ section.id }}" >
+    <div class="productBundle__inner container">
+        <div class="productBundle__mainTitle">Frequently bought together</div>
+        <div class="productBundleContainer">
+            <div class="productBundle__products">
+                {% for i in (1..3) %}
+                    {% case i %}
+                        {% when 1 %}
+                            {% assign data = product.metafields.my_fields.bundle_item_1.value %}
+                        {% when 2 %}
+                            {% assign data = product.metafields.my_fields.bundle_item_2.value %}
+                        {% when 3 %}
+                            {% assign data = product.metafields.my_fields.bundle_item_3.value %}
+                    {% endcase %}
+                    <script>console.log({{ data.product | json }});</script>
+                    <div class="productBundle__item"  {{ block.shopify_attributes }}>
+                        <div class="productBundle__item-pic">
+
+                            <img src=" {{ data.featured_image.src | img_url:'medium'}} " width height/>   
+
+                            <div class="productBundle__item-noteWrap">
+                                {% for tag in data.product.tags %}
+                                    {% if tag == "SALE" %}
+                                        <div class="item__note"><svg width="40" height="16" viewBox="0 0 40 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="40" height="16" rx="3" fill="#FF9923"/>
+                                            <path d="M7.661 9.294L6.363 10.229C6.539 10.5957 6.78467 10.933 7.1 11.241C7.41533 11.549 7.78567 11.7947 8.211 11.978C8.64367 12.154 9.10933 12.242 9.608 12.242C9.96733 12.242 10.3157 12.187 10.653 12.077C10.9977 11.9743 11.302 11.8203 11.566 11.615C11.8373 11.4097 12.05 11.1567 12.204 10.856C12.3653 10.548 12.446 10.1997 12.446 9.811C12.446 9.48833 12.3947 9.20233 12.292 8.953C12.1893 8.70367 12.0463 8.48367 11.863 8.293C11.687 8.10233 11.4817 7.941 11.247 7.809C11.0123 7.66967 10.7593 7.54867 10.488 7.446C10.1287 7.32133 9.82067 7.204 9.564 7.094C9.31467 6.984 9.12033 6.863 8.981 6.731C8.849 6.599 8.783 6.445 8.783 6.269C8.783 6.10033 8.85267 5.961 8.992 5.851C9.13133 5.73367 9.333 5.675 9.597 5.675C9.795 5.675 9.97833 5.71533 10.147 5.796C10.323 5.86933 10.4807 5.97567 10.62 6.115C10.7667 6.247 10.895 6.40467 11.005 6.588L12.424 5.796C12.292 5.532 12.1013 5.27167 11.852 5.015C11.6027 4.75833 11.2873 4.54567 10.906 4.377C10.532 4.20833 10.0883 4.124 9.575 4.124C9.07633 4.124 8.62167 4.212 8.211 4.388C7.80767 4.55667 7.485 4.806 7.243 5.136C7.00833 5.466 6.891 5.85833 6.891 6.313C6.891 6.69433 6.96067 7.02067 7.1 7.292C7.23933 7.556 7.41533 7.78333 7.628 7.974C7.84067 8.15733 8.06433 8.30767 8.299 8.425C8.541 8.54233 8.75367 8.634 8.937 8.7C9.311 8.83933 9.61167 8.964 9.839 9.074C10.0663 9.184 10.2313 9.30133 10.334 9.426C10.4367 9.54333 10.488 9.701 10.488 9.899C10.488 10.1337 10.4 10.3207 10.224 10.46C10.048 10.592 9.82433 10.658 9.553 10.658C9.29633 10.658 9.05067 10.603 8.816 10.493C8.58867 10.383 8.376 10.2253 8.178 10.02C7.98733 9.81467 7.815 9.57267 7.661 9.294ZM14.899 10.515H18.969L18.848 9.096H15.031L14.899 10.515ZM16.912 7.127L18.001 9.624L17.935 10.097L18.859 12H20.971L16.912 3.816L12.864 12H14.965L15.922 10.02L15.834 9.613L16.912 7.127ZM21.7779 4.3V12H26.7279V10.405H23.6369V4.3H21.7779ZM28.8214 12H32.7044V10.471H28.8214V12ZM28.8214 5.829H32.7044V4.3H28.8214V5.829ZM28.8214 8.7H32.4844V7.204H28.8214V8.7ZM27.5894 4.3V12H29.3714V4.3H27.5894Z" fill="white"/>
+                                            </svg>
+                                        </div>
+                                    {% endif %}  
+                                    {% if tag == "HOT" %}
+                                    <div class="item__note"><svg width="36" height="16" viewBox="0 0 36 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="36" height="16" rx="3" fill="#F00000"/>
+                                        <path d="M7.331 8.777H13.161V7.105H7.331V8.777ZM11.984 4.3V12H13.843V4.3H11.984ZM6.814 4.3V12H8.673V4.3H6.814ZM16.9905 8.15C16.9905 7.69533 17.0785 7.29567 17.2545 6.951C17.4378 6.599 17.6908 6.324 18.0135 6.126C18.3435 5.928 18.7285 5.829 19.1685 5.829C19.6158 5.829 20.0008 5.928 20.3235 6.126C20.6461 6.324 20.8955 6.599 21.0715 6.951C21.2475 7.29567 21.3355 7.69533 21.3355 8.15C21.3355 8.60467 21.2438 9.008 21.0605 9.36C20.8845 9.70467 20.6315 9.976 20.3015 10.174C19.9788 10.372 19.6011 10.471 19.1685 10.471C18.7285 10.471 18.3435 10.372 18.0135 10.174C17.6908 9.976 17.4378 9.70467 17.2545 9.36C17.0785 9.008 16.9905 8.60467 16.9905 8.15ZM15.0215 8.15C15.0215 8.744 15.1205 9.29033 15.3185 9.789C15.5238 10.2877 15.8098 10.7203 16.1765 11.087C16.5505 11.4537 16.9905 11.7397 17.4965 11.945C18.0025 12.143 18.5598 12.242 19.1685 12.242C19.7698 12.242 20.3235 12.143 20.8295 11.945C21.3355 11.7397 21.7718 11.4537 22.1385 11.087C22.5125 10.7203 22.7985 10.2877 22.9965 9.789C23.2018 9.29033 23.3045 8.744 23.3045 8.15C23.3045 7.556 23.2018 7.01333 22.9965 6.522C22.7911 6.03067 22.5015 5.60533 22.1275 5.246C21.7535 4.88667 21.3135 4.61167 20.8075 4.421C20.3088 4.223 19.7625 4.124 19.1685 4.124C18.5818 4.124 18.0355 4.223 17.5295 4.421C17.0235 4.61167 16.5835 4.88667 16.2095 5.246C15.8355 5.60533 15.5421 6.03067 15.3295 6.522C15.1241 7.01333 15.0215 7.556 15.0215 8.15ZM23.3926 5.961H25.5046V12H27.3636V5.961H29.4866V4.3H23.3926V5.961Z" fill="white"/>
+                                        </svg>
+                                        </div> 
+                                    {% endif %}
+                                        
+                                    {% if tag == "NEW" %}
+                                    <div class="item__note"><svg width="40" height="16" viewBox="0 0 40 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="40" height="16" rx="3" fill="#12A05C"/>
+                                        <path d="M12.127 4.3V8.634L6.814 3.915V12H8.596V7.666L13.92 12.385V4.3H12.127ZM16.7794 12H20.6624V10.471H16.7794V12ZM16.7794 5.829H20.6624V4.3H16.7794V5.829ZM16.7794 8.7H20.4424V7.204H16.7794V8.7ZM15.5474 4.3V12H17.3294V4.3H15.5474ZM29.3253 8.689L27.2133 3.915L25.1233 8.689L23.6053 4.3H21.4053L24.7383 12.451L27.2133 7.809L29.6993 12.451L33.0323 4.3H30.8213L29.3253 8.689Z" fill="white"/>
+                                        </svg>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %} 
+
+                                
+                            </div>  
+                            <div class="productBundle__item-addtoCart">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_1228_1575)">
+                                        <path d="M10.5 11.1565H4.71275C4.50606 11.1565 4.30603 11.0833 4.14811 10.95C3.9902 10.8166 3.88459 10.6316 3.85 10.4279L2.31175 1.3862C2.27704 1.18253 2.17138 0.997711 2.01347 0.864469C1.85557 0.731227 1.65561 0.658159 1.449 0.658203H0.875" stroke="#05A845" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M9.40625 12.4688C9.36299 12.4688 9.32069 12.4816 9.28472 12.5056C9.24875 12.5297 9.22071 12.5638 9.20415 12.6038C9.18759 12.6438 9.18326 12.6877 9.1917 12.7302C9.20014 12.7726 9.22098 12.8116 9.25157 12.8422C9.28216 12.8728 9.32114 12.8936 9.36357 12.902C9.40601 12.9105 9.44999 12.9062 9.48996 12.8896C9.52993 12.873 9.5641 12.845 9.58813 12.809C9.61217 12.7731 9.625 12.7308 9.625 12.6875C9.625 12.6295 9.60195 12.5738 9.56093 12.5328C9.51991 12.4918 9.46427 12.4688 9.40625 12.4688Z" stroke="#05A845" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5.03125 12.4688C4.98799 12.4688 4.94569 12.4816 4.90972 12.5056C4.87375 12.5297 4.84571 12.5638 4.82915 12.6038C4.81259 12.6438 4.80826 12.6877 4.8167 12.7302C4.82514 12.7726 4.84598 12.8116 4.87657 12.8422C4.90716 12.8728 4.94614 12.8936 4.98857 12.902C5.03101 12.9105 5.07499 12.9062 5.11496 12.8896C5.15493 12.873 5.1891 12.845 5.21313 12.809C5.23717 12.7731 5.25 12.7308 5.25 12.6875C5.25 12.6295 5.22695 12.5738 5.18593 12.5328C5.14491 12.4918 5.08927 12.4688 5.03125 12.4688" stroke="#05A845" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3.52717 8.53163H10.5686C10.9588 8.53159 11.3378 8.40113 11.6454 8.161C11.9529 7.92087 12.1714 7.58484 12.2661 7.2063L13.1119 3.82296C13.1281 3.75844 13.1293 3.69109 13.1155 3.62602C13.1017 3.56096 13.0732 3.4999 13.0323 3.44748C12.9913 3.39507 12.939 3.35267 12.8792 3.32353C12.8194 3.29439 12.7538 3.27926 12.6873 3.2793H2.63409" stroke="#05A845" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                        <clipPath id="clip0_1228_1575">
+                                        <rect width="14" height="14" fill="white" transform="matrix(-1 0 0 1 14 0)"/>
+                                        </clipPath>
+                                        </defs>
+                                    </svg>
+                            </div>
+                        
+                        </div>
+                        <div class="productBundle__item-name">
+                            <a href="/products/{{ data.product.handle }}" class="">{{ data.product.title }}</a>
+                         
+                        </div>
+                        <div class="productBundle__item-quantity">
+                            {{ data.option1 }}
+                        </div>
+                        <div class="productBundle__item-priceWrap">
+                            <div class="productBundle__discount_price"> {{ data.compare_at_price | money }}</div>
+                            <div class="productBundle__base_price"> {{ data.price | money }}</div>                               
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="productBundle__content">
+                <div class="productBundle__options">
+                    {% for i in (1..3) %}
+                        {% case i %}
+                            {% when 1 %}
+                                {% assign data = product.metafields.my_fields.bundle_item_1.value %}
+                            {% when 2 %}
+                                {% assign data = product.metafields.my_fields.bundle_item_2.value %}
+                            {% when 3 %}
+                                {% assign data = product.metafields.my_fields.bundle_item_3.value %}
+                        {% endcase %}
+                            <div class="productBundle__option">
+                                <div class="productBundle__option-checkBox productBundle__option-checkBoxActive" id="{{ data.id }}" lastPrice="{{ data.compare_at_price }}" 
+                                    basePrice="{{ data.price }}">
+                                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.94175 1.35057L3.53528 7.75704L0 4.20939L1.35293 2.86118L3.53764 5.05353L8.59118 0L9.94175 1.35057Z" fill="white"/>
+                                    </svg>    
+                                </div>
+                                <div class="productBundle__option-content">
+                                    <div class="productBundle__option-productName">{{ data.product.title }}</div>
+                                    <div class="productBundle__option-quantity">{{ data.title }}</div>
+                                    <div class="productBundle__option-priceCont">
+                                        <div class="productBundle__option-discountPrice"> {{ data.compare_at_price | money }} </div>
+                                        <div class="productBundle__option-basePrice"> {{ data.price | money }} </div>  
+                                    </div>
+                                </div>
+                            </div>
+                    {% endfor %}
+                </div>
+                <div class="productBundle__total">
+                    <div class="productBundle__total-text">Quantity</div>
+                    <div class="productBundle__total-priceCont">
+                        <div class="productBundle__total-lastPrice"></div>
+                        <div class="productBundle__total-basePrice"></div>
+                    </div>
+
+                </div>
+                <div class="productBundle__total-btnAddtoCart">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 15.9379H6.7325C6.43722 15.938 6.15147 15.8335 5.92587 15.6429C5.70028 15.4524 5.54941 15.1882 5.5 14.8971L3.3025 1.98043C3.25291 1.68947 3.10197 1.42544 2.87639 1.2351C2.65081 1.04475 2.36516 0.940367 2.07 0.94043H1.25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13.4375 17.8125C13.3757 17.8125 13.3153 17.8308 13.2639 17.8652C13.2125 17.8995 13.1724 17.9483 13.1488 18.0054C13.1251 18.0625 13.1189 18.1253 13.131 18.186C13.1431 18.2466 13.1728 18.3023 13.2165 18.346C13.2602 18.3897 13.3159 18.4194 13.3765 18.4315C13.4372 18.4436 13.5 18.4374 13.5571 18.4137C13.6142 18.3901 13.663 18.35 13.6973 18.2986C13.7317 18.2472 13.75 18.1868 13.75 18.125C13.75 18.0421 13.7171 17.9626 13.6585 17.904C13.5999 17.8454 13.5204 17.8125 13.4375 17.8125Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.1875 17.8125C7.12569 17.8125 7.06527 17.8308 7.01388 17.8652C6.96249 17.8995 6.92244 17.9483 6.89879 18.0054C6.87514 18.0625 6.86895 18.1253 6.881 18.186C6.89306 18.2466 6.92282 18.3023 6.96653 18.346C7.01023 18.3897 7.06591 18.4194 7.12653 18.4315C7.18715 18.4436 7.24999 18.4374 7.30709 18.4137C7.36419 18.3901 7.413 18.35 7.44733 18.2986C7.48167 18.2472 7.5 18.1868 7.5 18.125C7.5 18.0421 7.46708 17.9626 7.40847 17.904C7.34987 17.8454 7.27038 17.8125 7.1875 17.8125" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5.03931 12.1879H15.0985C15.6559 12.1878 16.1973 12.0015 16.6367 11.6584C17.0761 11.3154 17.3882 10.8353 17.5235 10.2946L18.7318 5.46124C18.7549 5.36906 18.7566 5.27284 18.7369 5.17989C18.7172 5.08694 18.6765 4.99971 18.618 4.92483C18.5595 4.84995 18.4848 4.7894 18.3993 4.74776C18.3139 4.70613 18.2202 4.68452 18.1251 4.68457H3.76347" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="productBundle__total-btnAddtoCart-text">Add all to cart</div> 
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Bundle",
+  "tag": "section",
+  "presets": [
+    {
+      "name": "Product Bundle"
+    }
+  ],
+  "settings": [
+    {
+    "type": "text",
+    "id": "title",
+    "label": "Input Title"
+    }
+    
+  ]
+}
+{% endschema %}

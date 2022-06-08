@@ -1,0 +1,140 @@
+html {
+  font-family: "Jost", sans-serif;
+}
+
+.header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f2f5;
+}
+@media (min-width: 1000px) {
+  .container {
+    max-width: 1270px;
+    margin: 0 auto;
+  }
+}
+
+button {
+  border: none;
+}
+
+button a {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+input {
+  border: none;
+  background-color: inherit;
+}
+
+input:focus {
+  outline: none;
+}
+
+/*     xxxxx*/
+
+/*xxxxxxxxxxxxxxxxxxxxxxxxx*/
+.productCard {
+  width: 100%;
+}
+
+.productCard__pic {
+  width: 100%;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.productCard__pic img {
+  width: 100%;
+}
+
+.productCard__pic-noteWrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  gap: 3px;
+}
+.productCard__pic-addtoCart {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.productCard__pic-addtoCart:hover {
+  border: 1px solid #05a845;
+}
+
+.productCard__name,
+.productCard__quantity {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #191919;
+}
+
+.productCard__name{
+  cursor: pointer;
+  transition: all .2s linear;
+}
+
+.productCard__name:hover{
+  font-weight: bold;
+}
+.productCard__priceWrap {
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.1;
+  color: #05a845;
+  display: flex;
+  gap: 7px;
+}
+
+.productCard__basePrice {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.1;
+  text-decoration-line: line-through;
+  color: #999999;
+}
+/*xxxxxxxxxxxxxxxxxxxxxxxxx*/
+/*xxxxxxxx  breadCrumb xxxxxxxxxxxxxxxxx*/
+.breadCrumb {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.breadCrumb__link {
+  font-weight: 400;
+  font-size: 13px;
+  color: #4d4d4d;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.breadCrumb__link:hover {
+  font-weight: bold;
+}
+.breadCrumb__connect {
+  display: flex;
+  align-items: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+}

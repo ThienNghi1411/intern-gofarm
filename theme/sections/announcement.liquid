@@ -1,0 +1,71 @@
+<section class="announcement">
+    <div class="announcement__inner">
+        {% for block in section.blocks %} 
+            {% case block.type %}
+                {% when 'announcement' %}
+                {% capture classBlock %}announcement_bar announcement_bar-{{ block.id }}{% endcapture %}
+                <div class="{{ classBlock }}" {{ block.shopify_attributes }}>{{ block.settings.richtext }}</div>
+            {% endcase %}
+        {% endfor %}
+    </div>
+</section>
+{% style %}
+    .announcement{
+        width: 100%;
+        background-color: {{ section.settings.section_background_color }};
+    }
+    .announcement__inner{
+        padding: 10px 0px;
+        margin: 0 auto;
+        text-align: center;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .announcement_bar{
+        font-size: {{ section.settings.fontsize }};
+        color: {{ section.settings.section_text_color }};
+    }
+{% endstyle %}
+
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "tag": "section",
+  "settings": [
+    {
+      "type":"color",
+      "id":"section_text_color",
+      "label":"Text color"
+    },
+
+    {
+      "type":"color",
+      "id":"section_background_color",
+      "label":"Background color",
+      "info": "Default is Secondary color"
+    },
+    {
+      "type":"text",
+      "id":"fontsize",
+      "label":"Text font size",
+      "info": "xxx"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+        {
+          "type":"richtext",
+          "id":"richtext",
+          "label":"Rich text content"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,47 @@
+.header__menu {
+  width: 100%;
+}
+
+.header__menu-inner {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+
+.headerMenu {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.headerMenu__option {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #4d4d4d;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.headerMenu__option:hover {
+  font-weight: 500;
+  font-size: 17px;
+  color: #1a1a1a;
+}
+
+.headerMenu__helpCenter {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #4d4d4d;
+}
+
+.headerMenu__helpCenter span {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  text-decoration-line: underline;
+  color: #05a845;
+}

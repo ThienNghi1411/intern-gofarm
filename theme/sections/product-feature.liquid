@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="{{ 'product-feature.css' | asset_url }}" media="print" onload="this.media='all'">
+<section class="productFeature" data-section-type="product-feature" data-section-id="{{ section.id }}">
+    <div class="productFeature__inner container">
+        <div class="productFeature__mainTitle">Featured products</div>
+        <div class="productFeature__container" id="productFeature__container">
+            
+            {% assign products = collections['all_product'].products %}
+            {% assign limit = collections['all_product'].all_products_count %}
+            {% assign renderProducts = limit | minus: 1 %}
+            {% for i in (0..renderProducts) %}
+                {% assign product = products[i].variants[0] %}
+                {% render 'card-product' with product %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+  "name": "Product Feature",
+  "tag": "section",
+  "presets": [
+    {
+      "name": "Product Feature"
+    }
+  ],
+  "settings": [
+    {
+    "type": "text",
+    "id": "title",
+    "label": "Input Title"
+    }
+    
+  ]
+}
+{% endschema %}

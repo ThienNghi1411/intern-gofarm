@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "product-page": {
+      "type": "product-page",
+      "settings": {
+        "bannerStyle": "2",
+        "product": ""
+      }
+    },
+    "16545909871f6185ec": {
+      "type": "product-bundle",
+      "settings": {
+        "title": ""
+      }
+    },
+    "1654595074f2bff6fa": {
+      "type": "details",
+      "settings": {
+        "product": "",
+        "section_title": "",
+        "bannerStyle": "2"
+      }
+    },
+    "1654591046083c9c28": {
+      "type": "info",
+      "settings": {
+        "section_title": ""
+      }
+    },
+    "1654591056cbb70cae": {
+      "type": "upSell",
+      "settings": {
+        "section_title": ""
+      }
+    }
+  },
+  "order": [
+    "product-page",
+    "16545909871f6185ec",
+    "1654595074f2bff6fa",
+    "1654591046083c9c28",
+    "1654591056cbb70cae"
+  ]
+}

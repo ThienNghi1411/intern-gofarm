@@ -1,0 +1,191 @@
+<link rel="stylesheet" href="{{ 'details.css' | asset_url }}">
+
+
+
+
+<section class="details" data-section-type="product-details">
+
+    <div class="details_inner container">
+
+      {% if section.settings.bannerStyle == "1" %}
+
+      <div class="details_content">
+        <div class="details_main">
+          <div class="details_main_Title">Details</div>
+          <div class="details_main_text">
+            {{product.metafields.my_fields.info.value }}
+          </div>
+        </div>
+        <div class="details_main">
+          <div class="details_main_Title">Additional information</div>
+          <div class="details_main_text">
+            {{product.metafields.my_fields.info.value }}
+          </div>
+        </div>
+        <div class="details_main">
+          <div class="details_main_Title">Specification</div>
+          <div class="details_main_text">
+            {{product.metafields.my_fields.spec.value }}
+          </div>
+        </div>
+        <div class="details_main">
+          <div class="details_main_Title">Reviews</div>
+          <div class="details_main_text">
+            {{product.metafields.my_fields.reviews.value }}
+          </div>
+        </div>
+       
+
+      </div>
+    
+
+      
+
+
+
+
+
+      <!-- <div class="details_IconWrap">
+       {% for block in section.blocks %}
+       {% case block.type %}
+          
+              {% when 'add_moreIcon'%}
+          <div class="details_Icon">
+              <div class="details_IconWrap_pic">
+               {% if block.settings.type =='svg' %}
+               {{block.settings.svg}}
+               {% endif %}
+               {% if block.settings.type =='image' %}
+               <img src=" {{ block.settings.image | img_url:'small'}} " />   
+               {% endif %}
+                      
+              </div>
+              <div class="details_IconWrap_text">
+                  {{block.settings.icon_text}}
+              </div>
+          </div>        
+      
+      {% endcase %}
+          
+      {% endfor %}
+    
+      </div>      -->
+      {% endif %}
+
+
+
+    
+      {% if section.settings.bannerStyle == "2" %}
+
+      <div class="details_tabWrap">
+          <div class="details_tabName active">Details</div>
+          <div class="details_tabName">Additional information</div>
+          <div class="details_tabName">Specification</div>
+          <div class="details_tabName">Reviews</div>
+      </div> 
+      <img src="products/img3.png" alt="">
+      
+      <div class="details_content2">
+        <div class="details_main2 active2">{{product.metafields.my_fields.details.value }}</div>
+        <div class="details_main2">{{product.metafields.my_fields.info.value }}</div>
+        <div class="details_main2">{{product.metafields.my_fields.spec.value }}</div>
+        <div class="details_main2">{{product.metafields.my_fields.reviews.value }}</div>
+
+        
+        <!-- <div class="details_main">{{section.settings.main}}</div>
+        <div class="details_sub">{{section.settings.sub}}</div>
+  
+        {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'add_moreText'%}     
+            <div class="details_more">{{block.settings.more}}</div>  
+            
+  
+        {% endcase %}
+            
+        {% endfor %}
+        <div class="details_IconWrap">
+         {% for block in section.blocks %}
+         {% case block.type %}
+            
+                {% when 'add_moreIcon'%}
+            <div class="details_Icon">
+                <div class="details_IconWrap_pic">
+                 {% if block.settings.type =='svg' %}
+                 {{block.settings.svg}}
+                 {% endif %}
+                 {% if block.settings.type =='image' %}
+                 <img src=" {{ block.settings.image | img_url:'small'}} " />   
+                 {% endif %}
+                        
+                </div>
+                <div class="details_IconWrap_text">
+                    {{block.settings.icon_text}}
+                </div>
+            </div>        
+        
+        {% endcase %}
+            
+        {% endfor %}
+      
+        </div>      -->
+      </div>
+    
+      {% endif %}
+
+
+
+          
+      
+
+    </div>
+
+</section>
+<script src="{{ 'details.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "Details",
+  "tag": "section",
+  "presets": [
+    {
+      "name": "Details",
+      "blocks": [
+      ]
+    }
+  ],
+  "settings": [
+    {
+    "type": "product",
+    "id": "product",
+    "label": "Select Product for (temporily)"
+    },
+    {
+    "type": "text",
+    "id": "section_title",
+    "label": "Input Title"
+    },
+
+    {
+      "type":"select",
+      "id":"bannerStyle",
+      "label":"Choose style of design: ",
+      "options":[
+          {
+              "value":"1",
+              "label":"Style 1"
+          },
+          {
+              "value":"2",
+              "label":"Style 2"
+          }
+      ],
+      "default":"1"
+    }
+    
+    
+  ]
+
+    
+  
+}
+{% endschema %}

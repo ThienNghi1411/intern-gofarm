@@ -1,0 +1,102 @@
+.header__container {
+  width: 100%;
+}
+
+.header__container-inner {
+  padding-top: 25px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerCont__btnToggleMenu {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px 0px;
+  width: 140px;
+  background: #ffffff;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.headerCont__btnToggleMenu:hover {
+  border: 1px solid black;
+}
+
+.headerCont__btnToggleMenu .headerCont__btnToggleMenu-text {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #1a1a1a;
+}
+
+.headerCont__searchCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  background: #f0f0f0;
+  border-radius: 5px;
+}
+
+.headerCont__searchCont input {
+  width: 436px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #4d4d4d;
+}
+
+.headerCont__languageAndCurrency {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.headerCont__languageCont,
+.headerCont__currencyCont {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.headerCont__languageCont:hover,
+.headerCont__currencyCont:hover {
+  font-weight: bold;
+}
+
+.headerCont__userCont {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-right: 10px;
+}
+
+.headerCont__userCont-like,
+.headerCont__userCont-cartList {
+  position: relative;
+}
+
+.quantityCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 1.4;
+  background: #05a845;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(50%, -50%);
+}

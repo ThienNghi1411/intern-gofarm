@@ -1,0 +1,229 @@
+
+.FooterWidget_inner{
+    width: 100%;
+}
+.FooterWidget
+{
+    width: 100%;
+    padding: 70px 0px;
+    border-top: 1px solid #E3E3E3;
+    margin: 0 auto;
+  
+}
+.FooterWidget_content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+   
+}
+
+
+
+.YourStore{
+    width: 30%;
+    padding-right: 74px;
+
+}
+.YourStore_tittle {
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 25px;
+    color: #1A1A1A;
+}
+
+.YourStore_Info {
+    display: flex;
+    gap: 15.37px;
+    padding: 10px 20px;
+    background: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    border-radius: 5px;
+    max-width: 295px;
+    margin-top: 15px;
+}
+
+.YourStore_address {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1A1A;
+}
+
+.YourStore_Schedule {
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 19px;
+    color: #4D4D4D;
+}
+
+.YourStore_ShowOnMap {
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    text-decoration-line: underline;
+    color: #05A845;
+}
+
+
+
+.NeedHelp
+{
+    padding-left: 50px;
+   
+    border-left: 1px solid #F0F0F0;
+    margin-right: 104px;
+}
+
+.NeedHelp_tittle {
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 25px;
+    color: #1A1A1A;
+}
+
+.NeedHelp_Phone {
+    margin-top: 17px;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 120%;
+    color: #191919;
+}
+
+.NeedHelp_Schedule {
+    margin-top: 16px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 19px;
+
+    color: #4D4D4D;
+}
+
+.NeedHelp_Email {
+    margin-top: 18px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    text-decoration-line: underline;
+    color: #05A845;
+}
+
+.NeedHelp_IconWrap {
+    display: flex;
+    gap: 17px;
+    margin-top: 25px;
+}
+
+
+
+.menu_title {
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 25px;
+    color: #1A1A1A;
+    margin-bottom: 17pxf;
+}
+
+.list-item {
+    
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 170%;
+    color: #000000;
+}
+
+.MenuWrap
+{
+    display: flex;
+    gap: 137px !important;
+}
+@media (max-width: 1085px) {
+
+    .FooterWidget_content
+    {
+        display: flex;
+        width: 100%;
+        justify-content: unset;
+        padding: 0px 15px;
+
+        
+    }
+    .NeedHelp
+    {
+        width: 55% ;
+        padding-left: 3 0px;
+        margin-right: 0;
+        padding-bottom: 30px;
+        border-left: unset;
+    }
+    .YourStore
+    {
+        width: 45% ;
+        padding-right: 0px;
+        padding-right: 30px;
+        border-right: 1px solid #E3E3E3;
+       
+    }
+    .YourStore_Info
+    {
+        width: 90%;
+    }
+    .menu-list
+    {
+        width: 50% ; 
+        
+    }
+    .MenuWrap
+    {
+        padding-top: 30px;
+        width: 100%;
+        gap: 0 !important;
+        justify-content: space-between;
+    }
+    .MenuWrap:nth-child(1)
+    {
+        padding-left: 50px !important;
+    }
+    .MenuWrap:first-child ul{
+        display: none;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .NeedHelp
+    {
+        width: 100%;
+        padding-left: 0px;
+        margin-top: 30px;
+    }
+    .YourStore
+    {
+        width: 100%;
+        padding-right: 0px;
+        border-right: unset;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #E3E3E3;
+    }
+    .MenuWrap
+    {
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 0px;
+    }
+    .menu-list
+    {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+
+
+}

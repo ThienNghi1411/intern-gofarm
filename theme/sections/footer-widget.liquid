@@ -1,0 +1,273 @@
+<link rel="stylesheet" href="{{ 'footer-widget.css' | asset_url }}">
+
+<section class="FooterWidget " data-section-type="footer" data-section-id="{{section.id}}">
+<div class="FooterWidget_inner container">
+
+    <div class="FooterWidget_content">
+      {% for block in section.blocks %}
+         {% case block.type %}
+            {% when 'address' %}
+            <div class="YourStore" {{ block.shopify_attributes }}>
+               <div class="YourStore_tittle">{{block.settings.title}}</div>
+               
+               
+               <div class="YourStore_Info">
+                  {% if block.settings.show_icon %}
+                  <div class="FooterWidget_svg"><svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <g clip-path="url(#clip0_1301_52)">
+                     <path d="M9.5 11.7812C11.4675 11.7812 13.0625 10.1863 13.0625 8.21875C13.0625 6.25124 11.4675 4.65625 9.5 4.65625C7.53249 4.65625 5.9375 6.25124 5.9375 8.21875C5.9375 10.1863 7.53249 11.7812 9.5 11.7812Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                     <path d="M16.625 8.21828C16.6247 6.87018 16.242 5.54983 15.5213 4.41057C14.8006 3.2713 13.7714 2.35988 12.5534 1.78216C11.3354 1.20444 9.97845 0.98412 8.6402 1.1468C7.30196 1.30948 6.03733 1.84847 4.99319 2.70119C3.94905 3.5539 3.16825 4.68534 2.74147 5.9641C2.31469 7.24285 2.25945 8.61645 2.58216 9.92534C2.90487 11.2342 3.5923 12.4247 4.56459 13.3585C5.53688 14.2923 6.75414 14.9312 8.075 15.2008L9.5 18.9058L10.925 15.2008C12.5343 14.8723 13.9808 13.9978 15.0195 12.7254C16.0582 11.453 16.6253 9.86081 16.625 8.21828V8.21828Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                     </g>
+                     <defs>
+                     <clipPath id="clip0_1301_52">
+                     <rect width="19" height="19" fill="white" transform="translate(0 0.5)"/>
+                     </clipPath>
+                     </defs>
+                     </svg>
+                 </div>
+                  {% endif %}
+                       <div class="YourStore_address">
+                          {{block.settings.address}}
+                       </div>
+               </div>
+               <div class="YourStore_Schedule">
+                  {{block.settings.content}}
+               </div>
+               <div class="YourStore_ShowOnMap">
+                  {{block.settings.link_store}}
+               </div>
+   
+               
+           </div>
+
+
+           {% when 'contact' %}
+           <div class="NeedHelp" {{ block.shopify_attributes }}>
+
+            <div class="NeedHelp_tittle">{{block.settings.title}}</div>
+            <div class="NeedHelp_Phone">{{block.settings.contact}}</div>
+            <div class="NeedHelp_Schedule">
+                {{block.settings.content}}
+                
+              
+            </div>
+            <div class="NeedHelp_Email">
+               {{block.settings.Store_Email}}
+            </div>
+
+            {% if block.settings.show_social %}
+            <div class="NeedHelp_IconWrap">
+               <div class="NeedHelp_Icom"><svg width="10" height="19" viewBox="0 0 10 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M2.9053 19V10.502H0V7.125H2.9053V4.46426C2.9053 1.57344 4.70833 0 7.34091 0C8.60227 0 9.68561 0.0927734 10 0.133594V3.1543H8.17424C6.74242 3.1543 6.46591 3.82227 6.46591 4.79824V7.125H9.69697L9.25379 10.502H6.46591V19" fill="black"/>
+                   </svg>
+                   </div>
+               <div class="NeedHelp_Icom"><svg width="16" height="19" viewBox="0 0 16 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <g clip-path="url(#clip0_1218_1685)">
+                   <path d="M8.0038 5.23208C5.73237 5.23208 3.90023 7.13579 3.90023 9.49595C3.90023 11.8561 5.73237 13.7598 8.0038 13.7598C10.2752 13.7598 12.1074 11.8561 12.1074 9.49595C12.1074 7.13579 10.2752 5.23208 8.0038 5.23208ZM8.0038 12.268C6.53594 12.268 5.33595 11.0249 5.33595 9.49595C5.33595 7.96704 6.53237 6.72388 8.0038 6.72388C9.47523 6.72388 10.6717 7.96704 10.6717 9.49595C10.6717 11.0249 9.47165 12.268 8.0038 12.268ZM13.2324 5.05767C13.2324 5.6106 12.8038 6.0522 12.2752 6.0522C11.7431 6.0522 11.3181 5.60688 11.3181 5.05767C11.3181 4.50845 11.7467 4.06313 12.2752 4.06313C12.8038 4.06313 13.2324 4.50845 13.2324 5.05767ZM15.9502 6.06704C15.8895 4.73481 15.5966 3.55474 14.6574 2.58247C13.7217 1.6102 12.5859 1.30591 11.3038 1.23911C9.98237 1.16118 6.02166 1.16118 4.70023 1.23911C3.42166 1.3022 2.28595 1.60649 1.34666 2.57876C0.40738 3.55103 0.118094 4.7311 0.0538085 6.06333C-0.0211914 7.43638 -0.0211914 11.5518 0.0538085 12.9249C0.114523 14.2571 0.40738 15.4372 1.34666 16.4094C2.28595 17.3817 3.41809 17.686 4.70023 17.7528C6.02166 17.8307 9.98237 17.8307 11.3038 17.7528C12.5859 17.6897 13.7217 17.3854 14.6574 16.4094C15.5931 15.4372 15.8859 14.2571 15.9502 12.9249C16.0252 11.5518 16.0252 7.44009 15.9502 6.06704ZM14.2431 14.3981C13.9645 15.1254 13.4252 15.6858 12.7217 15.979C11.6681 16.4131 9.16808 16.3129 8.0038 16.3129C6.83952 16.3129 4.33595 16.4094 3.28595 15.979C2.58595 15.6895 2.04666 15.1292 1.76452 14.3981C1.34666 13.3034 1.44309 10.7057 1.44309 9.49595C1.44309 8.28618 1.35024 5.68481 1.76452 4.5938C2.04309 3.86646 2.58238 3.3061 3.28595 3.01294C4.33952 2.57876 6.83952 2.67896 8.0038 2.67896C9.16808 2.67896 11.6717 2.58247 12.7217 3.01294C13.4217 3.30239 13.9609 3.86274 14.2431 4.5938C14.6609 5.68853 14.5645 8.28618 14.5645 9.49595C14.5645 10.7057 14.6609 13.3071 14.2431 14.3981Z" fill="black"/>
+                   </g>
+                   <defs>
+                   <clipPath id="clip0_1218_1685">
+                   <rect width="16" height="19" fill="white"/>
+                   </clipPath>
+                   </defs>
+                   </svg>
+                   </div>
+               <div class="NeedHelp_Icom"><svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M19.0853 4.60464C18.8672 3.72701 18.2246 3.03581 17.4088 2.80124C15.9299 2.375 10 2.375 10 2.375C10 2.375 4.07019 2.375 2.59133 2.80124C1.77546 3.03584 1.13289 3.72701 0.914805 4.60464C0.518555 6.19541 0.518555 9.5144 0.518555 9.5144C0.518555 9.5144 0.518555 12.8334 0.914805 14.4242C1.13289 15.3018 1.77546 15.9642 2.59133 16.1988C4.07019 16.625 10 16.625 10 16.625C10 16.625 15.9299 16.625 17.4088 16.1988C18.2246 15.9642 18.8672 15.3018 19.0853 14.4242C19.4815 12.8334 19.4815 9.5144 19.4815 9.5144C19.4815 9.5144 19.4815 6.19541 19.0853 4.60464ZM8.06064 12.5278V6.50101L13.0169 9.51447L8.06064 12.5278Z" fill="black"/>
+                   </svg>
+                   </div>
+               <div class="NeedHelp_Icom"><svg width="14" height="19" viewBox="0 0 14 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M7.4375 0.241211C3.69687 0.241211 0 2.77949 0 6.8875C0 9.5 1.44375 10.9844 2.31875 10.9844C2.67969 10.9844 2.8875 9.96016 2.8875 9.6707C2.8875 9.32559 2.02344 8.59082 2.02344 7.15469C2.02344 4.17109 4.25469 2.05586 7.14219 2.05586C9.625 2.05586 11.4625 3.49199 11.4625 6.13047C11.4625 8.10098 10.6859 11.7971 8.17031 11.7971C7.2625 11.7971 6.48594 11.1291 6.48594 10.1717C6.48594 8.76894 7.44844 7.41074 7.44844 5.96348C7.44844 3.50684 4.025 3.95215 4.025 6.9209C4.025 7.54434 4.10156 8.23457 4.375 8.80234C3.87187 11.0066 2.84375 14.2908 2.84375 16.5619C2.84375 17.2633 2.94219 17.9535 3.00781 18.6549C3.13177 18.7959 3.06979 18.7811 3.25937 18.7105C5.09687 16.15 5.03125 15.649 5.8625 12.298C6.31094 13.1664 7.47031 13.634 8.38906 13.634C12.2609 13.634 14 9.79316 14 6.33086C14 2.6459 10.8719 0.241211 7.4375 0.241211Z" fill="black"/>
+                   </svg>
+                   </div>
+               <div class="NeedHelp_Icom"><svg width="16" height="19" viewBox="0 0 16 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <g clip-path="url(#clip0_1218_1691)">
+                   <path d="M3.58214 17.8125H0.264285V6.71309H3.58214V17.8125ZM1.92143 5.19902C0.860713 5.19902 0 4.28613 0 3.18398C0 2.08184 0.860713 1.1875 1.92143 1.1875C2.98214 1.1875 3.84285 2.08184 3.84285 3.18398C3.84285 4.28613 2.98214 5.19902 1.92143 5.19902ZM16 17.8125H12.6893V12.4094C12.6893 11.1217 12.6643 9.47031 10.9643 9.47031C9.23928 9.47031 8.97499 10.8693 8.97499 12.3166V17.8125H5.66071V6.71309H8.84285V8.22715H8.88928C9.33213 7.35508 10.4143 6.43477 12.0286 6.43477C15.3857 6.43477 16.0036 8.73184 16.0036 11.7154V17.8125H16Z" fill="black"/>
+                   </g>
+                   <defs>
+                   <clipPath id="clip0_1218_1691">
+                   <rect width="16" height="19" fill="white"/>
+                   </clipPath>
+                   </defs>
+                   </svg>
+                   </div>
+           </div>
+            {% endif %}
+            
+            {% endcase %}
+
+         
+            {% endfor %}
+        </div>
+
+
+        <div class="MenuWrap">
+         
+         
+         {% for block in section.blocks %}
+         {% case block.type %}  
+         {% when 'menu' %}
+            {%- assign menuList = linklists[block.settings.menu] -%}
+
+              
+                <ul class="menu-list">
+                   {% if block.settings.hide_title %}
+                   <li class="menu_title">{{menuList.title}}</li>
+                   {% endif %}
+                 
+                    {%- if menuList.links.size > 0 -%} {%- for l in menuList.links -%} {%- render 'link', link: l -%} {%- endfor -%} {%- else -%} {%- for i in (1..5) -%}
+                    <li class="list-item"><a href="javascript:void(0);" class="list-item-link link">Sample menu item</a></li>
+                    {%- endfor -%} {%- endif -%}
+                </ul>
+                {% endcase %}  
+         {% endfor %}
+        </div>
+        
+    
+
+        </div>
+          
+               
+       
+
+
+        
+
+
+
+      
+
+
+
+
+      
+       
+
+
+
+        
+
+
+
+        
+
+
+
+    </div>
+
+</div>
+</section>
+{% schema %}
+{
+   "name": "Footer Widget",
+   "tag": "section",
+   "settings": [
+
+   ],
+   "blocks": [
+
+      {
+         "type": "address",
+         "name": "Store address",
+         "limit": 1,
+         "settings": [
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Title",
+               "default": "Your store"
+            },
+            {
+               "type":"checkbox",
+               "id":"show_icon",
+               "label":"Show Address icon",
+               "default": true
+            },
+            {
+               "type":"textarea",
+               "id":"address",
+               "label":"Store address"
+            },
+            {
+              "type": "text",
+              "id": "address_fs",
+              "label": "Adjust Address text font size",
+              "default": "14px",
+               "info": "[How to fill here?](https:\/\/support.arenacommerce.com\/a\/solutions\/articles\/6000256537)"
+            },
+            {
+               "type":"richtext",
+               "id":"content",
+               "label":"Information"
+            },
+            {
+               "type":"text",
+               "id":"link_store",
+               "label":"Edit Link Store"
+              
+            }
+         ]
+      },
+      {
+         "type": "contact",
+         "name": "Contact",
+         "limit": 1,
+         "settings": [
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Title",
+               "default": "Need help"
+            },
+            {
+               "type":"textarea",
+               "id":"contact",
+               "label":"Store contact"
+            },
+            {
+              "type": "text",
+              "id": "contact_fs",
+              "label": "Adjust Contact text font size",
+              "default": "25px",
+               "info": "[How to fill here?](https:\/\/support.arenacommerce.com\/a\/solutions\/articles\/6000256537)"
+            },
+            {
+               "type":"richtext",
+               "id":"content",
+               "label":"Information"
+            },
+            {
+               "type":"checkbox",
+               "id":"show_social",
+               "label":"Show Social icons",
+               "default": true
+            },
+            {
+               "type":"text",
+               "id":"Store_Email",
+               "label":"Edit Store Email"
+            }
+            
+         ]
+      },
+      {
+         "type": "menu",
+         "name": "Menu list",
+         "settings": [
+            {
+               "type":"link_list",
+               "id":"menu",
+               "label":"Select a menu"
+            },
+            {
+               "type":"checkbox",
+               "id":"hide_title",
+               "label":"Hide Menu title",
+               "default": true
+            }
+            
+         ]
+      }
+   ]
+}
+{% endschema %}

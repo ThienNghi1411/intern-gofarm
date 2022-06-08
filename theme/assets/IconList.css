@@ -1,0 +1,51 @@
+.IconList {
+    margin: 0 auto;
+}
+
+.IconList_inner {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+    padding: 9.5px 0;
+    border-top: 1px solid #F0F0F0;
+    border-bottom: 1px solid #F0F0F0;
+
+}
+
+.IconList_Item {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    max-width: 300px;
+}
+
+.IconList_Item_text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #4D4D4D;
+}
+
+
+@media (max-width: 1000px) {
+    .IconList_Item {
+        flex-direction: column;
+    }
+
+
+}
+@media (max-width: 768px) {
+    .IconList_Item
+    {
+        width: 100%;
+    }
+    .IconList_inner
+    {
+        flex-direction: column;
+        gap: 0px;
+    }
+
+}
