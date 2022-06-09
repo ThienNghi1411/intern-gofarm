@@ -1,10 +1,11 @@
-<link rel="stylesheet" href="{{ 'product-page.css' | asset_url }}" media="print" onload="this.media='all'">
+
 
 {% comment %} {% assign product = section.settings.product %} {% endcomment %}
-<script>console.log({{ product | json }});</script>
+
 <section class="productPage" data-section-type="product-page" data-section-id="{{ section.id }}" >
     <div class="productPage__inner container" dataIndex="0">
         {% if section.settings.bannerStyle == "1" %}
+            <link rel="stylesheet" href="{{ 'product-page-style1.css' | asset_url }}" media="print" onload="this.media='all'">
             <div class="productPage__imgCont">
                 <div class="productPage__mainImg" id="productPage__mainImg">
                     {% for image in product.images %}
@@ -176,6 +177,7 @@
                 </div> 
             </div>
         {% elsif section.settings.bannerStyle == "2" %}
+            <link rel="stylesheet" href="{{ 'product-page-style2.css' | asset_url }}" media="print" onload="this.media='all'">
             <div class="productPage__imgCont">
                 <div class="productPage__mainImg" id="productPage__mainImg">
                     {% for image in product.images %}
@@ -371,67 +373,6 @@
                 </div>
 
             </div>
-            {% style %}
-                .productPage__imgCont{
-                    display: flex;
-                    flex-direction: row-reverse;
-                    gap: 10px;
-                }
-                .productPage__subImgList{
-                    display: block;
-                }
-
-                .productPage__content{
-                    flex-direction: row;
-                    gap: 20px;
-                }
-
-                .productPage__titleAndShare{
-                   width: 50%;
-                   flex-direction: column;
-                   justify-content: flex-start;
-                }
-                .productPage__socialMedia{
-                    padding: 50px 0px 25px 0px;
-                }
-                .productPage__offer{
-                    flex-direction: column;
-                    gap: 10px
-                }
-                .productPage__priceCont{
-                    width: 50%;
-                }
-                .productPage__priceContWrap{
-                    padding: 30px;
-                    background: #F1FAF0;
-                    border-radius: 5px;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 25px;
-                    margin-bottom: 20px;
-                }
-                .productPage__priceProduct, .productPage__sizeCont{
-                    margin: 0;
-                }
-
-                .productPage__sizeOption{
-                    font-weight: 600;
-                    font-size: 13px;
-                    line-height: 1.4;
-                    color: #4D4D4D;
-                }
-                .productPage__quantityFieldCont{
-                    display: block;
-                }
-                .productPage__quantityField{
-                    flex-direction: column;
-                    align-items: flex-start;
-                    margin-bottom: 20px;
-                }
-                .productPage__quantityAdjust{
-                    background: #fff;
-                }
-            {% endstyle %}
         {% endif %}
         <script id="dataProduct" type="application/ld+json">
             {

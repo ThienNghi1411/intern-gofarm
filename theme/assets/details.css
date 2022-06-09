@@ -103,9 +103,17 @@
 .active2{
     display: block;
 }
-@media (max-width: 1080px) {
+@media (max-width: 1300px) {
     .details_inner {
-        padding: 15px;
+        padding: 60px 20px;
     }
+    .details_tabWrap {
+        flex-wrap: wrap;
+    }
+}
 
+@media (max-width: 480px){
+    .details_tabName{
+        width: 100%;
+    }
 }

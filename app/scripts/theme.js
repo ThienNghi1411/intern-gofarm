@@ -143,7 +143,7 @@
     onLoad: function () {
       var slider1 = tns({
         container: "#productFeature__container",
-        items: 6,
+        items: 2,
         controls: false,
         mouseDrag: true,
         nav: true,
@@ -153,6 +153,17 @@
         autoplayButtonOutput: false,
         swipeAngle: false,
         speed: 400,
+        responsive: {
+          600: {
+            items: 3,
+          },
+          1024: {
+            items: 4,
+          },
+          1240: {
+            items: 6,
+          }
+        },
       });
     },
     onUnload: function () {},

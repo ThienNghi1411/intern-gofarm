@@ -9,7 +9,6 @@
             {% endif %}
            
             <div class="productCard__pic-noteWrap">
-                <script>console.log({{ product.product.tags | json }});</script>
                 {% for tag in product.product.tags %}
                     {% if tag == "SALE" %}
                         <div class="item__note"><svg width="40" height="16" viewBox="0 0 40 16" fill="none" xmlns="http://www.w3.org/2000/svg">

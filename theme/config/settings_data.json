@@ -142,56 +142,6 @@
         ],
         "settings": {}
       },
-      "1654073135fd4bf9f8": {
-        "type": "info",
-        "blocks": {
-          "581185c7-1ab5-4038-b42a-b3853ab8e845": {
-            "type": "add_Info",
-            "settings": {
-              "info_name": "Power",
-              "info_detail": "5,049"
-            }
-          },
-          "9e0b2f0b-fcc9-40f7-a0dc-f6e56f6c8b22": {
-            "type": "add_Info",
-            "settings": {
-              "info_name": "Windows",
-              "info_detail": "64bit Windows 7*, 8 or 10"
-            }
-          },
-          "68e9b40e-ce5d-4ed3-92fe-52ce5abdabba": {
-            "type": "add_Info",
-            "settings": {
-              "info_name": "Graphic Card",
-              "info_detail": "4Gb dedicated Graphics card (such as NVIDIA – Open GL 4.0 or later)"
-            }
-          },
-          "2b44b7cc-b96c-4cd9-ac38-3e1a64eea400": {
-            "type": "add_Info",
-            "settings": {
-              "info_name": "HDD",
-              "info_detail": "500Gb HDD (this is more driven by the amount of data you want to keep on your computer, rather than LSS itself)"
-            }
-          },
-          "3c121999-013c-49b0-81b6-eb881ca685a4": {
-            "type": "add_Info",
-            "settings": {
-              "info_name": "Screen",
-              "info_detail": "Single HD Screen (1920x1080 with 100% desktop scaling) or 1366x768 with second monitor 1920x1080 or higher"
-            }
-          }
-        },
-        "block_order": [
-          "581185c7-1ab5-4038-b42a-b3853ab8e845",
-          "9e0b2f0b-fcc9-40f7-a0dc-f6e56f6c8b22",
-          "68e9b40e-ce5d-4ed3-92fe-52ce5abdabba",
-          "2b44b7cc-b96c-4cd9-ac38-3e1a64eea400",
-          "3c121999-013c-49b0-81b6-eb881ca685a4"
-        ],
-        "settings": {
-          "section_title": "Info"
-        }
-      },
       "16540756574f5ddb2b": {
         "type": "details",
         "settings": {
@@ -209,13 +159,20 @@
       },
       "collections-filter": {
         "type": "collections-filter",
-        "settings": {}
+        "settings": {
+          "render_style": "2"
+        }
+      },
+      "products-show": {
+        "type": "products-show",
+        "settings": {
+          "title": ""
+        }
       }
     },
     "content_for_index": [
       "1654240683f03456a6",
-      "16540756574f5ddb2b",
-      "1654073135fd4bf9f8"
+      "16540756574f5ddb2b"
     ]
   },
   "presets": {

@@ -11,7 +11,7 @@
   font-size: 35px;
   line-height: 1.2;
   color: #191919;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .productFeature__container {
@@ -47,3 +47,15 @@
   opacity: 1 !important;
 }
 
+
+@media (max-width: 1300px){
+  .productFeature__inner {
+    padding: 70px 20px 60px 20px;
+  }
+}
+
+@media (max-width: 480px){
+  .productFeature__mainTitle {
+    font-size: 28px;
+  }
+}

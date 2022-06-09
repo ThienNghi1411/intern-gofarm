@@ -23,7 +23,7 @@
 }
 
 .productBundle__products {
-  flex: 1;
+  width: 800px;
   display: flex;
   justify-content: center;
 }
@@ -108,7 +108,7 @@
 }
 
 .productBundle__content {
-  width: 430px;
+  flex: 1;
   padding: 30px 0px;
   display: flex;
   flex-direction: column;
@@ -219,4 +219,63 @@
 
 .productBundle__total-btnAddtoCart:hover {
   opacity: 0.5;
+}
+
+@media (max-width: 1300px){
+  .productBundle__inner{
+    padding: 105px 20px 0px 20px;
+  }
+  .productBundle__content{
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 1024px){
+  .productBundleContainer{
+    flex-wrap: wrap;
+  }
+  .productBundle__products{
+    width: 100%;
+  }
+  .productBundle__content{
+    padding: 0px 30px 30px 30px;
+  }
+}
+
+@media (max-width: 768px){
+  .productBundle__item{
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px ){
+  .productBundle__mainTitle{
+    font-size: 28px;
+  }
+  .productBundle__products{
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 30px;
+  }
+  .productBundle__item{
+    width: 100%;
+    flex: unset;
+  }
+  .productBundle__option-content{
+    flex-wrap: wrap;
+  }
+  .productBundle__option-priceCont{
+    width: 100%;
+    margin: 0;
+  }
+  .productBundle__total-btnAddtoCart{
+    width: 100%;
+    font-size: 14px;
+  }
+  .productBundle__total-lastPrice{
+    font-size: 28px;
+  }
+  .productBundle__total-basePrice{
+    font-size: 20px;
+  }
 }

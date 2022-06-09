@@ -3,7 +3,7 @@
     "product-page": {
       "type": "product-page",
       "settings": {
-        "bannerStyle": "2",
+        "bannerStyle": "1",
         "product": ""
       }
     },
@@ -30,7 +30,7 @@
     "1654591046083c9c28": {
       "type": "info",
       "settings": {
-        "section_title": ""
+        "section_title": "Info"
       }
     },
     "1654591056cbb70cae": {

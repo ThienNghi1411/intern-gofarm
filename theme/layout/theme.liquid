@@ -17,12 +17,12 @@
   {{ 'application.css' | asset_url | stylesheet_tag }}
   {{ 'application.js' | asset_url | script_tag }}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  
+  {% if template contains 'collection' %}{{ 'https://cdn.shopify.com/s/files/1/0382/4185/files/ajaxinate.js?937' | script_tag }}{% endif %}
 </head>
 <body>
   <header class="header">
     {% render 'snippet-render-header' %}
-  </header>
+  </header> 
 
   <main role="main">
     {{ content_for_layout }}

@@ -1,19 +1,21 @@
 <link rel="stylesheet" href="{{ 'product-bundle.css' | asset_url }}" media="print" onload="this.media='all'">
+
+{% assign dataProducts = product.metafields.variants.group1 | split: '|' %}
+
+
 <section class="productBundle" data-section-type="product-bundle" data-section-id="{{ section.id }}" >
     <div class="productBundle__inner container">
         <div class="productBundle__mainTitle">Frequently bought together</div>
         <div class="productBundleContainer">
             <div class="productBundle__products">
-                {% for i in (1..3) %}
-                    {% case i %}
-                        {% when 1 %}
-                            {% assign data = product.metafields.my_fields.bundle_item_1.value %}
-                        {% when 2 %}
-                            {% assign data = product.metafields.my_fields.bundle_item_2.value %}
-                        {% when 3 %}
-                            {% assign data = product.metafields.my_fields.bundle_item_3.value %}
-                    {% endcase %}
-                   
+                {% for dataProduct in dataProducts limit: 3 %}
+                    {% assign handles = dataProduct | split: '?' %}
+                    {% assign variantId = handles[1] | split: '=' %}
+                    {% assign variantId = variantId[1] | times: 1 %}
+                    {% assign handle = handles[0] %}
+                    {% assign datas = all_products[handle] %}
+                    {% assign data = datas.variants | where: 'id', variantId | first %}
+         
                     <div class="productBundle__item"  {{ block.shopify_attributes }}>
                         <div class="productBundle__item-pic">
                             <a href="/products/{{ data.product.handle }}" class="">
@@ -66,11 +68,10 @@
                             </a>
                         </div>
                         <div class="productBundle__item-name">
-                            <a href="/products/{{ data.product.handle }}" class="">{{ data.product.title }}</a>
-                         
+                            <a href="/products/{{ data.product.handle }}" class="">{{ data.product.title }}</a> 
                         </div>
                         <div class="productBundle__item-quantity">
-                            {{ data.option1 }}
+                            {{ data.title }}
                         </div>
                         <div class="productBundle__item-priceWrap">
                             <div class="productBundle__discount_price"> {{ data.compare_at_price | money }}</div>
@@ -81,15 +82,13 @@
             </div>
             <div class="productBundle__content">
                 <div class="productBundle__options">
-                    {% for i in (1..3) %}
-                        {% case i %}
-                            {% when 1 %}
-                                {% assign data = product.metafields.my_fields.bundle_item_1.value %}
-                            {% when 2 %}
-                                {% assign data = product.metafields.my_fields.bundle_item_2.value %}
-                            {% when 3 %}
-                                {% assign data = product.metafields.my_fields.bundle_item_3.value %}
-                        {% endcase %}
+                    {% for dataProduct in dataProducts limit: 3 %}
+                        {% assign handles = dataProduct | split: '?' %}
+                        {% assign variantId = handles[1] | split: '=' %}
+                        {% assign variantId = variantId[1] | times: 1 %}
+                        {% assign handle = handles[0] %}
+                        {% assign datas = all_products[handle] %}
+                        {% assign data = datas.variants | where: 'id', variantId | first %}
                             <div class="productBundle__option">
                                 <div class="productBundle__option-checkBox productBundle__option-checkBoxActive" id="{{ data.id }}" lastPrice="{{ data.compare_at_price }}" 
                                     basePrice="{{ data.price }}">

@@ -1,29 +1,23 @@
 <link rel="stylesheet" href="{{ 'info.css' | asset_url }}">
 
+{% assign dataInfo = product.metafields.my_fields.info.value | newline_to_br | split: '<br />' %}
 
 <section class="info">
     <div class="info_inner container">
         <div class="info_title">{{section.settings.section_title}}</div>
 
         <div class="info_itemWrap">
-            {% for block in section.blocks %}
-        {% case block.type %}
-            {% when 'add_Info' %}
-
+        {% for data in dataInfo %}
+            {% assign content = data | split: ':' %}
+            {% assign title = content[0] %}
+            {% assign text = content[1] %}
             <div class="info_item">
-                <div class="info_item_name">{{block.settings.info_name}}</div>
-                <div class="info_item_content">{{block.settings.info_detail}}</div>
+                <div class="info_item_name">{{ title }}</div>
+                <div class="info_item_content">{{ text }}</div>
             </div>
-            {% else %}   
-        {% endcase %}
-            
         {% endfor %}
         </div>
-        
-        
-
     </div>
-
 </section>
 
 {% schema %}
@@ -42,28 +36,7 @@
     "type": "text",
     "id": "section_title",
     "label": "Input Title"
-    }
-    
-  ],
-  "blocks": [
-    {
-      "type":"add_Info",
-      "name":"Add More Info",
-      "settings": [
-        {
-            "type": "text",
-            "id": "info_name",
-            "label": "Input Info name "
-        },
-        {
-            "type": "text",
-            "id": "info_detail",
-            "label": "Input Info detail "
-        }
-      
-      
-      ]
-    }
+    } 
   ]
 }
 {% endschema %}
