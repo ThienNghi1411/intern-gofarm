@@ -1,0 +1,62 @@
+.menuMobile-show{
+    width: 100%;
+    background-color: #fff;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+    display: none;
+}
+
+.menuMobile-show__inner{
+    padding: 16px;
+}
+
+.menuMobile-show__header{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menuMobile-show__currency{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+    min-width: 85px;
+    border: 1px solid #e3e3e3;
+}
+
+.menuMobile-show__closeBtn{
+    height: 40px;
+    width: 40px;
+    padding: 13px;
+    border-radius: 5px;
+    background-color: #e3e3e3;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.menuMobile-show__closeBtn:hover{
+    opacity: .5;
+}
+
+.menuMobile-show__menu{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.menuMobile-show__menu-option{
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.menuMobile-show__menu-option:hover{
+    color: #05A845;
+}

@@ -145,6 +145,14 @@
     display: flex;
     gap: 137px !important;
 }
+
+@media (max-width: 1300px) {
+    .FooterWidget_inner{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
 @media (max-width: 1085px) {
 
     .FooterWidget_content

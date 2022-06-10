@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="{{ 'menu-mobile.css' | asset_url }}" media="print" onload="this.media='all'">
+<section class="menuMobile">
+    <div class="menuMobile__inner">
+        <div class="menuMobile__option menu-Mobile">
+            <a href="#" class="">
+                {% render 'icon-hamburger' %}
+                {% render 'icon-close' %}
+                <div class="menuMobile__option-text">Menu</div>
+            </a>
+        </div>
+        <div class="menuMobile__option home-Mobile">
+            <a href="/" class="">
+                {% render 'icon-home' %}
+                <div class="menuMobile__option-text">Home</div>
+            </a>    
+        </div>
+        <div class="menuMobile__option cart-Mobile">
+            <a href="/cart" class="">
+                <div class="menuMobile__option-icon">
+                    {% render 'icon-cart' %}
+                    <div class="quantityCircle">{{ cart.item_count }}</div>
+                </div>
+                <div class="menuMobile__option-text">Your cart</div>
+            </a>
+        </div>
+        <div class="menuMobile__option account-Mobile">
+            <a href="/" class="">
+                {% render 'icon-account' %}
+                <div class="menuMobile__option-text">Account</div>
+            </a>
+        </div>
+        <div class="menuMobile__option wishList-Mobile">
+            <a href="/" class="">
+                <div class="menuMobile__option-icon">
+                    {% render 'icon-wishlist' %}
+                    <div class="quantityCircle">{{ cart.item_count }}</div>
+                </div>
+                <div class="menuMobile__option-text">Wishlist</div>
+            </a>
+        </div>
+    </div>
+</section>

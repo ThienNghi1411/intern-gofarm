@@ -256,6 +256,7 @@
         speed: 400
       });
       const getSizes = this.container.querySelectorAll(".productPage__sizeOption");
+      const qty = this.container.querySelector(".productPage__quantityCont-inStock");
       const lastPrice = this.container.querySelector(".productPage__priceProduct-lastPrice");
       var saveLastPrice = 0;
       const basePrice = this.container.querySelector(".productPage__priceProduct-rootPrice");
@@ -263,6 +264,7 @@
       const nameProduct = this.container.querySelector(".productPage__titleProduct-namePd");
       const SKUProduct = this.container.querySelector(".productPage__SKU-content");
       const dataProduct = JSON.parse(this.container.querySelector("#dataProduct").innerText).dataProduct;
+      console.log(dataProduct);
       const plusBtn = this.container.querySelector(".productPage__quantityAdjust-plus");
       const minusBtn = this.container.querySelector(".productPage__quantityAdjust-minus");
       const quantity = this.container.querySelector(".productPage__quantityAdjust-number");
@@ -322,6 +324,8 @@
       getSizes.forEach((size) => {
         size.addEventListener("click", () => {
           let index = size.getAttribute("index");
+          let qtyPd = size.getAttribute("qty");
+          qty.innerText = `Only ${qtyPd} left in stock!`;
           document.querySelector(".productPage__inner").setAttribute("dataIndex", index);
           initProduct(index);
           adjustTotal();

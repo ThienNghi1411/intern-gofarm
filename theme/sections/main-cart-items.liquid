@@ -31,24 +31,26 @@
                       <img src="{{ item.image | img_url: 'medium' }}" alt="" width height>
                     </a>
                   </div>
+
+                </div>
+                <div class="cart__infoProduct">
                   <div class="cart__itemProductName">
                     <a href="{{ item.url }}" class="">{{ item.title }}</a>
                   </div>
-                </div>
-                <div class="cart__itemPrice">
-                  <div class="cart__itemLastPrice">{{ item.price | money }}</div>
-                  <div class="cart__itemBasePrice">{{ item.price | money }}</div>
-                </div>
-                <div class="cart__itemQuantity" >
-                  <div class="cart__itemAdjust" idProduct="{{ item.id }}" index="{{ forloop.index }}">
-                    <div class="cart__minusBtn">-</div>
-                    <input min="1" type="number" class="cart__quantityLineItem" value="{{ item.quantity }}" />
-                    <div class="cart__plusBtn">+</div>
+                  <div class="cart__itemPrice">
+                    <div class="cart__itemLastPrice">{{ item.price | money }}</div>
+                    <div class="cart__itemBasePrice">{{ item.price | money }}</div>
                   </div>
-                </div>
-                <div class="cart__itemSubtotal">
-                  <div class="cart__itemSubtotal-LastPrice">{{ item.line_price | money }}</div>
-                  <div class="cart__itemSubtotal-basePrice">{{ item.line_price | money }}</div>
+                  <div class="cart__itemQuantity" >
+                    <div class="cart__itemAdjust" idProduct="{{ item.id }}" index="{{ forloop.index }}">
+                      <div class="cart__minusBtn">-</div>
+                      <input min="1" type="number" class="cart__quantityLineItem" value="{{ item.quantity }}" />
+                      <div class="cart__plusBtn">+</div>
+                    </div>
+                  </div>
+                  <div class="cart__itemSubtotal">
+                    <div class="cart__itemSubtotal-LastPrice">{{ item.line_price | money }}</div>
+                  </div>
                 </div>
               </div>
             {% endfor %}

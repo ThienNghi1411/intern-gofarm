@@ -31,6 +31,12 @@
     }
 }
 
+@media (max-width: 768px){
+    .upSell_tittle {
+        font-size: 28px;
+    }
+}
+
 @media (max-width: 480px){
     .upSell__content{
         display: grid;

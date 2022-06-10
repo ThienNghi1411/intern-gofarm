@@ -128,7 +128,7 @@ item4.addEventListener('click',()=>{
                     placeholder="0"
                     min="0"
                     max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
-                    @change="$dispatch('filter-updated')"
+                    @change="filterCollections()"
                   >
     
                 
@@ -145,7 +145,7 @@ item4.addEventListener('click',()=>{
                     placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
                     min="0"
                     max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
-                    @change="$dispatch('filter-updated')"
+                    @change="filterCollections()"
                   >
     
                 </div>
@@ -160,7 +160,7 @@ item4.addEventListener('click',()=>{
                           value="{{ filter_value.value }}"
                           id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
                       
-                          @change="$dispatch('filter-updated')"
+                          @change="filterCollections()"
                           {% if filter_value.active -%}checked{%- endif %}
                           {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
                         >

@@ -85,7 +85,6 @@
     padding-top: 30px;
     padding-bottom: 30px;
     border-bottom: 1px solid #F0F2F5;
-
 }
 
 .collections_title {
@@ -93,6 +92,8 @@
     font-size: 17px;
     line-height: 25px;
     color: #1A1A1A;
+    margin-bottom: 30px;
+    margin-top: 10px;
 }
 
 .slidecontainer {
@@ -289,6 +290,18 @@
     background-color: black;
 
 }
+.colRight_Item_pic
+{
+    position: relative;
+}
+.Item_noteWrap
+{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    display: flex;
+    gap: 5px;
+}
 
 .Item_cartImg {
     width: 100%;
@@ -307,6 +320,7 @@
 
 .colRight_Item_pic {
     width: 100%;
+    cursor: pointer;
 
 }
 
@@ -316,6 +330,12 @@
     font-size: 15px;
     line-height: 22px;
     color: #191919;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+.colRight_Item_name:hover
+{
+    font-weight: bolder;
 }
 
 .colRight_Item_quanity {
@@ -350,7 +370,10 @@
 .grid__item {
     width: 18%;
 }
-
+.img_wrapper img
+{
+    margin: 0 auto;
+}
 .collections_sort {
     display: flex;
     justify-content: flex-end;
@@ -421,13 +444,13 @@
 }
 .page_wrapper
 {
-    margin: 0 auto;
+    margin: 20px auto;
     display: flex;
     gap: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+
 }
 .page
 {
@@ -464,3 +487,158 @@
 {
     transform: scale(1.2);
 }
+.current{
+    background-color: black;
+    color: white;
+}
+.filter_button
+{
+    padding: 8px 25px;
+    font-weight: 500;
+    font-size: inherit;
+    color: inherit;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #F0F0F0;
+    cursor: pointer;
+    display: none;
+    
+}
+
+
+@media (max-width: 1080px){
+    .collections_tittle
+    {
+        padding: 10px;
+    }
+    .collections_inner 
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    .filter_button
+    {
+        display: flex;
+    }
+    .collecttions_left_col
+    {
+        width: 100%;
+    }
+    .collecttions_right_col
+    {
+        width: 100%;
+    }
+    .colRight_Item_pic {
+        margin: 0 auto;
+        width: 100% !important;
+    }
+    .grid__item {
+        width: 30% !important;
+    }
+    .colRight_Item
+    {
+        width: 100% !important;
+    }
+    #product-grid{
+       margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+    }
+    .colRight_Item_priceWrap
+    {
+        width: 100% !important;
+        justify-content: center;
+        align-items: center;
+    }
+   .colRight_Item_quanity
+   {
+    text-align: center;
+   }
+    .colRight_Item_name
+    {
+        text-align: center;
+    }
+    .viewbox_wrapper
+    {
+        display: none;
+    }
+    .filters
+    {
+        display: flex;
+    }
+    .collections_filter
+    {
+        display: none;
+    }
+    .collections_ratings
+    {
+        display: none;
+    }
+    .filter-form
+    {
+        
+        display: none;
+    }
+    .filter_appear{
+        width: 100%;
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        gap: 50px;
+        display: block;
+        padding: 10px;
+    
+    }
+    .filter-group
+    {
+        border-bottom: unset !important;
+        border-top: unset !important;
+    }
+   
+    .collections_sort
+    {
+        justify-content: flex-start;
+    }
+    .right_col_header
+    {
+        padding: 0px 20px 30px 20px;
+        justify-content: unset;
+        gap: 30px;
+    }
+
+  }
+
+  @media (max-width: 768px){
+    .colRight_Item_pic {
+        margin: 0 auto;
+        width: 100% !important;
+    }
+    .grid__item {
+        width: 45% !important;
+    }
+
+  }
+  @media (max-width: 480px){
+      .right_col_header
+      {
+          flex-direction: column;
+      }
+    .colRight_Item_pic {
+        margin: 0 auto;
+        width: 50% !important;
+    }
+    .grid__item {
+        width: 100% !important;
+        padding: 0px 10px;
+    }
+    .filter-group
+    {
+        width: 100%;
+        padding: 0px 20px !important;
+        border-bottom: unset;
+    }
+  }

@@ -53,3 +53,9 @@
     }
  
 }
+
+@media (max-width: 768px){
+    .info_title {
+        font-size: 28px;
+    }
+}

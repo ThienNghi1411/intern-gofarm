@@ -1,18 +1,22 @@
 <link rel="stylesheet" href="{{ 'upSell.css' | asset_url }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css" integrity="sha512-eMxdaSf5XW3ZW1wZCrWItO2jZ7A9FhuZfjVdztr7ZsKNOmt6TUMTQgfpNoVRyfPE5S9BC0A4suXzsGSrAOWcoQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 {% assign dataProducts = product.metafields.variants.group1 | split: '|' %}
+
 <section class="upSell"  data-section-type="up-Sell" data-section-id="{{ section.id }}">
     <div class="upSell_inner container">
         <div class="upSell_tittle">{{ section.settings.section_title }}</div>
         <div class="upSell__content">
             {% for dataProduct in dataProducts limit: 6 %}
                 {% assign handles = dataProduct | split: '?' %}
+             
                 {% assign variantId = handles[1] | split: '=' %}
+                
                 {% assign variantId = variantId[1] | times: 1 %}
                 {% assign handle = handles[0] %}
                 {% assign datas = all_products[handle] %}
+                
                 {% assign data = datas.variants | where: 'id', variantId | first %}
-
+              
                 {% render 'card-product' with data %}
             {% endfor %}
         </div>

@@ -3,11 +3,15 @@
 }
 
 .productPage__inner {
-  display: flex;
+ 
   padding-top: 50px;
-  gap: 40px;
+
 }
 
+.productPage__container{
+  display: flex;
+  gap: 40px;
+}
 .productPage__imgCont {
   max-width: 485px;
 }
@@ -330,7 +334,7 @@
   }
 }
 @media (max-width: 768px){
-  .productPage__inner{
+  .productPage__container{
     flex-wrap: wrap;
   }
   .productPage__imgCont{
@@ -339,6 +343,15 @@
   }
   .productPage__subImgList{
     justify-content: center;
+  }
+  .productPage__titleProduct-namePd{
+    font-size: 28px;
+  }
+  .productPage__priceProduct-lastPrice{
+    font-size: 28px !important;
+  }
+  .productPage__priceProduct-rootPrice{
+    font-size: 20px !important;
   }
 }
 @media (max-width: 480px){

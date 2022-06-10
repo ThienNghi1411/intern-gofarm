@@ -45,6 +45,13 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
 
 
   <section class="collections-filter">
+    <div class="breadCrumb">
+      <a href="/" class="breadCrumb__link">Home</a>
+      <div class="breadCrumb__connect">
+          {% render 'icon-arrowRight' %}
+      </div>
+      <a href="/collections/collection-page" class="breadCrumb__link">{{ collection.title }}</a>
+    </div>
 
     <div class="collections_tittle">Fruits</div>
     <div class="collections_inner container">
@@ -397,28 +404,11 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
             </div>
           </div>
 
+          
           <div class="collections_sort" x-data="{
               sort: '{{ sort_by }}',
-              sortCollection(){
-                var itemWidth = document.querySelector('.grid__item').offsetWidth ;
-                var products_on_page = $('#product-grid');
-                let form = document.querySelector('#myForm');
-                const queryString = new URLSearchParams(new FormData(form)).toString();
-                $.ajax({
-                  url: '/collections/{{ collection.handle }}?sort_by=' + this.sort + '&' + queryString,
-                  type:'GET',
-                  dataType:'html'
-               }).done(function(data){
-                 
-                  var new_products = $(data).find('#product-grid');
-                  
-                  console.log(new_products);
-                  
-                  $('#product-grid').empty();
-                  products_on_page.append(new_products.html());
-                 
-                 
-               })
+              sortCollection2(){
+              
                
               }
             }">
@@ -458,6 +448,12 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
               </script> -->
 
           </div>
+          <div class="filter_button">
+            <svg class="icon icon-filter " width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.3998 1.54043C17.4048 1.46362 17.394 1.38659 17.3681 1.31411C17.3422 1.24163 17.3017 1.17522 17.2491 1.119C17.1966 1.06277 17.133 1.01792 17.0624 0.987205C16.9919 0.956493 16.9157 0.940573 16.8388 0.94043H1.12475C1.04774 0.940464 0.971565 0.956309 0.900932 0.986984C0.830299 1.01766 0.766716 1.06251 0.714123 1.11876C0.66153 1.17501 0.621047 1.24146 0.595181 1.31399C0.569315 1.38652 0.558618 1.46359 0.563751 1.54043C0.695662 3.37718 1.42464 5.12041 2.63953 6.50428C3.85441 7.88816 5.48855 8.83676 7.29275 9.20543V16.6117C7.29279 16.7186 7.32328 16.8232 7.38065 16.9134C7.43803 17.0036 7.5199 17.0755 7.6167 17.1209C7.71349 17.1662 7.8212 17.183 7.92721 17.1693C8.03321 17.1557 8.13313 17.1121 8.21525 17.0437L10.4653 15.1687C10.5287 15.116 10.5797 15.0499 10.6147 14.9753C10.6497 14.9006 10.6678 14.8191 10.6678 14.7367V9.20543C12.4726 8.83745 14.1074 7.88914 15.3229 6.50519C16.5384 5.12124 17.2678 3.37764 17.3998 1.54043V1.54043Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <div class="filter_button_text">Filter</div>
+          </div>
         </div>
 
 
@@ -485,9 +481,13 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
                 <li class="grid__item " id="ProductGridContainer">
                 <div class="colRight_Item">
                   <div class="colRight_Item_pic">
-
+                  
                     {% for image in product.images %}
-                    <img src="{{ image | image_url}} " />
+                    <div class="img_wrapper">
+                      
+                      <a href="/products/{{product.handle }}" class=""><img src="{{ image | image_url}} " class="Item_img"/></a>
+                    </div>
+                  
 
                     {% break %}
                     {% endfor %}
@@ -541,32 +541,13 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
 
 
 
-
+                      
 
                     </div>
                     <div class="Item_AddtoCart">
                       <div class="Item_cartImg">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <g clip-path="url(#clip0_1228_1575)">
-                            <path
-                              d="M10.5 11.1565H4.71275C4.50606 11.1565 4.30603 11.0833 4.14811 10.95C3.9902 10.8166 3.88459 10.6316 3.85 10.4279L2.31175 1.3862C2.27704 1.18253 2.17138 0.997711 2.01347 0.864469C1.85557 0.731227 1.65561 0.658159 1.449 0.658203H0.875"
-                              stroke="#05A845" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path
-                              d="M9.40625 12.4688C9.36299 12.4688 9.32069 12.4816 9.28472 12.5056C9.24875 12.5297 9.22071 12.5638 9.20415 12.6038C9.18759 12.6438 9.18326 12.6877 9.1917 12.7302C9.20014 12.7726 9.22098 12.8116 9.25157 12.8422C9.28216 12.8728 9.32114 12.8936 9.36357 12.902C9.40601 12.9105 9.44999 12.9062 9.48996 12.8896C9.52993 12.873 9.5641 12.845 9.58813 12.809C9.61217 12.7731 9.625 12.7308 9.625 12.6875C9.625 12.6295 9.60195 12.5738 9.56093 12.5328C9.51991 12.4918 9.46427 12.4688 9.40625 12.4688Z"
-                              stroke="#05A845" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path
-                              d="M5.03125 12.4688C4.98799 12.4688 4.94569 12.4816 4.90972 12.5056C4.87375 12.5297 4.84571 12.5638 4.82915 12.6038C4.81259 12.6438 4.80826 12.6877 4.8167 12.7302C4.82514 12.7726 4.84598 12.8116 4.87657 12.8422C4.90716 12.8728 4.94614 12.8936 4.98857 12.902C5.03101 12.9105 5.07499 12.9062 5.11496 12.8896C5.15493 12.873 5.1891 12.845 5.21313 12.809C5.23717 12.7731 5.25 12.7308 5.25 12.6875C5.25 12.6295 5.22695 12.5738 5.18593 12.5328C5.14491 12.4918 5.08927 12.4688 5.03125 12.4688"
-                              stroke="#05A845" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path
-                              d="M3.52717 8.53163H10.5686C10.9588 8.53159 11.3378 8.40113 11.6454 8.161C11.9529 7.92087 12.1714 7.58484 12.2661 7.2063L13.1119 3.82296C13.1281 3.75844 13.1293 3.69109 13.1155 3.62602C13.1017 3.56096 13.0732 3.4999 13.0323 3.44748C12.9913 3.39507 12.939 3.35267 12.8792 3.32353C12.8194 3.29439 12.7538 3.27926 12.6873 3.2793H2.63409"
-                              stroke="#05A845" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_1228_1575">
-                              <rect width="14" height="14" fill="white" transform="matrix(-1 0 0 1 14 0)" />
-                            </clipPath>
-                          </defs>
-                        </svg>
+                        <a href="/products/{{product.handle }}" class=""> {% render 'icon-cartProduct' %}</a>
+                      
                       </div>
 
 
@@ -580,7 +561,7 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
 
                   </div>
                   <div class="colRight_Item_quanity">
-                    {{ product.type }}
+                    <!-- {{ product.type }} -->
                   </div>
                   <div class="colRight_Item_priceWrap">
 
@@ -594,7 +575,16 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
                 </li>
             </ul>
             <div class="page_wrapper">
-              {{ paginate | default_pagination: next: 'next', previous: 'previous' }}
+            
+              {% for i in (1..paginate.pages) %}
+                  {% if i==1 %}
+                    <span class="page current">{{i}}</span>
+                    {% else %}
+                    <span class="page ">{{i}}</span>
+                      
+                  {% endif %}
+              
+              {% endfor %}
             </div>
             {%- endpaginate -%}
            
@@ -742,6 +732,7 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
     </div>
   </section>
   <script src="{{ 'collections-filter.js' | asset_url }}" defer></script>
+  <script src="{{ 'responsive.js' | asset_url }}" defer></script>
 
 
 

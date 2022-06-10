@@ -2,314 +2,69 @@
 
 {% comment %} {% assign product = section.settings.product %} {% endcomment %}
 
+<script>console.log({{ product.variants[0].inventory_quantity | json }})</script>
 <section class="productPage" data-section-type="product-page" data-section-id="{{ section.id }}" >
     <div class="productPage__inner container" dataIndex="0">
-        {% if section.settings.bannerStyle == "1" %}
-            <link rel="stylesheet" href="{{ 'product-page-style1.css' | asset_url }}" media="print" onload="this.media='all'">
-            <div class="productPage__imgCont">
-                <div class="productPage__mainImg" id="productPage__mainImg">
-                    {% for image in product.images %}
-                        <div>
-                            <img src="{{ image | image_url}} "/> 
-                        </div>
-                      {% endfor %}
-                </div>
-                <div class="productPage__subImgList" id="productPage__subImgList" >
-                    {% for image in product.images %}
-                        <div class="productPage__subImg" {{ block.shopify_attributes }}>
-                            <img src=" {{ image | img_url:'small'}} " width="73" height="73"/> 
-                        </div>
-                    {% endfor %}
-
-                </div>
+        <div class="breadCrumb">
+            <a href="/" class="breadCrumb__link">Home</a>
+            <div class="breadCrumb__connect">
+                {% render 'icon-arrowRight' %}
             </div>
-            <div class="productPage__content">
-                <div class="productPage__titleAndShare">
-                    <div class="productPage__title">
-                        <div class="productPage__titleProduct">
-                            <div class="productPage__titleProduct-text">Apple</div>
-                            <div class="productPage__titleProduct-namePd"></div>
-                            <div class="productPage__rateCont">
-                                <div class="productPage__rateCont-rate">
-                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z" fill="#FE8F17"/>
-                                    </svg>
-                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z" fill="#FE8F17"/>
-                                    </svg>
-                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z" fill="#FE8F17"/>
-                                    </svg>
-                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z" fill="#FE8F17"/>
-                                    </svg>
-                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z" fill="#FE8F17"/>
-                                    </svg>          
-                                </div>
-                                <div class="productPage__rateCont-text">(4 Reviews)</div>
+            <a href="/products/{{ product.handle }}" class="breadCrumb__link">{{ product.title }}</a>
+        </div>
+        <div class="productPage__container"> 
+            {% if section.settings.bannerStyle == "1" %}
+                <link rel="stylesheet" href="{{ 'product-page-style1.css' | asset_url }}" media="print" onload="this.media='all'">
+                <div class="productPage__imgCont">
+                    <div class="productPage__mainImg" id="productPage__mainImg">
+                        {% for image in product.images %}
+                            <div>
+                                <img src="{{ image | image_url}} "/> 
                             </div>
-                        </div>
-                        <div class="productPage__offer">
-                            <div class="productPage__offerOption">
-                                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7.41601 20.334C6.16602 20.334 5.16602 19.334 5.16602 18.084C5.16602 16.834 6.16602 15.834 7.41601 15.834C8.66601 15.834 9.66601 16.834 9.66601 18.084C9.66601 19.334 8.66601 20.334 7.41601 20.334ZM7.41601 16.6673C6.66602 16.6673 5.99935 17.334 5.99935 18.084C5.99935 18.834 6.66602 19.5007 7.41601 19.5007C8.16601 19.5007 8.83268 18.834 8.83268 18.084C8.83268 17.334 8.24935 16.6673 7.41601 16.6673Z" fill="#FE8F17"/>
-                                    <path d="M17.333 20.334C16.083 20.334 15.083 19.334 15.083 18.084C15.083 16.834 16.083 15.834 17.333 15.834C18.583 15.834 19.583 16.834 19.583 18.084C19.583 19.334 18.583 20.334 17.333 20.334ZM17.333 16.6673C16.583 16.6673 15.9163 17.334 15.9163 18.084C15.9163 18.834 16.583 19.5007 17.333 19.5007C18.083 19.5007 18.7497 18.834 18.7497 18.084C18.7497 17.334 18.083 16.6673 17.333 16.6673Z" fill="#FE8F17"/>
-                                    <path d="M10.7497 11.584H5.33301V12.4173H10.7497V11.584Z" fill="#FE8F17"/>
-                                    <path d="M11.2494 7.83398H10.416V11.834H11.2494V7.83398Z" fill="#FE8F17"/>
-                                    <path d="M5.08285 15.501H4.66618C4.41618 15.501 4.24951 15.3343 4.24951 15.0843V14.4176C4.24951 14.1676 4.41618 14.001 4.66618 14.001H5.08285C5.33285 14.001 5.49951 14.1676 5.49951 14.4176V15.0843C5.49951 15.3343 5.33285 15.501 5.08285 15.501Z" fill="#FE8F17"/>
-                                    <path d="M20.6664 18.3337H19.0831C18.8331 18.3337 18.6664 18.167 18.6664 18.0003C18.5831 17.2503 17.9997 16.7503 17.2497 16.7503C16.4997 16.7503 15.9164 17.3337 15.8331 18.0003C15.8331 18.2503 15.6664 18.3337 15.4164 18.3337H9.16641C8.91641 18.3337 8.74975 18.167 8.74975 18.0003C8.74975 17.2503 8.16641 16.667 7.41641 16.667C6.66641 16.667 6.08308 17.2503 5.99975 17.917C5.99975 18.167 5.83308 18.3337 5.58308 18.3337H4.33308C3.74975 18.3337 3.24975 18.0837 2.91641 17.5837C2.58308 17.0837 2.58308 16.5837 2.66641 16.0837L2.99975 12.8337V12.7503C3.24975 12.0837 3.91641 11.5837 4.58308 11.5837H5.24975L6.83308 8.50033C7.08308 7.83366 7.66641 7.41699 8.41641 7.41699H10.8331C11.0831 7.41699 11.2497 7.58366 11.2497 7.83366V14.7503H10.4164V8.25033H8.49975C8.08308 8.25033 7.74975 8.50033 7.66641 8.83366L5.91641 12.167C5.83308 12.3337 5.66641 12.417 5.58308 12.417H4.66641C4.33308 12.417 3.99975 12.667 3.83308 13.0003L3.49975 16.2503C3.41641 16.667 3.49975 16.917 3.58308 17.167C3.74975 17.3337 3.99975 17.5003 4.33308 17.5003H5.33308C5.58308 16.5837 6.49975 15.8337 7.49975 15.8337C8.49975 15.8337 9.41641 16.5003 9.66641 17.5003H15.1664C15.4164 16.5837 16.3331 15.8337 17.3331 15.8337C18.3331 15.8337 19.2497 16.5003 19.4997 17.5003H20.7497C21.2497 17.5003 21.5831 17.0837 21.5831 16.667V14.8337H22.4164V16.667C22.4164 17.5837 21.5831 18.3337 20.6664 18.3337Z" fill="#FE8F17"/>
-                                    <path d="M10.8332 18.3337C10.5832 18.3337 10.4165 18.167 10.4165 17.917V5.08366C10.4165 4.83366 10.5832 4.66699 10.8332 4.66699H21.9998C22.2498 4.66699 22.4165 4.83366 22.4165 5.08366V14.7503C22.4165 15.0003 22.2498 15.167 21.9998 15.167C21.7498 15.167 21.5832 15.0003 21.5832 14.7503V5.50033H11.2498V17.917C11.2498 18.0837 11.0832 18.3337 10.8332 18.3337Z" fill="#FE8F17"/>
-                                    <path d="M22.4165 7.41699H10.4165V8.25032H22.4165V7.41699Z" fill="#FE8F17"/>
-                                    <path d="M22.4165 9.5H10.4165V10.3333H22.4165V9.5Z" fill="#FE8F17"/>
-                                    <path d="M22.4165 11.584H10.4165V12.4173H22.4165V11.584Z" fill="#FE8F17"/>
-                                    <path d="M22.4165 13.667H10.4165V14.5003H22.4165V13.667Z" fill="#FE8F17"/>
-                                </svg>
-                                <div class="productPage__offerOption-text">Free delivery for all orders</div>    
-                            </div>
-                            <div class="productPage__offerOption">
-                                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4.41667 17.5833C4.16667 17.5833 4 17.4167 4 17.1667C4 12.6667 7.66666 9 12.1667 9C12.4167 9 12.5833 9.16667 12.5833 9.41667C12.5833 9.66667 12.4167 9.83333 12.1667 9.83333C8.16666 9.83333 4.83333 13.0833 4.83333 17.1667C4.83333 17.4167 4.66667 17.5833 4.41667 17.5833Z" fill="#FE8F17"/>
-                                    <path d="M12.1667 9.83333C11.9167 9.83333 11.75 9.66667 11.75 9.41667C11.75 9.16667 11.9167 9 12.1667 9C15.5 9 18.25 6.25 18.25 2.91667C18.25 2.66667 18.4167 2.5 18.6667 2.5C18.9167 2.5 19.0833 2.66667 19.0833 2.91667C19.0833 6.75 16 9.83333 12.1667 9.83333Z" fill="#FE8F17"/>
-                                    <path d="M18.5833 19.7503C18.5 19.7503 18.3333 19.667 18.25 19.5837C18.0833 19.417 18.0833 19.167 18.25 19.0003C20.4167 16.917 21.5833 14.167 21.5833 11.167C21.5833 8.16699 20.5 5.33366 18.4167 3.25033C18.25 3.08366 18.25 2.83366 18.4167 2.66699C18.5833 2.50033 18.8333 2.50033 19 2.66699C21.3333 5.00033 22.5 8.00033 22.5 11.2503C22.5 14.417 21.1667 17.417 18.9167 19.667C18.8333 19.7503 18.6667 19.7503 18.5833 19.7503Z" fill="#FE8F17"/>
-                                    <path d="M11.9167 22.5003C11.8333 22.5003 11.8333 22.5003 11.75 22.5003C9.08333 22.5003 6.58333 21.417 4.75 19.5003C4.58333 19.3337 4.58333 19.0837 4.75 18.917C4.91667 18.7503 5.16667 18.7503 5.33333 18.917C7 20.667 9.33333 21.667 11.75 21.667C14.25 21.667 16.5 20.7503 18.25 19.0837C18.4167 18.917 18.6667 18.917 18.8333 19.0837C19 19.2503 19 19.5003 18.8333 19.667C17 21.5003 14.5 22.5003 11.9167 22.5003Z" fill="#FE8F17"/>
-                                    <path d="M2.91686 20.9997C2.83352 20.9997 2.75019 20.9997 2.66686 20.9163C2.50019 20.833 2.41686 20.583 2.58352 20.4163C4.66686 16.9997 8.08352 14.7497 12.0835 14.333C12.3335 14.333 12.5002 14.4997 12.5002 14.6663C12.5002 14.9163 12.3335 15.083 12.1669 15.083C8.41686 15.4997 5.25019 17.4997 3.25019 20.7497C3.16686 20.9163 3.08352 20.9997 2.91686 20.9997Z" fill="#FE8F17"/>
-                                    <path d="M17.6669 11.8331C17.5835 11.8331 17.5002 11.8331 17.4169 11.7498C17.2502 11.5831 17.1669 11.3331 17.3335 11.1665C17.4169 11.0831 17.5002 10.9165 17.5835 10.8331C17.6669 10.6665 17.9169 10.5831 18.1668 10.6665C18.3335 10.7498 18.4168 11.0831 18.3335 11.2498C18.2502 11.4165 18.1669 11.4998 18.0835 11.5831C17.9169 11.8331 17.7502 11.8331 17.6669 11.8331Z" fill="#FE8F17"/>
-                                    <path d="M14.0002 14.7497C13.8335 14.7497 13.6668 14.6663 13.5835 14.4997C13.5002 14.2497 13.5835 14.083 13.8335 13.9997C14.0835 13.9163 14.2502 13.833 14.5002 13.6663C14.6668 13.583 14.9168 13.6663 15.0835 13.833C15.1668 13.9997 15.0835 14.2497 14.9168 14.4163C14.6668 14.4997 14.4168 14.6663 14.1668 14.7497C14.1668 14.6663 14.0835 14.7497 14.0002 14.7497ZM16.0835 13.583C16.0002 13.583 15.8335 13.4997 15.7502 13.4163C15.5835 13.2497 15.6668 12.9997 15.8335 12.833C16.0002 12.6663 16.2502 12.4997 16.4168 12.333C16.5835 12.1663 16.8335 12.1663 17.0002 12.333C17.1668 12.4997 17.1668 12.7497 17.0002 12.9163C16.8335 13.083 16.5835 13.2497 16.4168 13.4997C16.2502 13.4997 16.1668 13.583 16.0835 13.583Z" fill="#FE8F17"/>
-                                    <path d="M12.0837 15.1663C11.8337 15.1663 11.667 14.9997 11.667 14.833C11.667 14.583 11.8337 14.4163 12.0003 14.4163C12.167 14.4163 12.2503 14.4163 12.417 14.333C12.667 14.333 12.8337 14.4163 12.917 14.6663C13.0003 14.9163 12.8337 15.083 12.5837 15.1663C12.417 15.1663 12.3337 15.1663 12.0837 15.1663C12.167 15.1663 12.167 15.1663 12.0837 15.1663Z" fill="#FE8F17"/>
-                                    <path d="M5.08333 19.5836C5 19.5836 4.83333 19.5003 4.75 19.417C4.08333 18.7503 4 17.667 4 17.167V17.0837C4 16.8337 4.25 16.667 4.41667 16.667C4.66667 16.667 4.83333 16.917 4.83333 17.0837C4.83333 17.3337 4.83333 18.2503 5.33333 18.8337C5.5 19.0003 5.5 19.2503 5.33333 19.417C5.25 19.5836 5.16667 19.5836 5.08333 19.5836Z" fill="#FE8F17"/>
-                                </svg>    
-                                <div class="productPage__offerOption-text">Only fresh foods</div>    
-                            </div>
-                        </div>
-                    </div>
-                    <div class="productPage__socialMedia">
-                        <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <mask id="mask0_1201_4897" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="0" width="152" height="32">
-                            <rect x="4.5" y="0.5" width="151" height="31" fill="#C4C4C4" stroke="black"/>
-                            </mask>
-                            <g mask="url(#mask0_1201_4897)">
-                            <rect x="-20" y="-13" width="194" height="55" fill="url(#pattern0)"/>
-                            </g>
-                            <defs>
-                            <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                            <use xlink:href="#image0_1201_4897" transform="scale(0.00515464 0.0181818)"/>
-                            </pattern>
-                            <image id="image0_1201_4897" width="194" height="55" xlink:href="data:image/png;base64,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"/>
-                            </defs>
-                        </svg>    
-                    </div>
-                </div>
-                <div class="productPage__priceCont">
-                    <div class="productPage__priceProduct">
-                        <div class="productPage__priceProduct-lastPrice"></div>
-                        <div class="productPage__priceProduct-rootPrice"></div>
-                    </div>
-                    <div class="productPage__sizeCont">
-                        <div class="productPage__sizeCont-text">Size</div>
-                        <div class="productPage__sizeList">
-                            {% assign dataIndex = 0%}
-                            {% for size_option in product.options_by_name['Size'].values %}
-                                <div class="productPage__sizeOption" index="{{ dataIndex }}">{{ size_option }}</div>
-                                {% assign dataIndex = dataIndex | plus: 1 %}
-                            {% endfor %}
-
-                        </div>
-                    </div>
-                    <div class="productPage__quantityCont">
-                        <div class="productPage__quantityCont-textCont">
-                            <div class="productPage__quantityCont-text">Quantity</div>
-                            <div class="productPage__quantityCont-inStock">Only 3 left in stock!</div>
-                        </div>
-                        <div class="productPage__quantityFieldCont">
-                            <div class="productPage__quantityField">
-                                <div class="productPage__quantityAdjust">
-                                    <div class="productPage__quantityAdjust-minus">-</div>
-                                    <div class="productPage__quantityAdjust-number">1</div>
-                                    <div class="productPage__quantityAdjust-plus">+</div>
-                                </div>
-                                <div class="productPage__btnAddtoCart">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M15 15.9379H6.7325C6.43722 15.938 6.15147 15.8335 5.92587 15.6429C5.70028 15.4524 5.54941 15.1882 5.5 14.8971L3.3025 1.98043C3.25291 1.68947 3.10197 1.42544 2.87639 1.2351C2.65081 1.04475 2.36516 0.940367 2.07 0.94043H1.25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M13.4375 17.8125C13.3757 17.8125 13.3153 17.8308 13.2639 17.8652C13.2125 17.8995 13.1724 17.9483 13.1488 18.0054C13.1251 18.0625 13.1189 18.1253 13.131 18.186C13.1431 18.2466 13.1728 18.3023 13.2165 18.346C13.2602 18.3897 13.3159 18.4194 13.3765 18.4315C13.4372 18.4436 13.5 18.4374 13.5571 18.4137C13.6142 18.3901 13.663 18.35 13.6973 18.2986C13.7317 18.2472 13.75 18.1868 13.75 18.125C13.75 18.0421 13.7171 17.9626 13.6585 17.904C13.5999 17.8454 13.5204 17.8125 13.4375 17.8125Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M7.1875 17.8125C7.12569 17.8125 7.06527 17.8308 7.01388 17.8652C6.96249 17.8995 6.92244 17.9483 6.89879 18.0054C6.87514 18.0625 6.86895 18.1253 6.881 18.186C6.89306 18.2466 6.92282 18.3023 6.96653 18.346C7.01023 18.3897 7.06591 18.4194 7.12653 18.4315C7.18715 18.4436 7.24999 18.4374 7.30709 18.4137C7.36419 18.3901 7.413 18.35 7.44733 18.2986C7.48167 18.2472 7.5 18.1868 7.5 18.125C7.5 18.0421 7.46708 17.9626 7.40847 17.904C7.34987 17.8454 7.27038 17.8125 7.1875 17.8125" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M5.03931 12.1879H15.0985C15.6559 12.1878 16.1973 12.0015 16.6367 11.6584C17.0761 11.3154 17.3882 10.8353 17.5235 10.2946L18.7318 5.46124C18.7549 5.36906 18.7566 5.27284 18.7369 5.17989C18.7172 5.08694 18.6765 4.99971 18.618 4.92483C18.5595 4.84995 18.4848 4.7894 18.3993 4.74776C18.3139 4.70613 18.2202 4.68452 18.1251 4.68457H3.76347" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                    <div class="productPage__btnAddtoCart-text">Add to cart</div>    
-                                </div>
-                            </div>
-                            <div class="productPage__wishList">
-                                <div class="productPage__wishList-text">Add to wishlist</div>
-                                <div class="productPage__wishList-text">Add to compare</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="productPage__discount">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1201_4882)">
-                            <path d="M19.375 12.5V15C19.375 15.3315 19.2433 15.6495 19.0089 15.8839C18.7745 16.1183 18.4565 16.25 18.125 16.25H1.875C1.54348 16.25 1.22554 16.1183 0.991117 15.8839C0.756696 15.6495 0.625 15.3315 0.625 15V12.5C1.28804 12.5 1.92393 12.2366 2.39277 11.7678C2.86161 11.2989 3.125 10.663 3.125 10C3.125 9.33696 2.86161 8.70107 2.39277 8.23223C1.92393 7.76339 1.28804 7.5 0.625 7.5V5C0.625 4.66848 0.756696 4.35054 0.991117 4.11612C1.22554 3.8817 1.54348 3.75 1.875 3.75H18.125C18.4565 3.75 18.7745 3.8817 19.0089 4.11612C19.2433 4.35054 19.375 4.66848 19.375 5V7.5C18.712 7.5 18.0761 7.76339 17.6072 8.23223C17.1384 8.70107 16.875 9.33696 16.875 10C16.875 10.663 17.1384 11.2989 17.6072 11.7678C18.0761 12.2366 18.712 12.5 19.375 12.5Z" stroke="#FE8F17" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6.875 8.75C7.56536 8.75 8.125 8.19036 8.125 7.5C8.125 6.80964 7.56536 6.25 6.875 6.25C6.18464 6.25 5.625 6.80964 5.625 7.5C5.625 8.19036 6.18464 8.75 6.875 8.75Z" stroke="#FE8F17" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M13.75 13.75C14.4404 13.75 15 13.1904 15 12.5C15 11.8096 14.4404 11.25 13.75 11.25C13.0596 11.25 12.5 11.8096 12.5 12.5C12.5 13.1904 13.0596 13.75 13.75 13.75Z" stroke="#FE8F17" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M13.125 6.875L6.875 13.125" stroke="#FE8F17" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1201_4882">
-                            <rect width="20" height="20" fill="white"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                        <div class="productPage__discount-text">Add 15 products to cart and get 10$ discount</div>
-                    </div>
-                </div>
-                <div class="productPage__tagCont">
-                    <div class="productPage__tags">
-                        <div class="productPage__tags-title">Tags </div>
-                        <div class="productPage__tags-content">
-                            {% for tag in product.tags %}
-                                {{ tag }}
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="productPage__SKU">
-                        <div class="productPage__SKU-title">SKU</div>
-                        <div class="productPage__SKU-content"></div>
-                    </div>
-                </div> 
-            </div>
-        {% elsif section.settings.bannerStyle == "2" %}
-            <link rel="stylesheet" href="{{ 'product-page-style2.css' | asset_url }}" media="print" onload="this.media='all'">
-            <div class="productPage__imgCont">
-                <div class="productPage__mainImg" id="productPage__mainImg">
-                    {% for image in product.images %}
-                        <div>
-                            <img src="{{ image | image_url}} "/> 
-                        </div>
                         {% endfor %}
-                </div>
-                <div class="productPage__subImgList" id="productPage__subImgList" >
-                    {% for image in product.images %}
-                        <div class="productPage__subImg" {{ block.shopify_attributes }}>
-                            <img src=" {{ image | img_url:'small'}} " width="73" height="73"/> 
-                        </div>
-                    {% endfor %}
+                    </div>
+                    <div class="productPage__subImgList" id="productPage__subImgList" >
+                        {% for image in product.images %}
+                            <div class="productPage__subImg" {{ block.shopify_attributes }}>
+                                <img src=" {{ image | img_url:'small'}} " width="73" height="73"/> 
+                            </div>
+                        {% endfor %}
 
+                    </div>
                 </div>
-            </div>
-            <div class="productPage__content">
-                <div class="productPage__titleAndShare">
-                    <div class="productPage__title">
-                        <div class="productPage__titleProduct">
-                            <div class="productPage__titleProduct-text">Appl</div>
-                            <div class="productPage__titleProduct-namePd"></div>
-                            <div class="productPage__rateCont">
-                                <div class="productPage__rateCont-rate">
-                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z" fill="#FE8F17"/>
-                                    </svg>
-                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z" fill="#FE8F17"/>
-                                    </svg>
-                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z" fill="#FE8F17"/>
-                                    </svg>
-                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z" fill="#FE8F17"/>
-                                    </svg>
-                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z" fill="#FE8F17"/>
-                                    </svg>          
+                <div class="productPage__content">
+                    <div class="productPage__titleAndShare">
+                        <div class="productPage__title">
+                            <div class="productPage__titleProduct">
+                                <div class="productPage__titleProduct-text">Apple</div>
+                                <div class="productPage__titleProduct-namePd"></div>
+                                <div class="productPage__rateCont">
+                                    <div class="productPage__rateCont-rate">
+                                        {% render 'icon-star' %}
+                                        {% render 'icon-star' %}
+                                        {% render 'icon-star' %}
+                                        {% render 'icon-star' %}
+                                        {% render 'icon-star' %}
+                                    </div>
+                                    <div class="productPage__rateCont-text">(4 Reviews)</div>
                                 </div>
-                                <div class="productPage__rateCont-text">(4 Reviews)</div>
+                            </div>
+                            <div class="productPage__offer">
+                                <div class="productPage__offerOption">
+                                    {% render 'icon-truck' %}
+                                    <div class="productPage__offerOption-text">Free delivery for all orders</div>    
+                                </div>
+                                <div class="productPage__offerOption">
+                                    {% render 'icon-leaf' %}
+                                    <div class="productPage__offerOption-text">Only fresh foods</div>    
+                                </div>
                             </div>
                         </div>
-                        <div class="productPage__offer">
-                            <div class="productPage__offerOption">
-                                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7.41601 20.334C6.16602 20.334 5.16602 19.334 5.16602 18.084C5.16602 16.834 6.16602 15.834 7.41601 15.834C8.66601 15.834 9.66601 16.834 9.66601 18.084C9.66601 19.334 8.66601 20.334 7.41601 20.334ZM7.41601 16.6673C6.66602 16.6673 5.99935 17.334 5.99935 18.084C5.99935 18.834 6.66602 19.5007 7.41601 19.5007C8.16601 19.5007 8.83268 18.834 8.83268 18.084C8.83268 17.334 8.24935 16.6673 7.41601 16.6673Z" fill="#FE8F17"/>
-                                    <path d="M17.333 20.334C16.083 20.334 15.083 19.334 15.083 18.084C15.083 16.834 16.083 15.834 17.333 15.834C18.583 15.834 19.583 16.834 19.583 18.084C19.583 19.334 18.583 20.334 17.333 20.334ZM17.333 16.6673C16.583 16.6673 15.9163 17.334 15.9163 18.084C15.9163 18.834 16.583 19.5007 17.333 19.5007C18.083 19.5007 18.7497 18.834 18.7497 18.084C18.7497 17.334 18.083 16.6673 17.333 16.6673Z" fill="#FE8F17"/>
-                                    <path d="M10.7497 11.584H5.33301V12.4173H10.7497V11.584Z" fill="#FE8F17"/>
-                                    <path d="M11.2494 7.83398H10.416V11.834H11.2494V7.83398Z" fill="#FE8F17"/>
-                                    <path d="M5.08285 15.501H4.66618C4.41618 15.501 4.24951 15.3343 4.24951 15.0843V14.4176C4.24951 14.1676 4.41618 14.001 4.66618 14.001H5.08285C5.33285 14.001 5.49951 14.1676 5.49951 14.4176V15.0843C5.49951 15.3343 5.33285 15.501 5.08285 15.501Z" fill="#FE8F17"/>
-                                    <path d="M20.6664 18.3337H19.0831C18.8331 18.3337 18.6664 18.167 18.6664 18.0003C18.5831 17.2503 17.9997 16.7503 17.2497 16.7503C16.4997 16.7503 15.9164 17.3337 15.8331 18.0003C15.8331 18.2503 15.6664 18.3337 15.4164 18.3337H9.16641C8.91641 18.3337 8.74975 18.167 8.74975 18.0003C8.74975 17.2503 8.16641 16.667 7.41641 16.667C6.66641 16.667 6.08308 17.2503 5.99975 17.917C5.99975 18.167 5.83308 18.3337 5.58308 18.3337H4.33308C3.74975 18.3337 3.24975 18.0837 2.91641 17.5837C2.58308 17.0837 2.58308 16.5837 2.66641 16.0837L2.99975 12.8337V12.7503C3.24975 12.0837 3.91641 11.5837 4.58308 11.5837H5.24975L6.83308 8.50033C7.08308 7.83366 7.66641 7.41699 8.41641 7.41699H10.8331C11.0831 7.41699 11.2497 7.58366 11.2497 7.83366V14.7503H10.4164V8.25033H8.49975C8.08308 8.25033 7.74975 8.50033 7.66641 8.83366L5.91641 12.167C5.83308 12.3337 5.66641 12.417 5.58308 12.417H4.66641C4.33308 12.417 3.99975 12.667 3.83308 13.0003L3.49975 16.2503C3.41641 16.667 3.49975 16.917 3.58308 17.167C3.74975 17.3337 3.99975 17.5003 4.33308 17.5003H5.33308C5.58308 16.5837 6.49975 15.8337 7.49975 15.8337C8.49975 15.8337 9.41641 16.5003 9.66641 17.5003H15.1664C15.4164 16.5837 16.3331 15.8337 17.3331 15.8337C18.3331 15.8337 19.2497 16.5003 19.4997 17.5003H20.7497C21.2497 17.5003 21.5831 17.0837 21.5831 16.667V14.8337H22.4164V16.667C22.4164 17.5837 21.5831 18.3337 20.6664 18.3337Z" fill="#FE8F17"/>
-                                    <path d="M10.8332 18.3337C10.5832 18.3337 10.4165 18.167 10.4165 17.917V5.08366C10.4165 4.83366 10.5832 4.66699 10.8332 4.66699H21.9998C22.2498 4.66699 22.4165 4.83366 22.4165 5.08366V14.7503C22.4165 15.0003 22.2498 15.167 21.9998 15.167C21.7498 15.167 21.5832 15.0003 21.5832 14.7503V5.50033H11.2498V17.917C11.2498 18.0837 11.0832 18.3337 10.8332 18.3337Z" fill="#FE8F17"/>
-                                    <path d="M22.4165 7.41699H10.4165V8.25032H22.4165V7.41699Z" fill="#FE8F17"/>
-                                    <path d="M22.4165 9.5H10.4165V10.3333H22.4165V9.5Z" fill="#FE8F17"/>
-                                    <path d="M22.4165 11.584H10.4165V12.4173H22.4165V11.584Z" fill="#FE8F17"/>
-                                    <path d="M22.4165 13.667H10.4165V14.5003H22.4165V13.667Z" fill="#FE8F17"/>
-                                </svg>
-                                <div class="productPage__offerOption-text">Free delivery for all orders</div>    
-                            </div>
-                            <div class="productPage__offerOption">
-                                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4.41667 17.5833C4.16667 17.5833 4 17.4167 4 17.1667C4 12.6667 7.66666 9 12.1667 9C12.4167 9 12.5833 9.16667 12.5833 9.41667C12.5833 9.66667 12.4167 9.83333 12.1667 9.83333C8.16666 9.83333 4.83333 13.0833 4.83333 17.1667C4.83333 17.4167 4.66667 17.5833 4.41667 17.5833Z" fill="#FE8F17"/>
-                                    <path d="M12.1667 9.83333C11.9167 9.83333 11.75 9.66667 11.75 9.41667C11.75 9.16667 11.9167 9 12.1667 9C15.5 9 18.25 6.25 18.25 2.91667C18.25 2.66667 18.4167 2.5 18.6667 2.5C18.9167 2.5 19.0833 2.66667 19.0833 2.91667C19.0833 6.75 16 9.83333 12.1667 9.83333Z" fill="#FE8F17"/>
-                                    <path d="M18.5833 19.7503C18.5 19.7503 18.3333 19.667 18.25 19.5837C18.0833 19.417 18.0833 19.167 18.25 19.0003C20.4167 16.917 21.5833 14.167 21.5833 11.167C21.5833 8.16699 20.5 5.33366 18.4167 3.25033C18.25 3.08366 18.25 2.83366 18.4167 2.66699C18.5833 2.50033 18.8333 2.50033 19 2.66699C21.3333 5.00033 22.5 8.00033 22.5 11.2503C22.5 14.417 21.1667 17.417 18.9167 19.667C18.8333 19.7503 18.6667 19.7503 18.5833 19.7503Z" fill="#FE8F17"/>
-                                    <path d="M11.9167 22.5003C11.8333 22.5003 11.8333 22.5003 11.75 22.5003C9.08333 22.5003 6.58333 21.417 4.75 19.5003C4.58333 19.3337 4.58333 19.0837 4.75 18.917C4.91667 18.7503 5.16667 18.7503 5.33333 18.917C7 20.667 9.33333 21.667 11.75 21.667C14.25 21.667 16.5 20.7503 18.25 19.0837C18.4167 18.917 18.6667 18.917 18.8333 19.0837C19 19.2503 19 19.5003 18.8333 19.667C17 21.5003 14.5 22.5003 11.9167 22.5003Z" fill="#FE8F17"/>
-                                    <path d="M2.91686 20.9997C2.83352 20.9997 2.75019 20.9997 2.66686 20.9163C2.50019 20.833 2.41686 20.583 2.58352 20.4163C4.66686 16.9997 8.08352 14.7497 12.0835 14.333C12.3335 14.333 12.5002 14.4997 12.5002 14.6663C12.5002 14.9163 12.3335 15.083 12.1669 15.083C8.41686 15.4997 5.25019 17.4997 3.25019 20.7497C3.16686 20.9163 3.08352 20.9997 2.91686 20.9997Z" fill="#FE8F17"/>
-                                    <path d="M17.6669 11.8331C17.5835 11.8331 17.5002 11.8331 17.4169 11.7498C17.2502 11.5831 17.1669 11.3331 17.3335 11.1665C17.4169 11.0831 17.5002 10.9165 17.5835 10.8331C17.6669 10.6665 17.9169 10.5831 18.1668 10.6665C18.3335 10.7498 18.4168 11.0831 18.3335 11.2498C18.2502 11.4165 18.1669 11.4998 18.0835 11.5831C17.9169 11.8331 17.7502 11.8331 17.6669 11.8331Z" fill="#FE8F17"/>
-                                    <path d="M14.0002 14.7497C13.8335 14.7497 13.6668 14.6663 13.5835 14.4997C13.5002 14.2497 13.5835 14.083 13.8335 13.9997C14.0835 13.9163 14.2502 13.833 14.5002 13.6663C14.6668 13.583 14.9168 13.6663 15.0835 13.833C15.1668 13.9997 15.0835 14.2497 14.9168 14.4163C14.6668 14.4997 14.4168 14.6663 14.1668 14.7497C14.1668 14.6663 14.0835 14.7497 14.0002 14.7497ZM16.0835 13.583C16.0002 13.583 15.8335 13.4997 15.7502 13.4163C15.5835 13.2497 15.6668 12.9997 15.8335 12.833C16.0002 12.6663 16.2502 12.4997 16.4168 12.333C16.5835 12.1663 16.8335 12.1663 17.0002 12.333C17.1668 12.4997 17.1668 12.7497 17.0002 12.9163C16.8335 13.083 16.5835 13.2497 16.4168 13.4997C16.2502 13.4997 16.1668 13.583 16.0835 13.583Z" fill="#FE8F17"/>
-                                    <path d="M12.0837 15.1663C11.8337 15.1663 11.667 14.9997 11.667 14.833C11.667 14.583 11.8337 14.4163 12.0003 14.4163C12.167 14.4163 12.2503 14.4163 12.417 14.333C12.667 14.333 12.8337 14.4163 12.917 14.6663C13.0003 14.9163 12.8337 15.083 12.5837 15.1663C12.417 15.1663 12.3337 15.1663 12.0837 15.1663C12.167 15.1663 12.167 15.1663 12.0837 15.1663Z" fill="#FE8F17"/>
-                                    <path d="M5.08333 19.5836C5 19.5836 4.83333 19.5003 4.75 19.417C4.08333 18.7503 4 17.667 4 17.167V17.0837C4 16.8337 4.25 16.667 4.41667 16.667C4.66667 16.667 4.83333 16.917 4.83333 17.0837C4.83333 17.3337 4.83333 18.2503 5.33333 18.8337C5.5 19.0003 5.5 19.2503 5.33333 19.417C5.25 19.5836 5.16667 19.5836 5.08333 19.5836Z" fill="#FE8F17"/>
-                                </svg>    
-                                <div class="productPage__offerOption-text">Only fresh foods</div>    
-                            </div>
-                            <div class="productPage__offerOption">
-                                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.9999 22.4163C6.33325 22.4163 2.58325 18.6663 2.58325 13.9997V10.9997C2.58325 6.33301 6.33325 2.58301 10.9999 2.58301H13.9999C18.6666 2.58301 22.4166 6.33301 22.4166 10.9997V13.9997C22.4166 18.6663 18.6666 22.4163 13.9999 22.4163H10.9999ZM10.9999 3.41634C6.83325 3.41634 3.41659 6.83301 3.41659 10.9997V13.9997C3.41659 18.1663 6.83325 21.583 10.9999 21.583H13.9999C18.1666 21.583 21.5833 18.1663 21.5833 13.9997V10.9997C21.5833 6.83301 18.1666 3.41634 13.9999 3.41634H10.9999Z" fill="#FE8F17"/>
-                                    <path d="M12.4999 13.1663C12.0833 13.1663 11.8333 12.833 11.8333 12.4997C11.8333 12.083 12.1666 11.833 12.4999 11.833C12.9166 11.833 13.1666 12.1663 13.1666 12.4997C13.1666 12.9163 12.9166 13.1663 12.4999 13.1663ZM12.4999 12.333C12.4166 12.333 12.3333 12.4163 12.3333 12.4997C12.3333 12.6663 12.6666 12.6663 12.6666 12.4997C12.6666 12.4163 12.5833 12.333 12.4999 12.333Z" fill="#FE8F17"/>
-                                    <path d="M12.9166 5.5H12.0833V6.66667H12.9166V5.5Z" fill="#FE8F17"/>
-                                    <path d="M12.9166 18.25H12.0833V19.4167H12.9166V18.25Z" fill="#FE8F17"/>
-                                    <path d="M19.4167 12.083H18.25V12.9163H19.4167V12.083Z" fill="#FE8F17"/>
-                                    <path d="M6.66667 12.083H5.5V12.9163H6.66667V12.083Z" fill="#FE8F17"/>
-                                    <path d="M9.96582 7.30919L9.38599 6.29688L8.6629 6.71104L9.24274 7.72336L9.96582 7.30919Z" fill="#FE8F17"/>
-                                    <path d="M16.3394 18.2911L15.7568 17.2803L15.0348 17.6964L15.6174 18.7072L16.3394 18.2911Z" fill="#FE8F17"/>
-                                    <path d="M18.7048 9.38771L18.2898 8.66504L17.2781 9.24604L17.6931 9.96871L18.7048 9.38771Z" fill="#FE8F17"/>
-                                    <path d="M7.72258 15.7567L7.30566 15.0352L6.22341 15.6605L6.64033 16.382L7.72258 15.7567Z" fill="#FE8F17"/>
-                                    <path d="M7.70446 9.27212L6.69482 8.6875L6.27724 9.40867L7.28687 9.99328L7.70446 9.27212Z" fill="#FE8F17"/>
-                                    <path d="M18.726 15.593L17.7156 15.0098L17.299 15.7315L18.3094 16.3147L18.726 15.593Z" fill="#FE8F17"/>
-                                    <path d="M16.316 6.69524L15.5945 6.27832L15.0108 7.28842L15.7323 7.70534L16.316 6.69524Z" fill="#FE8F17"/>
-                                    <path d="M9.99122 17.7138L9.26855 17.2988L8.68755 18.3106L9.41022 18.7256L9.99122 17.7138Z" fill="#FE8F17"/>
-                                    <path d="M12.4999 12.916C12.2499 12.916 12.0833 12.7493 12.0833 12.4993V7.83268C12.0833 7.58268 12.2499 7.41602 12.4999 7.41602C12.7499 7.41602 12.9166 7.58268 12.9166 7.83268V12.4993C12.9166 12.7493 12.7499 12.916 12.4999 12.916Z" fill="#FE8F17"/>
-                                    <path d="M10.9998 12.083H8.4165V12.9163H10.9998V12.083Z" fill="#FE8F17"/>
-                                </svg>
-                                    
-                                <div class="productPage__offerOption-text">24/7 delivery service</div>    
-                            </div>
+                        <div class="productPage__socialMedia">
+                            {% render 'icon-socialMedia' %}
                         </div>
                     </div>
-                    <div class="productPage__socialMedia">
-                        <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <mask id="mask0_1201_4897" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="0" width="152" height="32">
-                            <rect x="4.5" y="0.5" width="151" height="31" fill="#C4C4C4" stroke="black"/>
-                            </mask>
-                            <g mask="url(#mask0_1201_4897)">
-                            <rect x="-20" y="-13" width="194" height="55" fill="url(#pattern0)"/>
-                            </g>
-                            <defs>
-                            <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                            <use xlink:href="#image0_1201_4897" transform="scale(0.00515464 0.0181818)"/>
-                            </pattern>
-                            <image id="image0_1201_4897" width="194" height="55" xlink:href="data:image/png;base64,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"/>
-                            </defs>
-                        </svg>    
-                    </div>
-                    <div class="productPage__tagCont">
-                        <div class="productPage__tags">
-                            <div class="productPage__tags-title">Tags </div>
-                            <div class="productPage__tags-content">
-                                {% for tag in product.tags %}
-                                    {{ tag }}
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="productPage__SKU">
-                            <div class="productPage__SKU-title">SKU</div>
-                            <div class="productPage__SKU-content"></div>
-                        </div>
-                    </div> 
-                </div>
-                <div class="productPage__priceCont">
-                    <div class="productPage__priceContWrap">
+                    <div class="productPage__priceCont">
                         <div class="productPage__priceProduct">
                             <div class="productPage__priceProduct-lastPrice"></div>
                             <div class="productPage__priceProduct-rootPrice"></div>
@@ -317,10 +72,10 @@
                         <div class="productPage__sizeCont">
                             <div class="productPage__sizeCont-text">Size</div>
                             <div class="productPage__sizeList">
-                                {% assign dataIndex = 0%}
-                                {% for size_option in product.options_by_name['Size'].values %}
-                                    <div class="productPage__sizeOption" index="{{ dataIndex }}">{{ size_option }}</div>
-                                    {% assign dataIndex = dataIndex | plus: 1 %}
+
+                                {% for variant in product.variants %}
+                                    <div class="productPage__sizeOption" index="{{ forloop.index | minus: 1 }}" qty="{{ variant.inventory_quantity }}">
+                                        {{ variant.title }}</div>
                                 {% endfor %}
 
                             </div>
@@ -328,7 +83,7 @@
                         <div class="productPage__quantityCont">
                             <div class="productPage__quantityCont-textCont">
                                 <div class="productPage__quantityCont-text">Quantity</div>
-                                <div class="productPage__quantityCont-inStock">Only 3 left in stock!</div>
+                                <div class="productPage__quantityCont-inStock">Only {{ product.variants[0].inventory_quantity }} left in stock!</div>
                             </div>
                             <div class="productPage__quantityFieldCont">
                                 <div class="productPage__quantityField">
@@ -353,32 +108,155 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="productPage__discount">
+                            {% render 'icon-discountTicket' %}
+                            <div class="productPage__discount-text">Add 15 products to cart and get 10$ discount</div>
+                        </div>
                     </div>
-                    <div class="productPage__discount">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_1201_4882)">
-                            <path d="M19.375 12.5V15C19.375 15.3315 19.2433 15.6495 19.0089 15.8839C18.7745 16.1183 18.4565 16.25 18.125 16.25H1.875C1.54348 16.25 1.22554 16.1183 0.991117 15.8839C0.756696 15.6495 0.625 15.3315 0.625 15V12.5C1.28804 12.5 1.92393 12.2366 2.39277 11.7678C2.86161 11.2989 3.125 10.663 3.125 10C3.125 9.33696 2.86161 8.70107 2.39277 8.23223C1.92393 7.76339 1.28804 7.5 0.625 7.5V5C0.625 4.66848 0.756696 4.35054 0.991117 4.11612C1.22554 3.8817 1.54348 3.75 1.875 3.75H18.125C18.4565 3.75 18.7745 3.8817 19.0089 4.11612C19.2433 4.35054 19.375 4.66848 19.375 5V7.5C18.712 7.5 18.0761 7.76339 17.6072 8.23223C17.1384 8.70107 16.875 9.33696 16.875 10C16.875 10.663 17.1384 11.2989 17.6072 11.7678C18.0761 12.2366 18.712 12.5 19.375 12.5Z" stroke="#FE8F17" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6.875 8.75C7.56536 8.75 8.125 8.19036 8.125 7.5C8.125 6.80964 7.56536 6.25 6.875 6.25C6.18464 6.25 5.625 6.80964 5.625 7.5C5.625 8.19036 6.18464 8.75 6.875 8.75Z" stroke="#FE8F17" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M13.75 13.75C14.4404 13.75 15 13.1904 15 12.5C15 11.8096 14.4404 11.25 13.75 11.25C13.0596 11.25 12.5 11.8096 12.5 12.5C12.5 13.1904 13.0596 13.75 13.75 13.75Z" stroke="#FE8F17" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M13.125 6.875L6.875 13.125" stroke="#FE8F17" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_1201_4882">
-                            <rect width="20" height="20" fill="white"/>
-                            </clipPath>
-                            </defs>
-                        </svg>
-                        <div class="productPage__discount-text">Add 15 products to cart and get 10$ discount</div>
+                    <div class="productPage__tagCont">
+                        <div class="productPage__tags">
+                            <div class="productPage__tags-title">Tags </div>
+                            <div class="productPage__tags-content">
+                                {% for tag in product.tags %}
+                                    {{ tag }}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="productPage__SKU">
+                            <div class="productPage__SKU-title">SKU</div>
+                            <div class="productPage__SKU-content"></div>
+                        </div>
+                    </div> 
+                </div>
+            {% elsif section.settings.bannerStyle == "2" %}
+                <link rel="stylesheet" href="{{ 'product-page-style2.css' | asset_url }}" media="print" onload="this.media='all'">
+                <div class="productPage__imgCont">
+                    <div class="productPage__mainImg" id="productPage__mainImg">
+                        {% for image in product.images %}
+                            <div>
+                                <img src="{{ image | image_url}} "/> 
+                            </div>
+                            {% endfor %}
+                    </div>
+                    <div class="productPage__subImgList" id="productPage__subImgList" >
+                        {% for image in product.images %}
+                            <div class="productPage__subImg" {{ block.shopify_attributes }}>
+                                <img src=" {{ image | img_url:'small'}} " width="73" height="73"/> 
+                            </div>
+                        {% endfor %}
+
                     </div>
                 </div>
+                <div class="productPage__content">
+                    <div class="productPage__titleAndShare">
+                        <div class="productPage__title">
+                            <div class="productPage__titleProduct">
+                                <div class="productPage__titleProduct-text">Appl</div>
+                                <div class="productPage__titleProduct-namePd"></div>
+                                <div class="productPage__rateCont">
+                                    <div class="productPage__rateCont-rate">
+                                        {% render 'icon-star' %}
+                                        {% render 'icon-star' %}
+                                        {% render 'icon-star' %}
+                                        {% render 'icon-star' %}
+                                        {% render 'icon-star' %}         
+                                    </div>
+                                    <div class="productPage__rateCont-text">(4 Reviews)</div>
+                                </div>
+                            </div>
+                            <div class="productPage__offer">
+                                <div class="productPage__offerOption">
+                                    {% render 'icon-truck' %}
+                                    <div class="productPage__offerOption-text">Free delivery for all orders</div>    
+                                </div>
+                                <div class="productPage__offerOption">
+                                    {% render 'icon-leaf' %}
+                                    <div class="productPage__offerOption-text">Only fresh foods</div>    
+                                </div>
+                                <div class="productPage__offerOption">
+                                    {% render 'icon-clock' %}    
+                                    <div class="productPage__offerOption-text">24/7 delivery service</div>    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="productPage__socialMedia">
+                            {% render 'icon-socialMedia' %}   
+                        </div>
+                        <div class="productPage__tagCont">
+                            <div class="productPage__tags">
+                                <div class="productPage__tags-title">Tags </div>
+                                <div class="productPage__tags-content">
+                                    {% for tag in product.tags %}
+                                        {{ tag }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="productPage__SKU">
+                                <div class="productPage__SKU-title">SKU</div>
+                                <div class="productPage__SKU-content"></div>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="productPage__priceCont">
+                        <div class="productPage__priceContWrap">
+                            <div class="productPage__priceProduct">
+                                <div class="productPage__priceProduct-lastPrice"></div>
+                                <div class="productPage__priceProduct-rootPrice"></div>
+                            </div>
+                            <div class="productPage__sizeCont">
+                                <div class="productPage__sizeCont-text">Size</div>
+                                <div class="productPage__sizeList">
+                                    {% assign dataIndex = 0%}
+                                    {% for size_option in product.options_by_name['Size'].values %}
+                                        <div class="productPage__sizeOption" index="{{ dataIndex }}">{{ size_option }}</div>
+                                        {% assign dataIndex = dataIndex | plus: 1 %}
+                                    {% endfor %}
 
-            </div>
-        {% endif %}
-        <script id="dataProduct" type="application/ld+json">
-            {
-              "dataProduct" : {{ product.variants | json }}
-            }
-        </script>
+                                </div>
+                            </div>
+                            <div class="productPage__quantityCont">
+                                <div class="productPage__quantityCont-textCont">
+                                    <div class="productPage__quantityCont-text">Quantity</div>
+                                    <div class="productPage__quantityCont-inStock">Only 3 left in stock!</div>
+                                </div>
+                                <div class="productPage__quantityFieldCont">
+                                    <div class="productPage__quantityField">
+                                        <div class="productPage__quantityAdjust">
+                                            <div class="productPage__quantityAdjust-minus">-</div>
+                                            <div class="productPage__quantityAdjust-number">1</div>
+                                            <div class="productPage__quantityAdjust-plus">+</div>
+                                        </div>
+                                        <div class="productPage__btnAddtoCart">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M15 15.9379H6.7325C6.43722 15.938 6.15147 15.8335 5.92587 15.6429C5.70028 15.4524 5.54941 15.1882 5.5 14.8971L3.3025 1.98043C3.25291 1.68947 3.10197 1.42544 2.87639 1.2351C2.65081 1.04475 2.36516 0.940367 2.07 0.94043H1.25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M13.4375 17.8125C13.3757 17.8125 13.3153 17.8308 13.2639 17.8652C13.2125 17.8995 13.1724 17.9483 13.1488 18.0054C13.1251 18.0625 13.1189 18.1253 13.131 18.186C13.1431 18.2466 13.1728 18.3023 13.2165 18.346C13.2602 18.3897 13.3159 18.4194 13.3765 18.4315C13.4372 18.4436 13.5 18.4374 13.5571 18.4137C13.6142 18.3901 13.663 18.35 13.6973 18.2986C13.7317 18.2472 13.75 18.1868 13.75 18.125C13.75 18.0421 13.7171 17.9626 13.6585 17.904C13.5999 17.8454 13.5204 17.8125 13.4375 17.8125Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M7.1875 17.8125C7.12569 17.8125 7.06527 17.8308 7.01388 17.8652C6.96249 17.8995 6.92244 17.9483 6.89879 18.0054C6.87514 18.0625 6.86895 18.1253 6.881 18.186C6.89306 18.2466 6.92282 18.3023 6.96653 18.346C7.01023 18.3897 7.06591 18.4194 7.12653 18.4315C7.18715 18.4436 7.24999 18.4374 7.30709 18.4137C7.36419 18.3901 7.413 18.35 7.44733 18.2986C7.48167 18.2472 7.5 18.1868 7.5 18.125C7.5 18.0421 7.46708 17.9626 7.40847 17.904C7.34987 17.8454 7.27038 17.8125 7.1875 17.8125" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M5.03931 12.1879H15.0985C15.6559 12.1878 16.1973 12.0015 16.6367 11.6584C17.0761 11.3154 17.3882 10.8353 17.5235 10.2946L18.7318 5.46124C18.7549 5.36906 18.7566 5.27284 18.7369 5.17989C18.7172 5.08694 18.6765 4.99971 18.618 4.92483C18.5595 4.84995 18.4848 4.7894 18.3993 4.74776C18.3139 4.70613 18.2202 4.68452 18.1251 4.68457H3.76347" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            <div class="productPage__btnAddtoCart-text">Add to cart</div>    
+                                        </div>
+                                    </div>
+                                    <div class="productPage__wishList">
+                                        <div class="productPage__wishList-text">Add to wishlist</div>
+                                        <div class="productPage__wishList-text">Add to compare</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="productPage__discount">
+                            {% render 'icon-discountTicket' %}
+                            <div class="productPage__discount-text">Add 15 products to cart and get 10$ discount</div>
+                        </div>
+                    </div>
+
+                </div>
+            {% endif %}
+            <script id="dataProduct" type="application/ld+json">
+                {
+                "dataProduct" : {{ product.variants | json }}
+                }
+            </script>
+        </div> 
     </div>
 </section>
 

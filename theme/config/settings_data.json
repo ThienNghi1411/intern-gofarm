@@ -160,7 +160,7 @@
       "collections-filter": {
         "type": "collections-filter",
         "settings": {
-          "render_style": "2"
+          "render_style": "1"
         }
       },
       "products-show": {

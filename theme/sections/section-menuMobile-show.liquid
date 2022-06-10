@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="{{ 'menuMobile-show.css' | asset_url }}" media="print" onload="this.media='all'">
+<section class="menuMobile-show">
+    <div class="menuMobile-show__inner">
+        <div class="menuMobile-show__header">
+            <div class="menuMobile-show__currency">
+                <div class="menuMobile-show__currency-text">USD</div>
+                {% render 'icon-arrowDown' %}
+            </div>
+            <div class="menuMobile-show__closeBtn">
+                {% render 'icon-close' %}
+            </div>
+        </div>
+        <div class="menuMobile-show__menu">
+            <div class="menuMobile-show__menu-option">
+                <a href="/" class="">Special</a>
+            </div>
+            <div class="menuMobile-show__menu-option">
+                <a href="/" class="">Local stores</a>
+            </div>
+            <div class="menuMobile-show__menu-option">
+                <a href="/" class="">Free delivery</a>
+            </div>
+            <div class="menuMobile-show__menu-option">
+                <a href="/" class="">Shop</a>
+            </div>
+            <div class="menuMobile-show__menu-option">
+                <a href="/" class="">Pages</a>
+            </div>
+            <div class="menuMobile-show__menu-option">
+                <a href="/collections/all_product" class="">Collection</a>
+            </div>
+            <div class="menuMobile-show__menu-option">
+                <a href="/" class="">Blog</a>
+            </div>
+            <div class="menuMobile-show__menu-option">
+                <a href="/" class="">Contact</a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -10,10 +10,11 @@ function loadMoreProducts(){
    var itemWidth = document.querySelector('.grid__item').offsetWidth ;
    let form = document.querySelector('#myForm');
    const queryString = new URLSearchParams(new FormData(form)).toString();
+   let sort = document.getElementById("sort-by").value;
 if(next_url !='')
 {
    $.ajax({
-      url: '/collections/{{ collection.handle }}?sort_by=' + this.sort + '&' + queryString,
+      url: '/collections/collection-page?sort_by=' + sort + '&' + queryString,
       type:'GET',
       dataType:'html'
    }).done(function(data){
@@ -47,4 +48,10 @@ button.addEventListener("click",loadMoreProducts)
 
 
 document.querySelectorAll('grid__item');
+
+
+
+new_item.forEach(e=>{
+   e.style.width = item_width+"px";
+})
 
