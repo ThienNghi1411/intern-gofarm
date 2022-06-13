@@ -88,7 +88,7 @@
           "35f88e4a-3a41-43f9-b35c-bd6365d3405c"
         ],
         "settings": {
-          "menu": "main-menu",
+          "menu": "footer-menu",
           "copyright": "Copyright © {{ 'now' | date: '%Y' }} Arenacommerce. All Rights Reserved",
           "visa": true,
           "mastercard": true,
@@ -160,7 +160,7 @@
       "collections-filter": {
         "type": "collections-filter",
         "settings": {
-          "render_style": "1"
+          "render_style": "2"
         }
       },
       "products-show": {
@@ -168,6 +168,14 @@
         "settings": {
           "title": ""
         }
+      },
+      "section-menuMobile-show": {
+        "type": "section-menuMobile-show",
+        "settings": {}
+      },
+      "section-menu-mobile": {
+        "type": "section-menu-mobile",
+        "settings": {}
       }
     },
     "content_for_index": [

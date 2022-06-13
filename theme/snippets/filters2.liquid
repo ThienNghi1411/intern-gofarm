@@ -1,0 +1,208 @@
+<link rel="stylesheet" href="{{ 'filter.css' | asset_url }}">
+<div class="filters" 
+x-data="{
+     sort: '{{ sort_by }}',
+}"
+@filter-updated.window="$nextTick(() => { 
+    
+    let form = $refs.filter_form;
+    const queryString = new URLSearchParams(new FormData(form)).toString();
+    console.log(queryString);
+    let a = document.querySelector('#sort-by');
+    fetch('/collections/{{ collection.handle }}?sort_by=' + a.value + '&' + queryString)
+    .then(response => response.text())
+    .then(data => {
+      let html_div = document.createElement('div');
+      html_div.innerHTML = data;
+
+      let html_dom = html_div.querySelector('#ProductGridContainer').innerHTML;
+      document.querySelector('#ProductGridContainer').innerHTML = html_dom;
+     
+      history.replaceState(null, null, '?sort_by=' + a.value + '&' + queryString );
+      
+
+      let item1 = document.querySelector('#item_quanity_1');
+let item2 = document.querySelector('#item_quanity_2');
+let item3 = document.querySelector('#item_quanity_3');
+let item4 = document.querySelector('#item_quanity_4');
+
+
+let listItem = document.querySelectorAll('.grid__item');
+
+let ImageList = document.querySelectorAll('.colRight_Item_pic');
+
+
+
+
+
+item1.addEventListener('click',()=>{
+    listItem.forEach(box=>{
+     for (let i = 0; i < ImageList.length; i++) {
+ 
+        let img =ImageList[i].childNodes[1];
+        img.style.width = '20%';
+    }
+        box.setAttribute('style','width:100% !important')
+        box.classList.add('item_quanity1');
+        
+    })
+})
+
+item2.addEventListener('click',()=>{
+    listItem.forEach(box=>{
+     for (let i = 0; i < ImageList.length; i++) {
+ 
+        let img =ImageList[i].childNodes[1];
+        img.style.width ='50%';
+    }
+        box.style.width ='45%'
+        box.classList.add('item_quanity1');
+
+        
+    })
+})
+
+item3.addEventListener('click',()=>{
+    listItem.forEach(box=>{
+     for (let i = 0; i < ImageList.length; i++) {
+ 
+        let img =ImageList[i].childNodes[1];
+        img.style.width = '80%';
+    }
+        box.style.width ='30%'
+        box.classList.add('item_quanity1');
+
+        
+    })
+})
+
+item4.addEventListener('click',()=>{
+    listItem.forEach(box=>{
+     for (let i = 0; i < ImageList.length; i++) {
+ 
+        let img =ImageList[i].childNodes[1];
+        img.style.width = '80%';
+    }
+        box.style.width ='18%'
+        box.classList.add('item_quanity1');
+
+        
+    })
+})
+
+    })
+    .catch(error => console.error('Error:', error))
+
+ });" 
+>
+    
+
+    <form class="filter-form container" id="myForm" x-ref="filter_form">
+        {%- for filter in collection.filters -%}
+    
+          <details class="filter-group" open>
+            <summary class="filter-group-summary">
+              <div>
+                <h4>{{ filter.label }}</h4>
+                
+               
+              </div>
+            </summary>
+      
+            <div class="filter-group-display">
+              
+      
+              {%- case filter.type -%}
+              {%- when 'price_range' -%}
+              <div class="filter-group-display__price-range">
+                <div class="noUiSlider"></div>
+                <div class="filter-group-display__price-range-from">
+                  <span>{{ cart.currency.symbol }}</span>
+                  
+                  <input name="{{ filter.min_value.param_name }}"
+                    id="Filter-{{ filter.min_value.param_name }}"
+                    {% if filter.min_value.value -%}
+                      value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                    {%- endif %}
+                    type="number"
+                    placeholder="0"
+                    min="0"
+                    max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                    @change="filterCollections2()"
+                  >
+    
+                
+                </div>
+                <div class="filter-group-display__price-range-to">
+                  <span>{{ cart.currency.symbol }}</span>
+    
+                  <input name="{{ filter.max_value.param_name }}"
+                    id="Filter-{{ filter.max_value.param_name }}"
+                    {% if filter.max_value.value -%}
+                      value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                    {%- endif %}
+                    type="number"
+                    placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                    min="0"
+                    max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                    @change="filterCollections2()"
+                  >
+    
+                </div>
+              </div>
+                {%- when 'boolean' or 'list' -%}
+                  <ul class="filter-group-display__list">
+                    {%- for filter_value in filter.values -%}
+                      <li class="filter-group-display__list-item">
+                        <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}" class="checkbox_container">
+                        <input type="checkbox"
+                          name="{{ filter_value.param_name }}"
+                          value="{{ filter_value.value }}"
+                          id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                      
+                          @change="filterCollections2()"
+                          {% if filter_value.active -%}checked{%- endif %}
+                          {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                        >
+                        <span class="checkmark"></span>
+                       
+                        <div class="checkbox_tittle">  {{ filter_value.label }}</div>
+                      </label>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+      
+      
+               
+      
+                
+              {%- endcase -%}
+            </div>
+          </details>
+        {%- endfor -%}
+      
+        <!-- <div class="active-filters">
+          <a href="{{ collection.url }}?sort_by={{ collection.sort_by }}" class="active-filters__clear">Clear all</a>
+      
+          {%- for filter in collection.filters -%}
+            {%- if filter.type == "price_range" -%}
+              {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+                <a class="active-filters__remove-filter" href="{{ filter.url_to_remove }}">
+                  {%- assign min_value = filter.min_value.value | default: 0 -%}
+                  {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
+                  {{ min_value | money }} - {{ max_value | money }} X
+                </a>
+              {%- endif -%}
+            {%- else -%}
+              {%- for filter_value in filter.active_values -%}
+                <a class="active-filters__remove-filter" href="{{ filter_value.url_to_remove }}">
+                  {{ filter.label }}: {{ filter_value.label }} X
+                </a>
+              {%- endfor -%}
+            {%- endif- %}
+          {%- endfor -%}
+        </div> -->
+      </form>  
+      
+</div>
+<script src="{{ 'filter.js' | asset_url }}" defer></script>

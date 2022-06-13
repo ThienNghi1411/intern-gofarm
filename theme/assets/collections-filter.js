@@ -120,7 +120,7 @@ function sortCollection ()
     let sort = document.getElementById("sort-by").value;
     const queryString = new URLSearchParams(new FormData(form)).toString();
         $.ajax({
-        url: '/collections/collection-page?'+ queryString + '&sort_by='+ sort ,
+        url: '/collections/collection-page?'+ queryString + '&sort_by='+ sort +'&page='+pageNumber,
         type:'GET',
         dataType:'html'
     }).done(function(data){
@@ -162,7 +162,7 @@ function sortCollection ()
     //  })
      
    })
-   history.replaceState(null, null,  "collection-page?"+ queryString+ '?sort_by=' + sort +'&page=1');
+   history.replaceState(null, null,  "collection-page?"+ queryString+ '?sort_by='  +'&page='+pageNumber);
    pageNumber='';
 }
 

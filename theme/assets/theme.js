@@ -264,6 +264,7 @@
       const nameProduct = this.container.querySelector(".productPage__titleProduct-namePd");
       const SKUProduct = this.container.querySelector(".productPage__SKU-content");
       const dataProduct = JSON.parse(this.container.querySelector("#dataProduct").innerText).dataProduct;
+      const quantityArray = JSON.parse(this.container.querySelector("#dataProduct").innerText).quantityArray;
       console.log(dataProduct);
       const plusBtn = this.container.querySelector(".productPage__quantityAdjust-plus");
       const minusBtn = this.container.querySelector(".productPage__quantityAdjust-minus");
@@ -321,14 +322,17 @@
           console.error("Error:", error);
         });
       };
-      getSizes.forEach((size) => {
+      getSizes.forEach((size, i) => {
         size.addEventListener("click", () => {
-          let index = size.getAttribute("index");
-          let qtyPd = size.getAttribute("qty");
-          qty.innerText = `Only ${qtyPd} left in stock!`;
-          document.querySelector(".productPage__inner").setAttribute("dataIndex", index);
-          initProduct(index);
-          adjustTotal();
+          let variant = size.innerText;
+          dataProduct.forEach((data) => {
+            if (data.title === variant) {
+              let qty2 = quantityArray[i];
+              qty2.innerText = `Only ${qty2} left in stock!`;
+              initProduct(i);
+              adjustTotal();
+            }
+          });
           getSizes.forEach((size1) => {
             if (size1.classList.contains("productPage__sizeOptionActive")) {
               size1.classList.remove("productPage__sizeOptionActive");

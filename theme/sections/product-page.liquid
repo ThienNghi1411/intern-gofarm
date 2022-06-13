@@ -2,7 +2,13 @@
 
 {% comment %} {% assign product = section.settings.product %} {% endcomment %}
 
-<script>console.log({{ product.variants[0].inventory_quantity | json }})</script>
+
+{% assign quantityArray = "" | split: "," %}
+{% for variant in product.variants %}
+    {% assign quantity = variant.inventory_quantity | split: "," %}
+    {% assign quantityArray = quantityArray | concat: quantity %}
+{% endfor %}
+<script>console.log({{ quantityArray | json }})</script>
 <section class="productPage" data-section-type="product-page" data-section-id="{{ section.id }}" >
     <div class="productPage__inner container" dataIndex="0">
         <div class="breadCrumb">
@@ -72,11 +78,18 @@
                         <div class="productPage__sizeCont">
                             <div class="productPage__sizeCont-text">Size</div>
                             <div class="productPage__sizeList">
-
-                                {% for variant in product.variants %}
+                                {% for product_option in product.options_with_values %}
+                                        {% for value in product_option.values %}
+                                            <div class="productPage__sizeOption" index="{{ forloop.index | minus: 1 }}" 
+                                            >
+                                                {{ value }}
+                                            </div>
+                                        {% endfor %}
+                                {% endfor %}
+                                {% comment %} {% for variant in product.variants %}
                                     <div class="productPage__sizeOption" index="{{ forloop.index | minus: 1 }}" qty="{{ variant.inventory_quantity }}">
                                         {{ variant.title }}</div>
-                                {% endfor %}
+                                {% endfor %} {% endcomment %}
 
                             </div>
                         </div>
@@ -140,8 +153,8 @@
                     </div>
                     <div class="productPage__subImgList" id="productPage__subImgList" >
                         {% for image in product.images %}
-                            <div class="productPage__subImg" {{ block.shopify_attributes }}>
-                                <img src=" {{ image | img_url:'small'}} " width="73" height="73"/> 
+                            <div class="productPage__subImg" >
+                                <img src=" {{ image | image_url: width: 73, height: 73 }} "/> 
                             </div>
                         {% endfor %}
 
@@ -206,11 +219,14 @@
                             <div class="productPage__sizeCont">
                                 <div class="productPage__sizeCont-text">Size</div>
                                 <div class="productPage__sizeList">
-                                    {% assign dataIndex = 0%}
-                                    {% for size_option in product.options_by_name['Size'].values %}
-                                        <div class="productPage__sizeOption" index="{{ dataIndex }}">{{ size_option }}</div>
-                                        {% assign dataIndex = dataIndex | plus: 1 %}
-                                    {% endfor %}
+                                    {% for product_option in product.options_with_values %}
+                                        {% for value in product_option.values %}
+                                            <div class="productPage__sizeOption" index="{{ forloop.index | minus: 1 }}" 
+                                            >
+                                                {{ value }}
+                                            </div>
+                                        {% endfor %}
+                                {% endfor %}
 
                                 </div>
                             </div>
@@ -253,7 +269,8 @@
             {% endif %}
             <script id="dataProduct" type="application/ld+json">
                 {
-                "dataProduct" : {{ product.variants | json }}
+                "dataProduct" : {{ product.variants | json }},
+                "quantityArray": {{ quantityArray | json }}
                 }
             </script>
         </div> 
