@@ -114,8 +114,9 @@ item4.addEventListener('click',()=>{
       
               {%- case filter.type -%}
               {%- when 'price_range' -%}
+              <div id="slider"></div>
               <div class="filter-group-display__price-range">
-                <div class="noUiSlider"></div>
+               
                 <div class="filter-group-display__price-range-from">
                   <span>{{ cart.currency.symbol }}</span>
                   

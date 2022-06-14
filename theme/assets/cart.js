@@ -6,6 +6,7 @@ const init = () => {
   const removeBtns = document.querySelectorAll(".cart__btnRemove");
   const inputQtys = document.querySelectorAll(".cart__quantityLineItem");
 
+
   minusBtns.forEach((minusBtn) => {
     minusBtn.addEventListener("click", (e) => {
       let quantity = e.target.parentElement.querySelector(
@@ -45,6 +46,21 @@ const init = () => {
 
 }
 
+const updateLine = (data,line) => {
+  const lineItem = document.getElementsByClassName("cart__item")[line];
+  const itemPrice = lineItem.querySelector(".cart__itemLastPrice");
+  itemPrice.innerText = "$"+ data.price / 100;
+  const linePrice = lineItem.querySelector(".cart__itemSubtotal-LastPrice");
+  linePrice.innerText = "$"+ data.line_price / 100;
+  const qtyLine = lineItem.querySelector(".cart__quantityLineItem");
+  qtyLine.value = data.quantity;
+}
+
+const removeLine = (line) => {
+  const lineItem = document.getElementsByClassName("cart__item")[line];
+  lineItem.remove();
+}
+
 const adjustCart = (line, quantity) => {
     console.log(line);
     fetch(window.Shopify.routes.root + "cart/change.js", {
@@ -65,8 +81,15 @@ const adjustCart = (line, quantity) => {
         })
         .then(data => {
           console.log(data);
-          document.querySelector(".main-cart-items").innerHTML = data.sections['main-cart-items']; 
-          init();
+          if (quantity > 0){               // checking case delete item
+            updateLine(data.items[line-1] , line -1);
+          }else{
+            removeLine(line-1);
+          }
+          const subTotal = document.querySelector(".cart__total-subTotal-content");
+          const lastTotal = document.querySelector(".cart__total-total-content")
+          subTotal.innerText =  "$" + data.original_total_price/100;
+          lastTotal.innerText =  "$" + data.total_price/100;
         })
         .catch((error) => {
           console.error("Error:", error);

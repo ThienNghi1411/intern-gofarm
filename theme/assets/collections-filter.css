@@ -511,6 +511,22 @@
     cursor: pointer;
     display: none;
     
+
+}
+#slider
+{
+    margin-bottom:20px ;
+}
+.noUi-touch-area
+{
+    background-color: orange !important;
+}
+.noUi-connect
+{
+    background-color: orange !important;
+}
+.noUi-handle:before, .noUi-handle:after {
+    background: unset !important;
 }
 @media (max-width: 1300px){
     .collections-filter

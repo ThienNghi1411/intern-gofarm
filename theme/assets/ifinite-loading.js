@@ -1,12 +1,7 @@
 var products_on_page = $('#product-grid');
-// var next_url = products_on_page.data('next-url');
-
-
-
-
-
-
-
+var next_url = products_on_page.data('next-url');
+console.log(testval)
+console.log(page_number)
 
 var i=1;
 function loadMoreProducts(){
@@ -19,7 +14,7 @@ function loadMoreProducts(){
    let sort = document.getElementById("sort-by").value;
     i++;
         $.ajax({
-            url: '/collections/collection-page?'+ queryString + '&sort_by=' +sort+'&page='+i,
+            url: 'https://internarena2022.myshopify.com/collections/'+testval+'?'+ queryString + '&sort_by=' +sort+'&page='+i,
             type:'GET',
             dataType:'html'
          }).done(function(data){
@@ -47,65 +42,23 @@ function loadMoreProducts(){
                 
             })
          }) 
-         history.replaceState(null, null,  "https://internarena2022.myshopify.com/collections/collection-page?"+ queryString+ '?sort_by='+ sort+"&page="+i);        
+         history.replaceState(null, null,  "https://internarena2022.myshopify.com/collections/"+ testval+'?'+queryString+ '?sort_by='+ sort+"&page="+i);
     }
-   
-  
-  
-
-
 
 window.addEventListener("scroll", () => {
     let container = document.querySelector("#product-grid").offsetHeight;
     // console.log(container);
-    if(document.documentElement.clientHeight = container && i<4)
+    if(document.documentElement.clientHeight = container && i< parseInt(page_number))
     {
         loadMoreProducts();
         console.log(i);
     }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let item1 = document.querySelector('#item_quanity_1');
 let item2 = document.querySelector('#item_quanity_2');
 let item3 = document.querySelector('#item_quanity_3');
 let item4 = document.querySelector('#item_quanity_4');
-
-
-
-
-
-
-
-
-
 
 item1.addEventListener('click',()=>{
     let listItem = document.querySelectorAll('.grid__item');
@@ -162,43 +115,6 @@ item4.addEventListener('click',()=>{
 })
 
 
-// pagination reload
-
-// var pageItem = document.querySelectorAll(".page");
-// var option = document.getElementById("sort-by").value;
-// var form = document.getElementById("myForm");
-
-// const queryString = new URLSearchParams(new FormData(form)).toString();
-
-
-// pageItem.forEach(target=>{
-//     target.addEventListener("click",()=>{
-//         console.log(option);
-//         console.log(queryString);
-
-//         fetch('/collections/{{ collection.handle }}?sort_by=' + a.value + '&' + queryString)
-//         .then(response => response.text())
-//         .then(data => {
-//             let html_div = document.createElement('div');
-//              html_div.innerHTML = data;
-
-//              let html_dom = html_div.querySelector('#ProductGridContainer').innerHTML;
-//             document.querySelector('#ProductGridContainer').innerHTML = html_dom;
-//             history.replaceState(null, null, '?sort_by=' + a.value + '&' + queryString );
-
-//         })
-//     })
-
-// })
-
-
-
-
-
-
-
-
-
 function sortCollection2()
 {
     i=1;
@@ -215,7 +131,7 @@ function sortCollection2()
 
     const queryString = new URLSearchParams(new FormData(form)).toString();
         $.ajax({
-         url: '/collections/collection-page?'+ queryString + '&sort_by=' +sort+'&page=1',
+         url: 'https://internarena2022.myshopify.com/collections/'+testval+'?'+ queryString + '&sort_by=' +sort+'&page=1',
         type:'GET',
         dataType:'html'
     }).done(function(data){
@@ -249,26 +165,12 @@ function sortCollection2()
             
         })
        
-    //   $('#product-grid').empty();
-    //   products_on_page.append(new_products.html());
-    //   let ListItem = document.querySelectorAll('grid__item');
-    //   ListItem.forEach(e=>{
-    //     e.style.width = itemWidth+'px';
-    //  })
+
      
    })
 //    history.replaceState(null, null,  "https://internarena2022.myshopify.com/collections/collection-page?"+ queryString+ '?sort_by='+ sort+"&page="+i);
   
 }
-
-
-
-
-// var ImageList = document.querySelectorAll('.colRight_Item_pic');
-// for (let i = 0; i < ImageList.length; i++) {
-//     let img =ImageList[i].childNodes[1];
-//     img.style.width = 190+'px';
-// }
 
 function filterCollections2()
 {
@@ -284,126 +186,28 @@ function filterCollections2()
 
     let ListButton = document.querySelectorAll(".page");
 
-    
-    
     const queryString = new URLSearchParams(new FormData(form)).toString();
         $.ajax({
-         url: '/collections/collection-page?'+ queryString + '&sort_by=' + sort +'&page=1' ,
+         url: 'https://internarena2022.myshopify.com/collections/'+testval+'?'+ queryString + '&sort_by=' + sort +'&page=1' ,
         type:'GET',
         dataType:'html'
     }).done(function(data){
         let html_div = document.createElement('div');
         html_div.innerHTML = data;
         console.log("data")
-      let html_dom = html_div.querySelector('#ProductGridContainer').innerHTML;
-      document.querySelector('#ProductGridContainer').innerHTML = html_dom;
-
-    //   history.replaceState(null, null,  "https://internarena2022.myshopify.com/collections/collection-page?"+ queryString+ '?sort_by='+ sort+"&page="+i);
-    
-      
-
-    
-
-    //   let ListButton = document.querySelectorAll(".page");  
-    //   ListButton.forEach(e=>{
-    //     e.addEventListener("click",()=>{
-            
-    //         document.querySelector(".current").classList.remove("current")
-    //         e.classList.add("current");
-    //         var itemWidth = document.querySelector('.grid__item').offsetWidth ;
-    //         var ImageWidth = document.querySelector('.Item_img').offsetWidth;
-    //         // var ImageList = document.querySelectorAll('.colRight_Item_pic');
+    //   let html_dom = html_div.querySelector('#ProductGridContainer').innerHTML;
+    //   document.querySelector('#ProductGridContainer').innerHTML = html_dom;
+    let  newListItem = html_div.querySelectorAll('.grid__item');
+    $('#product-grid').empty();
         
-    //         // console.log("ImageWidth");
-    //         // var products_on_page = $('#product-grid');
-    //         let form = document.querySelector('#myForm');
-    //         let sort = document.getElementById("sort-by").value;
-          
-          
-    //         const queryString = new URLSearchParams(new FormData(form)).toString();
-    //         var products_on_page = $('#product-grid');
-    //             $.ajax({
-    //             url: '/collections/collection-page?'+ queryString + '&sort_by=' + sort,
-    //             type:'GET',
-    //             dataType:'html'
-    //         }).done(function(data){
-            
-    //             let html_div = document.createElement('div');
-    //             html_div.innerHTML = data;
-                
-    //           let  newListItem = html_div.querySelectorAll('.grid__item');
-    //         //   var new_products = $(data).find('#product-grid');
-    //         //   var newListItem = $(data).querySelectorAll('.grid__item');
-            
-        
-               
-    //             $('#product-grid').empty();
-                
-    //             newListItem.forEach(element => {  
-        
-    //                 products_on_page.append(element);
-    //             });
-             
-            
-              
-        
-    //         //   var new_products = $(data).find('#product-grid');
-    //         //   var newListItem = $(data).querySelectorAll('.grid__item');
-            
-    //             // $('#product-grid').empty();
-                
-    //             // newListItem.forEach(element => {  
-        
-    //             //     products_on_page.append(element);
-    //             // });
-        
-        
-        
-    //             let ListItem = document.querySelectorAll(".grid__item");
-               
-    //             ListItem.forEach(e=>{
-                   
-    //                     let item = e.childNodes[1];
-    //                     item.style.width = ImageWidth+'px';
-    //                     e.style.width = itemWidth+'px';
-    //                     e.classList.add('item_quanity1');
-                    
-    //             })
-              
-    //         //   $('#product-grid').empty();
-    //         //   products_on_page.append(new_products.html());
-    //         //   let ListItem = document.querySelectorAll('grid__item');
-    //         //   ListItem.forEach(e=>{
-    //         //     e.style.width = itemWidth+'px';
-    //         //  })
-             
-    //        })
-    //        history.replaceState(null, null,  "https://internarena2022.myshopify.com/collections/collection-page?"+ queryString+ '?sort_by='+ sort);
-         
-    
-            
-            
-    //     })
-    // })
+    newListItem.forEach(element => {  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        products_on_page.append(element);
+    });
 
         let ListItem = document.querySelectorAll(".grid__item");
        
+
         ListItem.forEach(e=>{
            
                 let item = e.childNodes[1];
@@ -412,24 +216,40 @@ function filterCollections2()
                 e.classList.add('item_quanity1');
             
         })
-      
-    //   $('#product-grid').empty();
-    //   products_on_page.append(new_products.html());
-    //   let ListItem = document.querySelectorAll('grid__item');
-    //   ListItem.forEach(e=>{
-    //     e.style.width = itemWidth+'px';
-    //  })
+  
      
    })
    
-   history.replaceState(null, null,  "https://internarena2022.myshopify.com/collections/collection-page?"+ queryString+ '?sort_by='+ sort+"&page="+i);
+   history.replaceState(null, null,  "https://internarena2022.myshopify.com/collections/"+ testval+'?'+queryString+ '?sort_by='+ sort);
 
    
 }
 
 
 
+var slider = document.getElementById('slider');
 
+if(slider){
+    noUiSlider.create(slider, {
+        start: [0, 80],
+        connect: true,
+        range: {
+            'min': 0,
+            'max': 100
+        }
+    });
+    
+    const input_from = document.getElementById("Filter-filter.v.price.gte");
+    const input_to = document.getElementById("Filter-filter.v.price.lte");
+    console.log(input_from)
+    console.log(input_to)
+    const inputs = [input_from,input_to]
+    slider.noUiSlider.on('update',function(values,handle){
+        input_from.value=values[0];
+        input_to.value=values[1];
+    })
+    
+}
 
 
 

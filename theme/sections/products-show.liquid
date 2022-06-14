@@ -3,7 +3,7 @@
     <div class="products-show__inner container">
         <div class="products-show__mainTitle">Featured products</div>
         <div class="products-show__container">
-            {% for product in collections['all_product'].products limit: 4 %}
+            {% for product in collections['G1-DataProduct'].products limit: 4 %}
                 {% render 'card-product' with product.variants[0] %}
             {% endfor %}
         </div>

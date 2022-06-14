@@ -366,6 +366,12 @@
     .productPage__quantityAdjust{
         background: #fff;
     }
+    .unavailableProduct{
+      opacity: .5;
+      cursor: not-allowed;
+      display: none;
+    }
+    
   /*----*/
 
   @media (max-width: 1300px){

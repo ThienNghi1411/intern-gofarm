@@ -1,42 +1,7 @@
-{{ 'template-collection.css' | asset_url | stylesheet_tag }}
-{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
-
-
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-
-<link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style"
-  onload="this.onload=null;this.rel='stylesheet'">
-
-{%- if section.settings.enable_quick_add -%}
-<link rel="stylesheet" href="{{ 'quick-add.css' | asset_url }}" media="print" onload="this.media='all'">
-<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
-{%- endif -%}
-<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
-
-{%- style -%}
-.section-{{ section.id }}-padding {
-padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-}
-
-@media screen and (min-width: 750px) {
-.section-{{ section.id }}-padding {
-padding-top: {{ section.settings.padding_top }}px;
-padding-bottom: {{ section.settings.padding_bottom }}px;
-}
-}
-{%- endstyle -%}
 {% if section.settings.render_style == "1" %}
 <div class="section-{{ section.id }}-padding container">
   {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
   {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
-
-
-
-
-
 
 
 
@@ -48,7 +13,7 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
     <div class="breadCrumb bread1">
       <a href="/" class="breadCrumb__link">Home</a>
       <div class="breadCrumb__connect">
-          {% render 'icon-arrowRight' %}
+        {% render 'icon-arrowRight' %}
       </div>
       <a href="/collections/collection-page" class="breadCrumb__link">{{ collection.title }}</a>
     </div>
@@ -404,7 +369,7 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
             </div>
           </div>
 
-          
+
           <div class="collections_sort" x-data="{
               sort: '{{ sort_by }}',
               sortCollection2(){
@@ -449,8 +414,11 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
 
           </div>
           <div class="filter_button">
-            <svg class="icon icon-filter " width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.3998 1.54043C17.4048 1.46362 17.394 1.38659 17.3681 1.31411C17.3422 1.24163 17.3017 1.17522 17.2491 1.119C17.1966 1.06277 17.133 1.01792 17.0624 0.987205C16.9919 0.956493 16.9157 0.940573 16.8388 0.94043H1.12475C1.04774 0.940464 0.971565 0.956309 0.900932 0.986984C0.830299 1.01766 0.766716 1.06251 0.714123 1.11876C0.66153 1.17501 0.621047 1.24146 0.595181 1.31399C0.569315 1.38652 0.558618 1.46359 0.563751 1.54043C0.695662 3.37718 1.42464 5.12041 2.63953 6.50428C3.85441 7.88816 5.48855 8.83676 7.29275 9.20543V16.6117C7.29279 16.7186 7.32328 16.8232 7.38065 16.9134C7.43803 17.0036 7.5199 17.0755 7.6167 17.1209C7.71349 17.1662 7.8212 17.183 7.92721 17.1693C8.03321 17.1557 8.13313 17.1121 8.21525 17.0437L10.4653 15.1687C10.5287 15.116 10.5797 15.0499 10.6147 14.9753C10.6497 14.9006 10.6678 14.8191 10.6678 14.7367V9.20543C12.4726 8.83745 14.1074 7.88914 15.3229 6.50519C16.5384 5.12124 17.2678 3.37764 17.3998 1.54043V1.54043Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <svg class="icon icon-filter " width="18" height="18" viewBox="0 0 18 18" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M17.3998 1.54043C17.4048 1.46362 17.394 1.38659 17.3681 1.31411C17.3422 1.24163 17.3017 1.17522 17.2491 1.119C17.1966 1.06277 17.133 1.01792 17.0624 0.987205C16.9919 0.956493 16.9157 0.940573 16.8388 0.94043H1.12475C1.04774 0.940464 0.971565 0.956309 0.900932 0.986984C0.830299 1.01766 0.766716 1.06251 0.714123 1.11876C0.66153 1.17501 0.621047 1.24146 0.595181 1.31399C0.569315 1.38652 0.558618 1.46359 0.563751 1.54043C0.695662 3.37718 1.42464 5.12041 2.63953 6.50428C3.85441 7.88816 5.48855 8.83676 7.29275 9.20543V16.6117C7.29279 16.7186 7.32328 16.8232 7.38065 16.9134C7.43803 17.0036 7.5199 17.0755 7.6167 17.1209C7.71349 17.1662 7.8212 17.183 7.92721 17.1693C8.03321 17.1557 8.13313 17.1121 8.21525 17.0437L10.4653 15.1687C10.5287 15.116 10.5797 15.0499 10.6147 14.9753C10.6497 14.9006 10.6678 14.8191 10.6678 14.7367V9.20543C12.4726 8.83745 14.1074 7.88914 15.3229 6.50519C16.5384 5.12124 17.2678 3.37764 17.3998 1.54043V1.54043Z"
+                stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
             <div class="filter_button_text">Filter</div>
           </div>
@@ -458,34 +426,35 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
         <div
           class="product-grid-container{% if section.settings.filter_type == 'vertical' and section.settings.collapse_on_larger_devices %} product-grid-container-vertical{% endif %}"
           id="ProductGridContainer">
-          
-      
-         
-        
-         
+
+
+
+
+
           <div class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}">
             <div class="loading-overlay gradient"></div>
 
-            
-              
-           
+
+
+
             <ul id="product-grid" data-id="{{ section.id }}" class="">
               <!-- {% assign lazy_load = false %}
               {%- if forloop.index > 2 -%}
               {%- assign lazy_load = true -%}
               {%- endif -%} -->
               {%- paginate collection.products by 5 -%}
-                {%- for product in collection.products -%}
-                <li class="grid__item " id="ProductGridContainer">
+              {%- for product in collection.products -%}
+              <li class="grid__item " id="ProductGridContainer">
                 <div class="colRight_Item">
                   <div class="colRight_Item_pic">
-                  
+
                     {% for image in product.images %}
                     <div class="img_wrapper">
-                      
-                      <a href="/products/{{product.handle }}" class=""><img src="{{ image | image_url}} " class="Item_img"/></a>
+
+                      <a href="/products/{{product.handle }}" class=""><img src="{{ image | image_url}} "
+                          class="Item_img" /></a>
                     </div>
-                  
+
 
                     {% break %}
                     {% endfor %}
@@ -522,7 +491,7 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
                           <path
                             d="M7.331 8.777H13.161V7.105H7.331V8.777ZM11.984 4.3V12H13.843V4.3H11.984ZM6.814 4.3V12H8.673V4.3H6.814ZM16.9905 8.15C16.9905 7.69533 17.0785 7.29567 17.2545 6.951C17.4378 6.599 17.6908 6.324 18.0135 6.126C18.3435 5.928 18.7285 5.829 19.1685 5.829C19.6158 5.829 20.0008 5.928 20.3235 6.126C20.6461 6.324 20.8955 6.599 21.0715 6.951C21.2475 7.29567 21.3355 7.69533 21.3355 8.15C21.3355 8.60467 21.2438 9.008 21.0605 9.36C20.8845 9.70467 20.6315 9.976 20.3015 10.174C19.9788 10.372 19.6011 10.471 19.1685 10.471C18.7285 10.471 18.3435 10.372 18.0135 10.174C17.6908 9.976 17.4378 9.70467 17.2545 9.36C17.0785 9.008 16.9905 8.60467 16.9905 8.15ZM15.0215 8.15C15.0215 8.744 15.1205 9.29033 15.3185 9.789C15.5238 10.2877 15.8098 10.7203 16.1765 11.087C16.5505 11.4537 16.9905 11.7397 17.4965 11.945C18.0025 12.143 18.5598 12.242 19.1685 12.242C19.7698 12.242 20.3235 12.143 20.8295 11.945C21.3355 11.7397 21.7718 11.4537 22.1385 11.087C22.5125 10.7203 22.7985 10.2877 22.9965 9.789C23.2018 9.29033 23.3045 8.744 23.3045 8.15C23.3045 7.556 23.2018 7.01333 22.9965 6.522C22.7911 6.03067 22.5015 5.60533 22.1275 5.246C21.7535 4.88667 21.3135 4.61167 20.8075 4.421C20.3088 4.223 19.7625 4.124 19.1685 4.124C18.5818 4.124 18.0355 4.223 17.5295 4.421C17.0235 4.61167 16.5835 4.88667 16.2095 5.246C15.8355 5.60533 15.5421 6.03067 15.3295 6.522C15.1241 7.01333 15.0215 7.556 15.0215 8.15ZM23.3926 5.961H25.5046V12H27.3636V5.961H29.4866V4.3H23.3926V5.961Z"
                             fill="white" />
-                        </svg>
+                        </svg       >
                       </div>
 
 
@@ -539,13 +508,13 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
 
 
 
-                      
+
 
                     </div>
                     <div class="Item_AddtoCart">
                       <div class="Item_cartImg">
                         <a href="/products/{{product.handle }}" class=""> {% render 'icon-cartProduct' %}</a>
-                      
+
                       </div>
 
 
@@ -570,78 +539,62 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
                 </div>
 
                 {%- endfor -%}
-                </li>
+              </li>
             </ul>
             <div class="page_wrapper">
-            
+
               {% for i in (1..paginate.pages) %}
-                  {% if i==1 %}
-                    <span class="page current">{{i}}</span>
-                    {% else %}
-                    <span class="page ">{{i}}</span>
-                      
-                  {% endif %}
-              
+              {% if i==1 %}
+              <span class="page current">{{i}}</span>
+              {% else %}
+              <span class="page ">{{i}}</span>
+
+              {% endif %}
+
               {% endfor %}
             </div>
             {%- endpaginate -%}
-           
+
 
 
           </div>
-      
-         
+
+
           <!-- <div class="button_loadMore">
             LoadMore
           </div> -->
-        
+
         </div>
       </div>
-   
-      
+
+
     </div>
   </section>
- 
 
 
+  <script>
+  var collection_handle= '{{collection.handle}}';
+  </script>
 </div>
-
-
 {% endif%}
-
-
 
 {% if section.settings.render_style == "2" %}
 <div class="section-{{ section.id }}-padding container">
   {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
   {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
-
-
-
-
-
-
-
-
   <link rel="stylesheet" href="{{ 'collections-filter.css' | asset_url }}">
-
-
-
   <section class="collections-filter">
     <div class="breadCrumb bread1">
       <a href="/" class="breadCrumb__link">Home</a>
       <div class="breadCrumb__connect">
-          {% render 'icon-arrowRight' %}
+        {% render 'icon-arrowRight' %}
       </div>
       <a href="/collections/collection-page" class="breadCrumb__link">{{ collection.title }}</a>
     </div>
-
     <div class="collections_tittle">Fruits</div>
     <div class="collections_inner container">
-
       <!-- LEFT -->
       <div class="collecttions_left_col">
-
         <div class="collections_filter">
           <ul class="main_wrap">
             <li class="item" id="Vegetables">Vegetables</li>
@@ -662,20 +615,7 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
 
 
         </div>
-
-
         {% render 'filters2.liquid' , results: collection %}
-
-
-
-
-
-
-
-
-
-
-
         <div class="collections_ratings">
           <div class="collections_title">Ratings</div>
 
@@ -859,16 +799,8 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
 
         </div>
       </div>
-
-
-
-
-
-
-
       <!-- RIGHT -->
       <div class="collecttions_right_col">
-
         <div class="right_col_header">
           <div class="viewbox_wrapper">
             <div class="viewbox_item" id="item_quanity_1">
@@ -986,8 +918,6 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
               </svg>
             </div>
           </div>
-
-          
           <div class="collections_sort" x-data="{
               sort: '{{ sort_by }}',
               
@@ -1001,36 +931,13 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
               </option>
               {% endfor %}
             </select>
-
-            <!-- <script>
-                Shopify.queryParams = {};
-              
-                // Preserve existing query parameters
-                if (location.search.length) {
-                  var params = location.search.substr(1).split('&');
-              
-                  for (var i = 0; i < params.length; i++) {
-                    var keyValue = params[i].split('=');
-              
-                    if (keyValue.length) {
-                      Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
-                    }
-                  }
-                }
-              
-                // Update sort_by query parameter on select change
-                document.querySelector('#sort-by').addEventListener('change', function(e) {
-                  var value = e.target.value;
-              
-                  Shopify.queryParams.sort_by = value;
-                  location.search = new URLSearchParams(Shopify.queryParams).toString();
-                });
-              </script> -->
-
           </div>
           <div class="filter_button">
-            <svg class="icon icon-filter " width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.3998 1.54043C17.4048 1.46362 17.394 1.38659 17.3681 1.31411C17.3422 1.24163 17.3017 1.17522 17.2491 1.119C17.1966 1.06277 17.133 1.01792 17.0624 0.987205C16.9919 0.956493 16.9157 0.940573 16.8388 0.94043H1.12475C1.04774 0.940464 0.971565 0.956309 0.900932 0.986984C0.830299 1.01766 0.766716 1.06251 0.714123 1.11876C0.66153 1.17501 0.621047 1.24146 0.595181 1.31399C0.569315 1.38652 0.558618 1.46359 0.563751 1.54043C0.695662 3.37718 1.42464 5.12041 2.63953 6.50428C3.85441 7.88816 5.48855 8.83676 7.29275 9.20543V16.6117C7.29279 16.7186 7.32328 16.8232 7.38065 16.9134C7.43803 17.0036 7.5199 17.0755 7.6167 17.1209C7.71349 17.1662 7.8212 17.183 7.92721 17.1693C8.03321 17.1557 8.13313 17.1121 8.21525 17.0437L10.4653 15.1687C10.5287 15.116 10.5797 15.0499 10.6147 14.9753C10.6497 14.9006 10.6678 14.8191 10.6678 14.7367V9.20543C12.4726 8.83745 14.1074 7.88914 15.3229 6.50519C16.5384 5.12124 17.2678 3.37764 17.3998 1.54043V1.54043Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <svg class="icon icon-filter " width="18" height="18" viewBox="0 0 18 18" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M17.3998 1.54043C17.4048 1.46362 17.394 1.38659 17.3681 1.31411C17.3422 1.24163 17.3017 1.17522 17.2491 1.119C17.1966 1.06277 17.133 1.01792 17.0624 0.987205C16.9919 0.956493 16.9157 0.940573 16.8388 0.94043H1.12475C1.04774 0.940464 0.971565 0.956309 0.900932 0.986984C0.830299 1.01766 0.766716 1.06251 0.714123 1.11876C0.66153 1.17501 0.621047 1.24146 0.595181 1.31399C0.569315 1.38652 0.558618 1.46359 0.563751 1.54043C0.695662 3.37718 1.42464 5.12041 2.63953 6.50428C3.85441 7.88816 5.48855 8.83676 7.29275 9.20543V16.6117C7.29279 16.7186 7.32328 16.8232 7.38065 16.9134C7.43803 17.0036 7.5199 17.0755 7.6167 17.1209C7.71349 17.1662 7.8212 17.183 7.92721 17.1693C8.03321 17.1557 8.13313 17.1121 8.21525 17.0437L10.4653 15.1687C10.5287 15.116 10.5797 15.0499 10.6147 14.9753C10.6497 14.9006 10.6678 14.8191 10.6678 14.7367V9.20543C12.4726 8.83745 14.1074 7.88914 15.3229 6.50519C16.5384 5.12124 17.2678 3.37764 17.3998 1.54043V1.54043Z"
+                stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
             <div class="filter_button_text">Filter</div>
           </div>
@@ -1038,34 +945,30 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
         <div
           class="product-grid-container{% if section.settings.filter_type == 'vertical' and section.settings.collapse_on_larger_devices %} product-grid-container-vertical{% endif %}"
           id="ProductGridContainer">
-          
-      
-         
-        
-         
           <div class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}">
             <div class="loading-overlay gradient"></div>
 
-            
-              
+
+
             {%- paginate collection.products by 5 -%}
             <ul id="product-grid" data-id="{{ section.id }}" class="" data-next-url="{{paginate.next.url}}">
               <!-- {% assign lazy_load = false %}
               {%- if forloop.index > 2 -%}
               {%- assign lazy_load = true -%}
               {%- endif -%} -->
-              
-                {%- for product in collection.products -%}
-                <li class="grid__item " id="ProductGridContainer">
+
+              {%- for product in collection.products -%}
+              <li class="grid__item " id="ProductGridContainer">
                 <div class="colRight_Item">
                   <div class="colRight_Item_pic">
-                  
+
                     {% for image in product.images %}
                     <div class="img_wrapper">
-                      
-                      <a href="/products/{{product.handle }}" class=""><img src="{{ image | image_url}} " class="Item_img"/></a>
+
+                      <a href="/products/{{product.handle }}" class=""><img src="{{ image | image_url}} "
+                          class="Item_img" /></a>
                     </div>
-                  
+
 
                     {% break %}
                     {% endfor %}
@@ -1119,13 +1022,13 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
 
 
 
-                      
+
 
                     </div>
                     <div class="Item_AddtoCart">
                       <div class="Item_cartImg">
                         <a href="/products/{{product.handle }}" class=""> {% render 'icon-cartProduct' %}</a>
-                      
+
                       </div>
 
 
@@ -1139,7 +1042,7 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
 
                   </div>
                   <div class="colRight_Item_quanity">
-                    <!-- {{ product.type }} -->
+                    
                   </div>
                   <div class="colRight_Item_priceWrap">
 
@@ -1150,37 +1053,46 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
                 </div>
 
                 {%- endfor -%}
-                </li>
+              </li>
             </ul>
-           
+            <script>
+                var page_number ='{{paginate.pages}}';
+            </script>
             {%- endpaginate -%}
-           
+
 
 
           </div>
-      
-         
-        
-        
+
+
+
+
         </div>
       </div>
-   
-      
     </div>
+  
   </section>
- 
 
+  <script>
+  var testval= '{{collection.handle}}';
+
+  </script>
   <script src="{{ 'ifinite-loading.js' | asset_url }}" defer></script>
+
 </div>
 
 {% endif%}
 
-
-
-
 <script src="{{ 'collections-filter.js' | asset_url }}" defer></script>
 
 <script src="{{ 'responsive.js' | asset_url }}" defer></script>
+
+
+
+<script>
+  
+  
+</script>
 {% schema %}
 {
   "name": "Collections",
@@ -1191,23 +1103,22 @@ padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   ],
   "settings": [
-  {
-    "type":"select",
-    "id":"render_style",
-    "label":"Choose style of design: ",
-    "options":[
+    {
+      "type": "select",
+      "id": "render_style",
+      "label": "Choose style of design: ",
+      "options": [
         {
-            "value":"1",
-            "label":"Style 1 - Pagination"
+          "value": "1",
+          "label": "Style 1 - Pagination"
         },
         {
-            "value":"2",
-            "label":"Style 2 - LazyLoading"
+          "value": "2",
+          "label": "Style 2 - LazyLoading"
         }
-    ],
-    "default":"1"
-  }
-    
+      ],
+      "default": "1"
+    }
   ]
 }
 {% endschema %}

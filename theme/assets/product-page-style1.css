@@ -117,6 +117,9 @@
 
 .productPage__sizeCont {
   margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .productPage__sizeCont-text {
@@ -129,12 +132,12 @@
 
 .productPage__sizeList {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
 .productPage__sizeOption {
-  padding: 5px 0px;
-  width: 75px;
+  padding: 15px;
   display: flex;
   justify-content: center;
   background: #ffffff;
@@ -304,6 +307,13 @@
   line-height: 1.4;
   color: #4d4d4d;
 }
+
+.unavailableProduct{
+  opacity: .5;
+  cursor: not-allowed;
+  display: none;
+}
+
 
 @media (max-width: 1300px){
   .productPage__inner{
