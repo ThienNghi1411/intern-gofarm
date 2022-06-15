@@ -5,22 +5,29 @@
       "subtext_html": "The page you were looking for does not exist"
     }
   },
-  "product-page":{
-    "offer":{
+  "product-page": {
+    "offer": {
       "option1": "Free delivery for all orders",
       "option2": "Only fresh foods",
-      "option3": "24/7 delivery service"
+      "option3": "24\/7 delivery service"
     },
     "discount": "Add 15 products to cart and get 10$ discount",
-    "add":{
+    "add": {
       "cart": "Add to cart",
       "wishlist": "Add to wishlist",
       "compare": "Add to compare",
       "disable": "Unavailable"
     }
   },
-  "product-bundle":{
+  "product-bundle": {
     "title": "Frequently bought together",
-    "addToCart": "Add  all to cart"
+    "addToCart": "Add all to cart"
+  },
+  "main-cart-items": {
+    "title": "Shopping Cart",
+    "cartTotal": {
+      "shipping": "Enter your address to view shipping options",
+      "checkout": "Proceed to checkout!"
+    }
   }
 }

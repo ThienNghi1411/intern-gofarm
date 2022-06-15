@@ -2,7 +2,7 @@
 <section class="header__container">
     <div class="header__container-inner container">
         <div class="headerCont__logoCont">
-            <a href="/" class="">
+            <a href="{{ routes.root_url }}" class="">
                 {% render 'icon-logo' %}
             </a>  
         </div>
@@ -37,9 +37,9 @@
                 <div class="quantityCircle">12</div>    
             </div>
             <div class="headerCont__userCont-cartList">
-                <a href="/cart" class="">
+                <a href="{{ routes.cart_url }}" class="">
                     {% render 'icon-cart' %}
-                    <div class="quantityCircle">{{ cart.item_count }}</div>
+                    <div class="quantityCircle qtyCart">{{ cart.item_count }}</div>
                     <script>console.log({{ cart.item_count | json }});</script>
                 </a>
             </div>

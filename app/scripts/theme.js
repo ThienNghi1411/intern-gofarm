@@ -21,7 +21,7 @@
       });
 
       //-------------------------------------------------------------------//
-      console.log(cartInfo);
+  
       const dataProduct = datas;
       const plusBtn = this.container.querySelector(
         ".productPage__quantityAdjust-plus"
@@ -39,6 +39,8 @@
       var saveBasePrice = 0;
       var idProduct;
       var qtyProduct= 0;
+      
+
 
       plusBtn.addEventListener("click", () => {
         let number = quantity.innerText;
@@ -126,6 +128,12 @@
           .then((response) => {
             alert("Added!!!");
             return response.json();
+          })
+          .then( (data) => {
+            let qtyCarts = document.querySelectorAll(".qtyCart");
+            qtyCarts.forEach(qtyCart => {
+              qtyCart.innerText = qtyCart.innerText*1 + quantity*1;
+            }) 
           })
           .catch((error) => {
             console.error("Error:", error);
@@ -287,10 +295,62 @@
   
   register("product-bundle", {
     onLoad: function () {
-      const checkBoxs = this.container.querySelectorAll(
-        ".productBundle__option-checkbox"
-      );
-   
+      const dataProduct = JSON.parse(
+        this.container.querySelector("#dataProduct").innerText
+      ).dataProduct;
+      const lastPrice = this.container.querySelectorAll(".productBundle__discount_price");
+      const basePrice = this.container.querySelectorAll(".productBundle__base_price");
+      const optionLastPrice = this.container.querySelectorAll(".productBundle__option-discountPrice");
+      const optionBasePrice = this.container.querySelectorAll(".productBundle__option-basePrice");
+      const optionQty = this.container.querySelectorAll(".productBundle__option-quantity");
+      const checkBoxsActive = this.container.querySelectorAll(".productBundle__option-checkBoxActive") ;
+      const checkBoxs = this.container.querySelectorAll(".productBundle__option-checkBox") ;
+
+      const updateInfo = (value , index) => {  
+        fetch(window.Shopify.routes.root + "products/"+dataProduct[index]+".js", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          }
+        })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          data.variants.forEach(tmp => {
+            console.log(value);
+            if (tmp.title === value){
+              lastPrice[index].innerText = "$" + tmp.compare_at_price/100;
+              basePrice[index].innerText = "$" + tmp.price/100;
+              optionLastPrice[index].innerText = "$" + tmp.compare_at_price/100;
+              optionBasePrice[index].innerText = "$" + tmp.price/100;
+              optionQty[index].innerText = tmp.title;
+              checkBoxs[index].setAttribute("lastprice" , tmp.compare_at_price);
+              checkBoxs[index].setAttribute("basePrice" , tmp.price);
+              checkBoxs[index].setAttribute("id" , tmp.id);
+            }
+          })
+          updateTotal();
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+        
+      }
+      const selectBox = document.querySelectorAll(".selectOption");
+      selectBox.forEach( (select , index) => {
+        select.addEventListener("change" , (e) => {
+          updateInfo(e.target.value ,index);
+        })
+      })
+
+      const init = () => {
+        selectBox.forEach( ( select , index ) => {
+          updateInfo(select.value , index)
+        })
+         updateTotal();
+      }
       const totalLastPrice = this.container.querySelector(".productBundle__total-lastPrice");
       const totalBasePrice = this.container.querySelector(".productBundle__total-basePrice");
       
@@ -318,7 +378,8 @@
           updateTotal();
         });
       });
-      updateTotal();
+      init();
+     
 
       ///////////////////////////
       const btnAdd = this.container.querySelector(".productBundle__total-btnAddtoCart");
@@ -340,7 +401,9 @@
               quantity: 1
             };
             formData.items.push(data);
+
           })
+            console.log(formData);
             fetch(window.Shopify.routes.root + "cart/add.js", {
               method: "POST",
               headers: {
@@ -351,6 +414,12 @@
             .then((response) => {
               alert("Adding all your choices !!!");
               return response.json();
+            })
+            .then((data) => {
+              let qtyCarts = document.querySelectorAll(".qtyCart");
+              qtyCarts.forEach(qtyCart => {
+              qtyCart.innerText = qtyCart.innerText*1 + formData.items.length;
+            }) 
             })
             .catch((error) => {
               console.error("Error:", error);

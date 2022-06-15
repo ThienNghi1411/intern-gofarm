@@ -314,6 +314,9 @@
   display: none;
 }
 
+.productPage__tagCont{
+  margin-top: 25px;
+}
 
 @media (max-width: 1300px){
   .productPage__inner{
@@ -339,9 +342,7 @@
   .productPage__btnAddtoCart{
     width: 275px;
   }
-  .productPage__tagCont{
-    margin-top: 25px;
-  }
+
 }
 @media (max-width: 768px){
   .productPage__container{

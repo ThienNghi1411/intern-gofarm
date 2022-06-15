@@ -1,383 +1,69 @@
+
 {% if section.settings.render_style == "1" %}
 <div class="section-{{ section.id }}-padding container">
   {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
   {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
-
-
-
   <link rel="stylesheet" href="{{ 'collections-filter.css' | asset_url }}">
-
-
-
   <section class="collections-filter">
     <div class="breadCrumb bread1">
-      <a href="/" class="breadCrumb__link">Home</a>
+      <a href="{{ routes.all_products_collection_url }}" class="breadCrumb__link">Home</a>
       <div class="breadCrumb__connect">
         {% render 'icon-arrowRight' %}
       </div>
       <a href="/collections/collection-page" class="breadCrumb__link">{{ collection.title }}</a>
     </div>
-
-    <div class="collections_tittle">Fruits</div>
+    <div class="collections_tittle">{{ 'collections-filter.main-title' | t }}</div>
     <div class="collections_inner container">
-
       <!-- LEFT -->
       <div class="collecttions_left_col">
 
         <div class="collections_filter">
           <ul class="main_wrap">
-            <li class="item" id="Vegetables">Vegetables</li>
-            <li class="item" id="Fruits">Fruits
+            <li class="item" id="Vegetables">{{ 'collections-filter.collection.option1' | t }}</li>
+            <li class="item" id="Fruits">{{ 'collections-filter.collection.option2.tittle' | t }}
               <ul class="sub_wrap">
-                <li class="sub_item">Apple</li>
-                <li class="sub_item">Pear</li>
-                <li class="sub_item">Banana</li>
-                <li class="sub_item">Avocado</li>
-                <li class="sub_item">Dargon fruits</li>
+                <li class="sub_item">{{ 'collections-filter.collection.option2.subItem1' | t }}</li>
+                <li class="sub_item">{{ 'collections-filter.collection.option2.subItem2' | t }}</li>
+                <li class="sub_item">{{ 'collections-filter.collection.option2.subItem3' | t }}</li>
+                <li class="sub_item">{{ 'collections-filter.collection.option2.subItem4' | t }}</li>
+                <li class="sub_item">{{ 'collections-filter.collection.option2.subItem5' | t }}</li>
               </ul>
             </li>
-            <li class="item" id="Laboratory">Laboratory</li>
-            <li class="item">Tools</li>
-            <li class="item">Diagnosis</li>
-            <li class="item">Equipment</li>
+            <li class="item" id="Laboratory">{{ 'collections-filter.collection.option3' | t }}</li>
+            <li class="item">{{ 'collections-filter.collection.option4' | t }}</li>
+            <li class="item">{{ 'collections-filter.collection.option5' | t }}</li>
+            <li class="item">{{ 'collections-filter.collection.option6' | t }}</li>
           </ul>
-
-
         </div>
-
-
         {% render 'filters.liquid' , results: collection %}
-
-
-
-
-
-
-
-
-
-
-
-        <div class="collections_ratings">
-          <div class="collections_title">Ratings</div>
-
-          <div class="Ratings_Item_wrapper">
-
-            <label class="checkbox_container">
-              <div class="checkbox_starWrapper">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-
-              </div>
-
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-            <label class="checkbox_container">
-              <div class="checkbox_starWrapper">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-
-
-              </div>
-
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-            <label class="checkbox_container">
-              <div class="checkbox_starWrapper">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-
-
-
-              </div>
-
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-            <label class="checkbox_container">
-              <div class="checkbox_starWrapper">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-
-
-
-              </div>
-
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-            <label class="checkbox_container">
-              <div class="checkbox_starWrapper">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-
-
-              </div>
-
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-          </div>
-
-
-        </div>
+      
       </div>
-
-
-
-
-
-
-
       <!-- RIGHT -->
       <div class="collecttions_right_col">
 
+ 
         <div class="right_col_header">
           <div class="viewbox_wrapper">
             <div class="viewbox_item" id="item_quanity_1">
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M0 1.5C0 0.671573 0.671573 0 1.5 0H13.5C14.3284 0 15 0.671573 15 1.5C15 2.32843 14.3284 3 13.5 3H1.5C0.671573 3 0 2.32843 0 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 7.5C0 6.67157 0.671573 6 1.5 6H13.5C14.3284 6 15 6.67157 15 7.5C15 8.32843 14.3284 9 13.5 9H1.5C0.671573 9 0 8.32843 0 7.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 13.5C0 12.6716 0.671573 12 1.5 12H13.5C14.3284 12 15 12.6716 15 13.5C15 14.3284 14.3284 15 13.5 15H1.5C0.671573 15 0 14.3284 0 13.5Z"
-                  fill="#B3B3B3" />
-              </svg>
+              {% render 'View-1-icon' %}
             </div>
             <div class="viewbox_item" id="item_quanity_2">
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M0 3C0 1.34315 1.34315 0 3 0C4.65685 0 6 1.34315 6 3C6 4.65685 4.65685 6 3 6C1.34315 6 0 4.65685 0 3Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M9 3C9 1.34315 10.3431 0 12 0C13.6569 0 15 1.34315 15 3C15 4.65685 13.6569 6 12 6C10.3431 6 9 4.65685 9 3Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 12C0 10.3431 1.34315 9 3 9C4.65685 9 6 10.3431 6 12C6 13.6569 4.65685 15 3 15C1.34315 15 0 13.6569 0 12Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12Z"
-                  fill="#B3B3B3" />
-              </svg>
-
+              {% render 'View-2-icon' %}
             </div>
             <div class="viewbox_item" id="item_quanity_3">
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M0 1.5C0 0.671573 0.671573 0 1.5 0C2.32843 0 3 0.671573 3 1.5C3 2.32843 2.32843 3 1.5 3C0.671573 3 0 2.32843 0 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M6 1.5C6 0.671573 6.67157 0 7.5 0C8.32843 0 9 0.671573 9 1.5C9 2.32843 8.32843 3 7.5 3C6.67157 3 6 2.32843 6 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 1.5C12 0.671573 12.6716 0 13.5 0C14.3284 0 15 0.671573 15 1.5C15 2.32843 14.3284 3 13.5 3C12.6716 3 12 2.32843 12 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 7.5C0 6.67157 0.671573 6 1.5 6C2.32843 6 3 6.67157 3 7.5C3 8.32843 2.32843 9 1.5 9C0.671573 9 0 8.32843 0 7.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M6 7.5C6 6.67157 6.67157 6 7.5 6C8.32843 6 9 6.67157 9 7.5C9 8.32843 8.32843 9 7.5 9C6.67157 9 6 8.32843 6 7.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 7.5C12 6.67157 12.6716 6 13.5 6C14.3284 6 15 6.67157 15 7.5C15 8.32843 14.3284 9 13.5 9C12.6716 9 12 8.32843 12 7.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 13.5C0 12.6716 0.671573 12 1.5 12C2.32843 12 3 12.6716 3 13.5C3 14.3284 2.32843 15 1.5 15C0.671573 15 0 14.3284 0 13.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M6 13.5C6 12.6716 6.67157 12 7.5 12C8.32843 12 9 12.6716 9 13.5C9 14.3284 8.32843 15 7.5 15C6.67157 15 6 14.3284 6 13.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 13.5C12 12.6716 12.6716 12 13.5 12C14.3284 12 15 12.6716 15 13.5C15 14.3284 14.3284 15 13.5 15C12.6716 15 12 14.3284 12 13.5Z"
-                  fill="#B3B3B3" />
-              </svg>
+              {% render 'View-3-icon' %}
 
             </div>
             <div class="viewbox_item" id="item_quanity_4">
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M0 1.5C0 0.671573 0.671573 0 1.5 0C2.32843 0 3 0.671573 3 1.5C3 2.32843 2.32843 3 1.5 3C0.671573 3 0 2.32843 0 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M4 1.5C4 0.671573 4.67157 0 5.5 0C6.32843 0 7 0.671573 7 1.5C7 2.32843 6.32843 3 5.5 3C4.67157 3 4 2.32843 4 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M8 1.5C8 0.671573 8.67157 0 9.5 0C10.3284 0 11 0.671573 11 1.5C11 2.32843 10.3284 3 9.5 3C8.67157 3 8 2.32843 8 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 1.5C12 0.671573 12.6716 0 13.5 0C14.3284 0 15 0.671573 15 1.5C15 2.32843 14.3284 3 13.5 3C12.6716 3 12 2.32843 12 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 5.5C0 4.67157 0.671573 4 1.5 4C2.32843 4 3 4.67157 3 5.5C3 6.32843 2.32843 7 1.5 7C0.671573 7 0 6.32843 0 5.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M4 5.5C4 4.67157 4.67157 4 5.5 4C6.32843 4 7 4.67157 7 5.5C7 6.32843 6.32843 7 5.5 7C4.67157 7 4 6.32843 4 5.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M8 5.5C8 4.67157 8.67157 4 9.5 4C10.3284 4 11 4.67157 11 5.5C11 6.32843 10.3284 7 9.5 7C8.67157 7 8 6.32843 8 5.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 5.5C12 4.67157 12.6716 4 13.5 4C14.3284 4 15 4.67157 15 5.5C15 6.32843 14.3284 7 13.5 7C12.6716 7 12 6.32843 12 5.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 9.5C0 8.67157 0.671573 8 1.5 8C2.32843 8 3 8.67157 3 9.5C3 10.3284 2.32843 11 1.5 11C0.671573 11 0 10.3284 0 9.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 13.5C0 12.6716 0.671573 12 1.5 12C2.32843 12 3 12.6716 3 13.5C3 14.3284 2.32843 15 1.5 15C0.671573 15 0 14.3284 0 13.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M4 9.5C4 8.67157 4.67157 8 5.5 8C6.32843 8 7 8.67157 7 9.5C7 10.3284 6.32843 11 5.5 11C4.67157 11 4 10.3284 4 9.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M4 13.5C4 12.6716 4.67157 12 5.5 12C6.32843 12 7 12.6716 7 13.5C7 14.3284 6.32843 15 5.5 15C4.67157 15 4 14.3284 4 13.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M8 9.5C8 8.67157 8.67157 8 9.5 8C10.3284 8 11 8.67157 11 9.5C11 10.3284 10.3284 11 9.5 11C8.67157 11 8 10.3284 8 9.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M8 13.5C8 12.6716 8.67157 12 9.5 12C10.3284 12 11 12.6716 11 13.5C11 14.3284 10.3284 15 9.5 15C8.67157 15 8 14.3284 8 13.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 9.5C12 8.67157 12.6716 8 13.5 8C14.3284 8 15 8.67157 15 9.5C15 10.3284 14.3284 11 13.5 11C12.6716 11 12 10.3284 12 9.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 13.5C12 12.6716 12.6716 12 13.5 12C14.3284 12 15 12.6716 15 13.5C15 14.3284 14.3284 15 13.5 15C12.6716 15 12 14.3284 12 13.5Z"
-                  fill="#B3B3B3" />
-              </svg>
+              {% render 'View-5-icon' %}
             </div>
           </div>
-
-
           <div class="collections_sort" x-data="{
               sort: '{{ sort_by }}',
-              sortCollection2(){
-              
-               
+              sortCollection2(){          
               }
             }">
-            <div class="filter_title">Sort By</div>
+            <div class="filter_title">{{ 'collections-filter.tittle.sort-tittle' | t }}</div>
             <select id="sort-by" x-model="sort" @change="sortCollection()">
               {% for option in collection.sort_options %}
               <option class="filter_option" value="{{ option.value }}" {% if option.value==sort_by %}selected="selected"
@@ -386,198 +72,112 @@
               </option>
               {% endfor %}
             </select>
-
-            <!-- <script>
-                Shopify.queryParams = {};
-              
-                // Preserve existing query parameters
-                if (location.search.length) {
-                  var params = location.search.substr(1).split('&');
-              
-                  for (var i = 0; i < params.length; i++) {
-                    var keyValue = params[i].split('=');
-              
-                    if (keyValue.length) {
-                      Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
-                    }
-                  }
-                }
-              
-                // Update sort_by query parameter on select change
-                document.querySelector('#sort-by').addEventListener('change', function(e) {
-                  var value = e.target.value;
-              
-                  Shopify.queryParams.sort_by = value;
-                  location.search = new URLSearchParams(Shopify.queryParams).toString();
-                });
-              </script> -->
-
           </div>
           <div class="filter_button">
-            <svg class="icon icon-filter " width="18" height="18" viewBox="0 0 18 18" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M17.3998 1.54043C17.4048 1.46362 17.394 1.38659 17.3681 1.31411C17.3422 1.24163 17.3017 1.17522 17.2491 1.119C17.1966 1.06277 17.133 1.01792 17.0624 0.987205C16.9919 0.956493 16.9157 0.940573 16.8388 0.94043H1.12475C1.04774 0.940464 0.971565 0.956309 0.900932 0.986984C0.830299 1.01766 0.766716 1.06251 0.714123 1.11876C0.66153 1.17501 0.621047 1.24146 0.595181 1.31399C0.569315 1.38652 0.558618 1.46359 0.563751 1.54043C0.695662 3.37718 1.42464 5.12041 2.63953 6.50428C3.85441 7.88816 5.48855 8.83676 7.29275 9.20543V16.6117C7.29279 16.7186 7.32328 16.8232 7.38065 16.9134C7.43803 17.0036 7.5199 17.0755 7.6167 17.1209C7.71349 17.1662 7.8212 17.183 7.92721 17.1693C8.03321 17.1557 8.13313 17.1121 8.21525 17.0437L10.4653 15.1687C10.5287 15.116 10.5797 15.0499 10.6147 14.9753C10.6497 14.9006 10.6678 14.8191 10.6678 14.7367V9.20543C12.4726 8.83745 14.1074 7.88914 15.3229 6.50519C16.5384 5.12124 17.2678 3.37764 17.3998 1.54043V1.54043Z"
-                stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            <div class="filter_button_text">Filter</div>
+            {% render 'filter-icon' %}
+            <div class="filter_button_text">{{ 'collections-filter.tittle.filter-tittle' | t }}</div>
           </div>
         </div>
         <div
           class="product-grid-container{% if section.settings.filter_type == 'vertical' and section.settings.collapse_on_larger_devices %} product-grid-container-vertical{% endif %}"
           id="ProductGridContainer">
-
-
-
-
-
+          <div class="collection_empty"></div>
           <div class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}">
             <div class="loading-overlay gradient"></div>
-
-
-
-
-            <ul id="product-grid" data-id="{{ section.id }}" class="">
-              <!-- {% assign lazy_load = false %}
-              {%- if forloop.index > 2 -%}
-              {%- assign lazy_load = true -%}
-              {%- endif -%} -->
-              {%- paginate collection.products by 5 -%}
+            <ul id="product-grid" data-id="{{ section.id }}" class="">        
+              {%- paginate collection.products by 5   -%}
               {%- for product in collection.products -%}
               <li class="grid__item " id="ProductGridContainer">
                 <div class="colRight_Item">
                   <div class="colRight_Item_pic">
-
                     {% for image in product.images %}
                     <div class="img_wrapper">
-
                       <a href="/products/{{product.handle }}" class=""><img src="{{ image | image_url}} "
                           class="Item_img" /></a>
                     </div>
-
-
                     {% break %}
                     {% endfor %}
                     <div class="Item_noteWrap">
                       {% for tag in product.tags %}
                       {% case tag %}
-
                       {% when 'SALE' %}
-                      <div class="Item_note"><svg width="40" height="16" viewBox="0 0 40 16" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <rect width="40" height="16" rx="3" fill="#FF9923" />
-                          <path
-                            d="M7.661 9.294L6.363 10.229C6.539 10.5957 6.78467 10.933 7.1 11.241C7.41533 11.549 7.78567 11.7947 8.211 11.978C8.64367 12.154 9.10933 12.242 9.608 12.242C9.96733 12.242 10.3157 12.187 10.653 12.077C10.9977 11.9743 11.302 11.8203 11.566 11.615C11.8373 11.4097 12.05 11.1567 12.204 10.856C12.3653 10.548 12.446 10.1997 12.446 9.811C12.446 9.48833 12.3947 9.20233 12.292 8.953C12.1893 8.70367 12.0463 8.48367 11.863 8.293C11.687 8.10233 11.4817 7.941 11.247 7.809C11.0123 7.66967 10.7593 7.54867 10.488 7.446C10.1287 7.32133 9.82067 7.204 9.564 7.094C9.31467 6.984 9.12033 6.863 8.981 6.731C8.849 6.599 8.783 6.445 8.783 6.269C8.783 6.10033 8.85267 5.961 8.992 5.851C9.13133 5.73367 9.333 5.675 9.597 5.675C9.795 5.675 9.97833 5.71533 10.147 5.796C10.323 5.86933 10.4807 5.97567 10.62 6.115C10.7667 6.247 10.895 6.40467 11.005 6.588L12.424 5.796C12.292 5.532 12.1013 5.27167 11.852 5.015C11.6027 4.75833 11.2873 4.54567 10.906 4.377C10.532 4.20833 10.0883 4.124 9.575 4.124C9.07633 4.124 8.62167 4.212 8.211 4.388C7.80767 4.55667 7.485 4.806 7.243 5.136C7.00833 5.466 6.891 5.85833 6.891 6.313C6.891 6.69433 6.96067 7.02067 7.1 7.292C7.23933 7.556 7.41533 7.78333 7.628 7.974C7.84067 8.15733 8.06433 8.30767 8.299 8.425C8.541 8.54233 8.75367 8.634 8.937 8.7C9.311 8.83933 9.61167 8.964 9.839 9.074C10.0663 9.184 10.2313 9.30133 10.334 9.426C10.4367 9.54333 10.488 9.701 10.488 9.899C10.488 10.1337 10.4 10.3207 10.224 10.46C10.048 10.592 9.82433 10.658 9.553 10.658C9.29633 10.658 9.05067 10.603 8.816 10.493C8.58867 10.383 8.376 10.2253 8.178 10.02C7.98733 9.81467 7.815 9.57267 7.661 9.294ZM14.899 10.515H18.969L18.848 9.096H15.031L14.899 10.515ZM16.912 7.127L18.001 9.624L17.935 10.097L18.859 12H20.971L16.912 3.816L12.864 12H14.965L15.922 10.02L15.834 9.613L16.912 7.127ZM21.7779 4.3V12H26.7279V10.405H23.6369V4.3H21.7779ZM28.8214 12H32.7044V10.471H28.8214V12ZM28.8214 5.829H32.7044V4.3H28.8214V5.829ZM28.8214 8.7H32.4844V7.204H28.8214V8.7ZM27.5894 4.3V12H29.3714V4.3H27.5894Z"
-                            fill="white" />
-                        </svg>
+                      <div class="Item_note">
+                       {% render 'icon-saleBrand'%}
                       </div>
-
-
                       {% when 'HOT' %}
-                      <div class="Item_note"><svg width="40" height="16" viewBox="0 0 40 16" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <rect width="40" height="16" rx="3" fill="#12A05C" />
-                          <path
-                            d="M12.127 4.3V8.634L6.814 3.915V12H8.596V7.666L13.92 12.385V4.3H12.127ZM16.7794 12H20.6624V10.471H16.7794V12ZM16.7794 5.829H20.6624V4.3H16.7794V5.829ZM16.7794 8.7H20.4424V7.204H16.7794V8.7ZM15.5474 4.3V12H17.3294V4.3H15.5474ZM29.3253 8.689L27.2133 3.915L25.1233 8.689L23.6053 4.3H21.4053L24.7383 12.451L27.2133 7.809L29.6993 12.451L33.0323 4.3H30.8213L29.3253 8.689Z"
-                            fill="white" />
-                        </svg>
+                      <div class="Item_note">
+                        {% render 'icon-hotBrand'%}
                       </div>
-
-
                       {% when 'NEW' %}
-                      <div class="Item_note"><svg width="36" height="16" viewBox="0 0 36 16" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <rect width="36" height="16" rx="3" fill="#F00000" />
-                          <path
-                            d="M7.331 8.777H13.161V7.105H7.331V8.777ZM11.984 4.3V12H13.843V4.3H11.984ZM6.814 4.3V12H8.673V4.3H6.814ZM16.9905 8.15C16.9905 7.69533 17.0785 7.29567 17.2545 6.951C17.4378 6.599 17.6908 6.324 18.0135 6.126C18.3435 5.928 18.7285 5.829 19.1685 5.829C19.6158 5.829 20.0008 5.928 20.3235 6.126C20.6461 6.324 20.8955 6.599 21.0715 6.951C21.2475 7.29567 21.3355 7.69533 21.3355 8.15C21.3355 8.60467 21.2438 9.008 21.0605 9.36C20.8845 9.70467 20.6315 9.976 20.3015 10.174C19.9788 10.372 19.6011 10.471 19.1685 10.471C18.7285 10.471 18.3435 10.372 18.0135 10.174C17.6908 9.976 17.4378 9.70467 17.2545 9.36C17.0785 9.008 16.9905 8.60467 16.9905 8.15ZM15.0215 8.15C15.0215 8.744 15.1205 9.29033 15.3185 9.789C15.5238 10.2877 15.8098 10.7203 16.1765 11.087C16.5505 11.4537 16.9905 11.7397 17.4965 11.945C18.0025 12.143 18.5598 12.242 19.1685 12.242C19.7698 12.242 20.3235 12.143 20.8295 11.945C21.3355 11.7397 21.7718 11.4537 22.1385 11.087C22.5125 10.7203 22.7985 10.2877 22.9965 9.789C23.2018 9.29033 23.3045 8.744 23.3045 8.15C23.3045 7.556 23.2018 7.01333 22.9965 6.522C22.7911 6.03067 22.5015 5.60533 22.1275 5.246C21.7535 4.88667 21.3135 4.61167 20.8075 4.421C20.3088 4.223 19.7625 4.124 19.1685 4.124C18.5818 4.124 18.0355 4.223 17.5295 4.421C17.0235 4.61167 16.5835 4.88667 16.2095 5.246C15.8355 5.60533 15.5421 6.03067 15.3295 6.522C15.1241 7.01333 15.0215 7.556 15.0215 8.15ZM23.3926 5.961H25.5046V12H27.3636V5.961H29.4866V4.3H23.3926V5.961Z"
-                            fill="white" />
-                        </svg       >
+                      <div class="Item_note">
+                        {% render 'icon-newBrand'%}
                       </div>
-
-
-
                       {% endcase %}
-
-
                       {% endfor %}
-
-
-
-
-
-
-
-
-
-
                     </div>
                     <div class="Item_AddtoCart">
                       <div class="Item_cartImg">
                         <a href="/products/{{product.handle }}" class=""> {% render 'icon-cartProduct' %}</a>
-
                       </div>
-
-
                     </div>
-
                   </div>
                   <div class="colRight_Item_name">
                     <a href="/products/{{ product.handle }}" class="">
                       {{ product.title }}
                     </a>
-
                   </div>
                   <div class="colRight_Item_quanity">
                     <!-- {{ product.type }} -->
                   </div>
                   <div class="colRight_Item_priceWrap">
-
                     <div class="discount_price">${{ product.price | divided_by: 100.0 }} </div>
                     <div class="base_price"> ${{ product.price | divided_by: 100.0 }}</div>
 
                   </div>
                 </div>
-
                 {%- endfor -%}
               </li>
-            </ul>
-            <div class="page_wrapper">
-
+            </ul> 
+            <div class="page_wrapper" id="page__wrapper">
+              <div class="page_back"> 
+                <svg width="30" height="14" viewBox="0 0 30 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.9924 6.88755L15 1.65864L12.8092 0L8 7L12.8092 14L15 12.3414L10.9924 6.88755Z" fill="#4D4D4D"/>
+                  <path d="M3.99237 6.88755L8 1.65864L5.80916 0L1 7L5.80916 14L8 12.3414L3.99237 6.88755Z" fill="#4D4D4D"/>
+                  </svg>
+              </div>
               {% for i in (1..paginate.pages) %}
               {% if i==1 %}
               <span class="page current">{{i}}</span>
               {% else %}
+
               <span class="page ">{{i}}</span>
 
               {% endif %}
 
               {% endfor %}
+              <div class="page_next">
+                <svg width="30" height="14" viewBox="0 0 30 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19.0076 7.11245L15 12.3414L17.1908 14L22 7L17.1908 0L15 1.65863L19.0076 7.11245Z" fill="#4D4D4D"/>
+                  <path d="M26.0076 7.11245L22 12.3414L24.1908 14L29 7L24.1908 0L22 1.65863L26.0076 7.11245Z" fill="#4D4D4D"/>
+                  </svg>
+                  
+              </div>
             </div>
+            <script>
+              var Parts= '{{paginate.pages}}';
+            </script>
             {%- endpaginate -%}
-
-
-
           </div>
-
-
-          <!-- <div class="button_loadMore">
-            LoadMore
-          </div> -->
-
         </div>
       </div>
-
-
     </div>
   </section>
-
-
   <script>
   var collection_handle= '{{collection.handle}}';
+
   </script>
 </div>
 {% endif%}
-
 {% if section.settings.render_style == "2" %}
 <div class="section-{{ section.id }}-padding container">
   {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
@@ -589,7 +189,7 @@
       <div class="breadCrumb__connect">
         {% render 'icon-arrowRight' %}
       </div>
-      <a href="/collections/collection-page" class="breadCrumb__link">{{ collection.title }}</a>
+      <a href="{{routes.all_products_collection_url}}" class="breadCrumb__link">{{ collection.title }}</a>
     </div>
     <div class="collections_tittle">Fruits</div>
     <div class="collections_inner container">
@@ -597,332 +197,48 @@
       <div class="collecttions_left_col">
         <div class="collections_filter">
           <ul class="main_wrap">
-            <li class="item" id="Vegetables">Vegetables</li>
-            <li class="item" id="Fruits">Fruits
+            <li class="item" id="Vegetables">{{ 'collections-filter.collection.option1' | t }}</li>
+            <li class="item" id="Fruits">{{ 'collections-filter.collection.option2.tittle' | t }}
               <ul class="sub_wrap">
-                <li class="sub_item">Apple</li>
-                <li class="sub_item">Pear</li>
-                <li class="sub_item">Banana</li>
-                <li class="sub_item">Avocado</li>
-                <li class="sub_item">Dargon fruits</li>
+                <li class="sub_item">{{ 'collections-filter.collection.option2.subItem1' | t }}</li>
+                <li class="sub_item">{{ 'collections-filter.collection.option2.subItem2' | t }}</li>
+                <li class="sub_item">{{ 'collections-filter.collection.option2.subItem3' | t }}</li>
+                <li class="sub_item">{{ 'collections-filter.collection.option2.subItem4' | t }}</li>
+                <li class="sub_item">{{ 'collections-filter.collection.option2.subItem5' | t }}</li>
               </ul>
             </li>
-            <li class="item" id="Laboratory">Laboratory</li>
-            <li class="item">Tools</li>
-            <li class="item">Diagnosis</li>
-            <li class="item">Equipment</li>
+            <li class="item" id="Laboratory">{{ 'collections-filter.collection.option3' | t }}</li>
+            <li class="item">{{ 'collections-filter.collection.option4' | t }}</li>
+            <li class="item">{{ 'collections-filter.collection.option5' | t }}</li>
+            <li class="item">{{ 'collections-filter.collection.option6' | t }}</li>
           </ul>
-
-
         </div>
-        {% render 'filters2.liquid' , results: collection %}
-        <div class="collections_ratings">
-          <div class="collections_title">Ratings</div>
-
-          <div class="Ratings_Item_wrapper">
-
-            <label class="checkbox_container">
-              <div class="checkbox_starWrapper">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-
-              </div>
-
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-            <label class="checkbox_container">
-              <div class="checkbox_starWrapper">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-
-
-              </div>
-
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-            <label class="checkbox_container">
-              <div class="checkbox_starWrapper">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-
-
-
-              </div>
-
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-            <label class="checkbox_container">
-              <div class="checkbox_starWrapper">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-
-
-
-              </div>
-
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-            <label class="checkbox_container">
-              <div class="checkbox_starWrapper">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.5 0L8.50314 4.28084L13 4.96806L9.75681 8.30396L10.5199 13L6.5 10.7808L2.48008 13L3.24319 8.30396L0 4.96806L4.49685 4.28084L6.5 0Z"
-                    fill="#FE8F17" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-                <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path opacity="0.2"
-                    d="M6.75 0L8.75314 4.28084L13.25 4.96806L10.0068 8.30396L10.7699 13L6.75 10.7808L2.73008 13L3.49319 8.30396L0.25 4.96806L4.74685 4.28084L6.75 0Z"
-                    fill="#CCCCCC" />
-                </svg>
-
-
-              </div>
-
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-          </div>
-
-
-        </div>
+        {% render 'filters2.liquid' , results: collection %}     
       </div>
       <!-- RIGHT -->
       <div class="collecttions_right_col">
         <div class="right_col_header">
           <div class="viewbox_wrapper">
             <div class="viewbox_item" id="item_quanity_1">
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M0 1.5C0 0.671573 0.671573 0 1.5 0H13.5C14.3284 0 15 0.671573 15 1.5C15 2.32843 14.3284 3 13.5 3H1.5C0.671573 3 0 2.32843 0 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 7.5C0 6.67157 0.671573 6 1.5 6H13.5C14.3284 6 15 6.67157 15 7.5C15 8.32843 14.3284 9 13.5 9H1.5C0.671573 9 0 8.32843 0 7.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 13.5C0 12.6716 0.671573 12 1.5 12H13.5C14.3284 12 15 12.6716 15 13.5C15 14.3284 14.3284 15 13.5 15H1.5C0.671573 15 0 14.3284 0 13.5Z"
-                  fill="#B3B3B3" />
-              </svg>
+              {% render 'View-1-icon' %}
             </div>
             <div class="viewbox_item" id="item_quanity_2">
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M0 3C0 1.34315 1.34315 0 3 0C4.65685 0 6 1.34315 6 3C6 4.65685 4.65685 6 3 6C1.34315 6 0 4.65685 0 3Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M9 3C9 1.34315 10.3431 0 12 0C13.6569 0 15 1.34315 15 3C15 4.65685 13.6569 6 12 6C10.3431 6 9 4.65685 9 3Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 12C0 10.3431 1.34315 9 3 9C4.65685 9 6 10.3431 6 12C6 13.6569 4.65685 15 3 15C1.34315 15 0 13.6569 0 12Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12Z"
-                  fill="#B3B3B3" />
-              </svg>
+              {% render 'View-2-icon' %}
 
             </div>
             <div class="viewbox_item" id="item_quanity_3">
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M0 1.5C0 0.671573 0.671573 0 1.5 0C2.32843 0 3 0.671573 3 1.5C3 2.32843 2.32843 3 1.5 3C0.671573 3 0 2.32843 0 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M6 1.5C6 0.671573 6.67157 0 7.5 0C8.32843 0 9 0.671573 9 1.5C9 2.32843 8.32843 3 7.5 3C6.67157 3 6 2.32843 6 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 1.5C12 0.671573 12.6716 0 13.5 0C14.3284 0 15 0.671573 15 1.5C15 2.32843 14.3284 3 13.5 3C12.6716 3 12 2.32843 12 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 7.5C0 6.67157 0.671573 6 1.5 6C2.32843 6 3 6.67157 3 7.5C3 8.32843 2.32843 9 1.5 9C0.671573 9 0 8.32843 0 7.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M6 7.5C6 6.67157 6.67157 6 7.5 6C8.32843 6 9 6.67157 9 7.5C9 8.32843 8.32843 9 7.5 9C6.67157 9 6 8.32843 6 7.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 7.5C12 6.67157 12.6716 6 13.5 6C14.3284 6 15 6.67157 15 7.5C15 8.32843 14.3284 9 13.5 9C12.6716 9 12 8.32843 12 7.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 13.5C0 12.6716 0.671573 12 1.5 12C2.32843 12 3 12.6716 3 13.5C3 14.3284 2.32843 15 1.5 15C0.671573 15 0 14.3284 0 13.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M6 13.5C6 12.6716 6.67157 12 7.5 12C8.32843 12 9 12.6716 9 13.5C9 14.3284 8.32843 15 7.5 15C6.67157 15 6 14.3284 6 13.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 13.5C12 12.6716 12.6716 12 13.5 12C14.3284 12 15 12.6716 15 13.5C15 14.3284 14.3284 15 13.5 15C12.6716 15 12 14.3284 12 13.5Z"
-                  fill="#B3B3B3" />
-              </svg>
+              {% render 'View-3-icon' %}
 
             </div>
             <div class="viewbox_item" id="item_quanity_4">
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M0 1.5C0 0.671573 0.671573 0 1.5 0C2.32843 0 3 0.671573 3 1.5C3 2.32843 2.32843 3 1.5 3C0.671573 3 0 2.32843 0 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M4 1.5C4 0.671573 4.67157 0 5.5 0C6.32843 0 7 0.671573 7 1.5C7 2.32843 6.32843 3 5.5 3C4.67157 3 4 2.32843 4 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M8 1.5C8 0.671573 8.67157 0 9.5 0C10.3284 0 11 0.671573 11 1.5C11 2.32843 10.3284 3 9.5 3C8.67157 3 8 2.32843 8 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 1.5C12 0.671573 12.6716 0 13.5 0C14.3284 0 15 0.671573 15 1.5C15 2.32843 14.3284 3 13.5 3C12.6716 3 12 2.32843 12 1.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 5.5C0 4.67157 0.671573 4 1.5 4C2.32843 4 3 4.67157 3 5.5C3 6.32843 2.32843 7 1.5 7C0.671573 7 0 6.32843 0 5.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M4 5.5C4 4.67157 4.67157 4 5.5 4C6.32843 4 7 4.67157 7 5.5C7 6.32843 6.32843 7 5.5 7C4.67157 7 4 6.32843 4 5.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M8 5.5C8 4.67157 8.67157 4 9.5 4C10.3284 4 11 4.67157 11 5.5C11 6.32843 10.3284 7 9.5 7C8.67157 7 8 6.32843 8 5.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 5.5C12 4.67157 12.6716 4 13.5 4C14.3284 4 15 4.67157 15 5.5C15 6.32843 14.3284 7 13.5 7C12.6716 7 12 6.32843 12 5.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 9.5C0 8.67157 0.671573 8 1.5 8C2.32843 8 3 8.67157 3 9.5C3 10.3284 2.32843 11 1.5 11C0.671573 11 0 10.3284 0 9.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M0 13.5C0 12.6716 0.671573 12 1.5 12C2.32843 12 3 12.6716 3 13.5C3 14.3284 2.32843 15 1.5 15C0.671573 15 0 14.3284 0 13.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M4 9.5C4 8.67157 4.67157 8 5.5 8C6.32843 8 7 8.67157 7 9.5C7 10.3284 6.32843 11 5.5 11C4.67157 11 4 10.3284 4 9.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M4 13.5C4 12.6716 4.67157 12 5.5 12C6.32843 12 7 12.6716 7 13.5C7 14.3284 6.32843 15 5.5 15C4.67157 15 4 14.3284 4 13.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M8 9.5C8 8.67157 8.67157 8 9.5 8C10.3284 8 11 8.67157 11 9.5C11 10.3284 10.3284 11 9.5 11C8.67157 11 8 10.3284 8 9.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M8 13.5C8 12.6716 8.67157 12 9.5 12C10.3284 12 11 12.6716 11 13.5C11 14.3284 10.3284 15 9.5 15C8.67157 15 8 14.3284 8 13.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 9.5C12 8.67157 12.6716 8 13.5 8C14.3284 8 15 8.67157 15 9.5C15 10.3284 14.3284 11 13.5 11C12.6716 11 12 10.3284 12 9.5Z"
-                  fill="#B3B3B3" />
-                <path
-                  d="M12 13.5C12 12.6716 12.6716 12 13.5 12C14.3284 12 15 12.6716 15 13.5C15 14.3284 14.3284 15 13.5 15C12.6716 15 12 14.3284 12 13.5Z"
-                  fill="#B3B3B3" />
-              </svg>
+              {% render 'View-5-icon' %}
             </div>
           </div>
           <div class="collections_sort" x-data="{
               sort: '{{ sort_by }}',
               
             }">
-            <div class="filter_title">Sort By</div>
+            <div class="filter_title">{{ 'collections-filter.tittle.sort-tittle' | t }}</div>
             <select id="sort-by" x-model="sort" @change="sortCollection2()">
               {% for option in collection.sort_options %}
               <option class="filter_option" value="{{ option.value }}" {% if option.value==sort_by %}selected="selected"
@@ -933,23 +249,16 @@
             </select>
           </div>
           <div class="filter_button">
-            <svg class="icon icon-filter " width="18" height="18" viewBox="0 0 18 18" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M17.3998 1.54043C17.4048 1.46362 17.394 1.38659 17.3681 1.31411C17.3422 1.24163 17.3017 1.17522 17.2491 1.119C17.1966 1.06277 17.133 1.01792 17.0624 0.987205C16.9919 0.956493 16.9157 0.940573 16.8388 0.94043H1.12475C1.04774 0.940464 0.971565 0.956309 0.900932 0.986984C0.830299 1.01766 0.766716 1.06251 0.714123 1.11876C0.66153 1.17501 0.621047 1.24146 0.595181 1.31399C0.569315 1.38652 0.558618 1.46359 0.563751 1.54043C0.695662 3.37718 1.42464 5.12041 2.63953 6.50428C3.85441 7.88816 5.48855 8.83676 7.29275 9.20543V16.6117C7.29279 16.7186 7.32328 16.8232 7.38065 16.9134C7.43803 17.0036 7.5199 17.0755 7.6167 17.1209C7.71349 17.1662 7.8212 17.183 7.92721 17.1693C8.03321 17.1557 8.13313 17.1121 8.21525 17.0437L10.4653 15.1687C10.5287 15.116 10.5797 15.0499 10.6147 14.9753C10.6497 14.9006 10.6678 14.8191 10.6678 14.7367V9.20543C12.4726 8.83745 14.1074 7.88914 15.3229 6.50519C16.5384 5.12124 17.2678 3.37764 17.3998 1.54043V1.54043Z"
-                stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            <div class="filter_button_text">Filter</div>
+            {% render 'filter-icon' %}
+            <div class="filter_button_text">{{ 'collections-filter.tittle.filter-tittle' | t }}</div>
           </div>
         </div>
         <div
           class="product-grid-container{% if section.settings.filter_type == 'vertical' and section.settings.collapse_on_larger_devices %} product-grid-container-vertical{% endif %}"
           id="ProductGridContainer">
+          <div class="right_col_empty"></div>
           <div class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}">
             <div class="loading-overlay gradient"></div>
-
-
-
             {%- paginate collection.products by 5 -%}
             <ul id="product-grid" data-id="{{ section.id }}" class="" data-next-url="{{paginate.next.url}}">
               <!-- {% assign lazy_load = false %}
@@ -977,81 +286,42 @@
                       {% case tag %}
 
                       {% when 'SALE' %}
-                      <div class="Item_note"><svg width="40" height="16" viewBox="0 0 40 16" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <rect width="40" height="16" rx="3" fill="#FF9923" />
-                          <path
-                            d="M7.661 9.294L6.363 10.229C6.539 10.5957 6.78467 10.933 7.1 11.241C7.41533 11.549 7.78567 11.7947 8.211 11.978C8.64367 12.154 9.10933 12.242 9.608 12.242C9.96733 12.242 10.3157 12.187 10.653 12.077C10.9977 11.9743 11.302 11.8203 11.566 11.615C11.8373 11.4097 12.05 11.1567 12.204 10.856C12.3653 10.548 12.446 10.1997 12.446 9.811C12.446 9.48833 12.3947 9.20233 12.292 8.953C12.1893 8.70367 12.0463 8.48367 11.863 8.293C11.687 8.10233 11.4817 7.941 11.247 7.809C11.0123 7.66967 10.7593 7.54867 10.488 7.446C10.1287 7.32133 9.82067 7.204 9.564 7.094C9.31467 6.984 9.12033 6.863 8.981 6.731C8.849 6.599 8.783 6.445 8.783 6.269C8.783 6.10033 8.85267 5.961 8.992 5.851C9.13133 5.73367 9.333 5.675 9.597 5.675C9.795 5.675 9.97833 5.71533 10.147 5.796C10.323 5.86933 10.4807 5.97567 10.62 6.115C10.7667 6.247 10.895 6.40467 11.005 6.588L12.424 5.796C12.292 5.532 12.1013 5.27167 11.852 5.015C11.6027 4.75833 11.2873 4.54567 10.906 4.377C10.532 4.20833 10.0883 4.124 9.575 4.124C9.07633 4.124 8.62167 4.212 8.211 4.388C7.80767 4.55667 7.485 4.806 7.243 5.136C7.00833 5.466 6.891 5.85833 6.891 6.313C6.891 6.69433 6.96067 7.02067 7.1 7.292C7.23933 7.556 7.41533 7.78333 7.628 7.974C7.84067 8.15733 8.06433 8.30767 8.299 8.425C8.541 8.54233 8.75367 8.634 8.937 8.7C9.311 8.83933 9.61167 8.964 9.839 9.074C10.0663 9.184 10.2313 9.30133 10.334 9.426C10.4367 9.54333 10.488 9.701 10.488 9.899C10.488 10.1337 10.4 10.3207 10.224 10.46C10.048 10.592 9.82433 10.658 9.553 10.658C9.29633 10.658 9.05067 10.603 8.816 10.493C8.58867 10.383 8.376 10.2253 8.178 10.02C7.98733 9.81467 7.815 9.57267 7.661 9.294ZM14.899 10.515H18.969L18.848 9.096H15.031L14.899 10.515ZM16.912 7.127L18.001 9.624L17.935 10.097L18.859 12H20.971L16.912 3.816L12.864 12H14.965L15.922 10.02L15.834 9.613L16.912 7.127ZM21.7779 4.3V12H26.7279V10.405H23.6369V4.3H21.7779ZM28.8214 12H32.7044V10.471H28.8214V12ZM28.8214 5.829H32.7044V4.3H28.8214V5.829ZM28.8214 8.7H32.4844V7.204H28.8214V8.7ZM27.5894 4.3V12H29.3714V4.3H27.5894Z"
-                            fill="white" />
-                        </svg>
+                      <div class="Item_note">
+                        {% render 'icon-saleBrand' %}
                       </div>
 
 
                       {% when 'HOT' %}
-                      <div class="Item_note"><svg width="40" height="16" viewBox="0 0 40 16" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <rect width="40" height="16" rx="3" fill="#12A05C" />
-                          <path
-                            d="M12.127 4.3V8.634L6.814 3.915V12H8.596V7.666L13.92 12.385V4.3H12.127ZM16.7794 12H20.6624V10.471H16.7794V12ZM16.7794 5.829H20.6624V4.3H16.7794V5.829ZM16.7794 8.7H20.4424V7.204H16.7794V8.7ZM15.5474 4.3V12H17.3294V4.3H15.5474ZM29.3253 8.689L27.2133 3.915L25.1233 8.689L23.6053 4.3H21.4053L24.7383 12.451L27.2133 7.809L29.6993 12.451L33.0323 4.3H30.8213L29.3253 8.689Z"
-                            fill="white" />
-                        </svg>
+                      <div class="Item_note">
+                        {% render 'icon-hotBrand' %}
                       </div>
 
 
                       {% when 'NEW' %}
-                      <div class="Item_note"><svg width="36" height="16" viewBox="0 0 36 16" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <rect width="36" height="16" rx="3" fill="#F00000" />
-                          <path
-                            d="M7.331 8.777H13.161V7.105H7.331V8.777ZM11.984 4.3V12H13.843V4.3H11.984ZM6.814 4.3V12H8.673V4.3H6.814ZM16.9905 8.15C16.9905 7.69533 17.0785 7.29567 17.2545 6.951C17.4378 6.599 17.6908 6.324 18.0135 6.126C18.3435 5.928 18.7285 5.829 19.1685 5.829C19.6158 5.829 20.0008 5.928 20.3235 6.126C20.6461 6.324 20.8955 6.599 21.0715 6.951C21.2475 7.29567 21.3355 7.69533 21.3355 8.15C21.3355 8.60467 21.2438 9.008 21.0605 9.36C20.8845 9.70467 20.6315 9.976 20.3015 10.174C19.9788 10.372 19.6011 10.471 19.1685 10.471C18.7285 10.471 18.3435 10.372 18.0135 10.174C17.6908 9.976 17.4378 9.70467 17.2545 9.36C17.0785 9.008 16.9905 8.60467 16.9905 8.15ZM15.0215 8.15C15.0215 8.744 15.1205 9.29033 15.3185 9.789C15.5238 10.2877 15.8098 10.7203 16.1765 11.087C16.5505 11.4537 16.9905 11.7397 17.4965 11.945C18.0025 12.143 18.5598 12.242 19.1685 12.242C19.7698 12.242 20.3235 12.143 20.8295 11.945C21.3355 11.7397 21.7718 11.4537 22.1385 11.087C22.5125 10.7203 22.7985 10.2877 22.9965 9.789C23.2018 9.29033 23.3045 8.744 23.3045 8.15C23.3045 7.556 23.2018 7.01333 22.9965 6.522C22.7911 6.03067 22.5015 5.60533 22.1275 5.246C21.7535 4.88667 21.3135 4.61167 20.8075 4.421C20.3088 4.223 19.7625 4.124 19.1685 4.124C18.5818 4.124 18.0355 4.223 17.5295 4.421C17.0235 4.61167 16.5835 4.88667 16.2095 5.246C15.8355 5.60533 15.5421 6.03067 15.3295 6.522C15.1241 7.01333 15.0215 7.556 15.0215 8.15ZM23.3926 5.961H25.5046V12H27.3636V5.961H29.4866V4.3H23.3926V5.961Z"
-                            fill="white" />
-                        </svg>
+                      <div class="Item_note">
+                        {% render 'icon-newBrand' %}
                       </div>
-
-
-
                       {% endcase %}
-
-
-                      {% endfor %}
-
-
-
-
-
-
-
-
-
-
+                     {% endfor %}
                     </div>
                     <div class="Item_AddtoCart">
                       <div class="Item_cartImg">
                         <a href="/products/{{product.handle }}" class=""> {% render 'icon-cartProduct' %}</a>
-
                       </div>
-
-
                     </div>
-
                   </div>
                   <div class="colRight_Item_name">
                     <a href="/products/{{ product.handle }}" class="">
                       {{ product.title }}
                     </a>
-
                   </div>
-                  <div class="colRight_Item_quanity">
-                    
+                  <div class="colRight_Item_quanity">       
                   </div>
-                  <div class="colRight_Item_priceWrap">
-
+                   <div class="colRight_Item_priceWrap">
                     <div class="discount_price">${{ product.price | divided_by: 100.0 }} </div>
-                    <div class="base_price"> ${{ product.price | divided_by: 100.0 }}</div>
-
+                    <div class="base_price"> ${{ product.price_max | divided_by: 100.0 }}</div>
                   </div>
                 </div>
-
                 {%- endfor -%}
               </li>
             </ul>
@@ -1059,39 +329,20 @@
                 var page_number ='{{paginate.pages}}';
             </script>
             {%- endpaginate -%}
-
-
-
           </div>
-
-
-
-
         </div>
       </div>
     </div>
-  
   </section>
-
   <script>
   var testval= '{{collection.handle}}';
-
   </script>
   <script src="{{ 'ifinite-loading.js' | asset_url }}" defer></script>
-
 </div>
-
 {% endif%}
-
 <script src="{{ 'collections-filter.js' | asset_url }}" defer></script>
-
 <script src="{{ 'responsive.js' | asset_url }}" defer></script>
-
-
-
 <script>
-  
-  
 </script>
 {% schema %}
 {

@@ -1,23 +1,71 @@
 <link rel="stylesheet" href="{{ 'upSell.css' | asset_url }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css" integrity="sha512-eMxdaSf5XW3ZW1wZCrWItO2jZ7A9FhuZfjVdztr7ZsKNOmt6TUMTQgfpNoVRyfPE5S9BC0A4suXzsGSrAOWcoQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-{% assign dataProducts = product.metafields.variants.group1 | split: '|' %}
-
-<section class="upSell"  data-section-type="up-Sell" data-section-id="{{ section.id }}">
+{% assign dataProducts = product.metafields.product.group1 | split: '|' %}
+<section class="upSell">
     <div class="upSell_inner container">
         <div class="upSell_tittle">{{ section.settings.section_title }}</div>
         <div class="upSell__content">
             {% for dataProduct in dataProducts limit: 6 %}
-                {% assign handles = dataProduct | split: '?' %}
-             
-                {% assign variantId = handles[1] | split: '=' %}
-                
-                {% assign variantId = variantId[1] | times: 1 %}
-                {% assign handle = handles[0] %}
-                {% assign datas = all_products[handle] %}
-                
-                {% assign data = datas.variants | where: 'id', variantId | first %}
+                {% assign data = all_products[dataProduct] %}
+                <div class="productCard" >
+                  <div class="productCard__pic">
+                      <a href="{{ data.url }}" class="">
+                          {% if product.featured_image.src == null %}
+                              {{ 'product-1' | placeholder_svg_tag }}
+                          {% else %}
+                              <img src=" {{ data.featured_image.src | img_url:'medium' }} " width height />    
+                          {% endif %}
+                         
+                          <div class="productCard__pic-noteWrap">
+                              {% if data.compare_at_price < data.price %}
+                                <div class="item__note">
+                                    {% render 'icon-saleBrand' %}
+                                </div>
+                              {% endif %} 
+                              {% for tag in data.tags %} 
+                                  {% if tag == "HOT" %}
+                                  <div class="item__note">
+                                          {% render 'icon-hotBrand' %}
+                                  </div> 
+                                  {% endif %}
+                                      
+                                  {% if tag == "NEW" %}
+                                  <div class="item__note">
+                                          {% render 'icon-newBrand' %}
+                                  </div>
+                                  {% endif %}
+                              {% endfor %} 
               
-                {% render 'card-product' with data %}
+                              
+                          </div>  
+                          <div class="productCard__pic-addtoCart">
+                              {% render 'icon-cartProduct' %}
+                          </div>
+                      </a>
+                  </div>
+                  <div class="productCard__name">
+                      <a href="{{ data.url }}" class="">{{ data.title }}</a>
+                      
+                  </div>
+                  <div class="productCard__quantity">
+                    {% for data in data.options_with_values %}
+                      <label>
+                        {{ data.name }}
+                        <select class="upSell__selectOption">
+                          {% for value in data.values %}
+                            <option {% if data.selected_value == value %}selected{% endif %}>
+                              {{ value }}
+                            </option>
+                          {% endfor %}
+                        </select>
+                      </label>
+                  {% endfor %}
+                  </div>
+                  <div class="productCard__priceWrap">
+                      <div class="productCard__discountPrice"> {{ data.compare_at_price | money }}</div>
+                      <div class="productCard__basePrice"> {{ data.price | money }}</div>                               
+                  </div>
+              </div>
             {% endfor %}
         </div>
         </div>

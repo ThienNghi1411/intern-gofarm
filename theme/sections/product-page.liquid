@@ -287,12 +287,12 @@
                  
                 })
             </script>
-            <script id="dataProduct" type="application/ld+json">
+            {% comment %} <script id="dataProduct" type="application/ld+json">
                 {
                 "dataProduct" : {{ product.variants | json }},
                 "quantityArray": {{ quantityArray | json }}
                 }
-            </script>
+            </script> {% endcomment %}
         </div> 
     </div>
 </section>

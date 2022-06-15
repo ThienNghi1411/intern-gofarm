@@ -421,6 +421,10 @@
   
 
 }
+.img_wrapper:hover >img
+{
+    transform: scale(1.2);
+}
 
 .viewbox_item {
     cursor: pointer;
@@ -458,6 +462,7 @@
     align-items: center;
 
 }
+
 .page
 {
     height: 40px;
@@ -474,6 +479,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .button_loadMore
 {
@@ -494,8 +500,18 @@
     transform: scale(1.2);
 }
 .current{
-    background-color: black;
+    background-color: #05A845;
     color: white;
+    border-radius: 5px;
+    border: none;
+}
+.page_back
+{
+    cursor: pointer;
+}
+.page_next
+{
+    cursor: pointer;
 }
 .filter_button
 {
@@ -516,14 +532,26 @@
 #slider
 {
     margin-bottom:20px ;
+    height: 4px;
 }
 .noUi-touch-area
 {
     background-color: orange !important;
+ 
+}
+.noUi-handle
+{
+    width: 16px !important;
+    height: 16px !important;
 }
 .noUi-connect
 {
     background-color: orange !important;
+    height: 4px !important;
+}
+.noUi-base
+{
+    height: 4px !important;
 }
 .noUi-handle:before, .noUi-handle:after {
     background: unset !important;

@@ -3,15 +3,13 @@
 <div class="cartContainer" >
   <div class="cartContainer__inner container">
     <div class="breadCrumb">
-      <a href="/" class="breadCrumb__link">Home</a>
+      <a href="{{ routes.root_url }}" class="breadCrumb__link">Home</a>
       <div class="breadCrumb__connect">
-        <svg width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2.1 3.55694L0 6.16094L0.7 6.79094L3.36 3.50094L0.7 0.210938L0 0.840938L2.1 3.55694Z" fill="#4D4D4D"/>
-        </svg>  
+        {% render 'icon-arrowRight' %}
       </div>
-      <a href="/cart" class="breadCrumb__link">Shopping Cart</a>
+      <a href="{{ routes.cart_url }}" class="breadCrumb__link">{{ 'main-cart-items.title' | t }}</a>
     </div>
-    <div class="cartContainer__title">Shopping Cart</div>
+    <div class="cartContainer__title">{{ 'main-cart-items.title' | t }}</div>
     <form action="{{ routes.cart_url }}" method="post" id="cart">
       <div class="cart">
         <div class="cart__content">
@@ -25,7 +23,7 @@
             {% for item in cart.items %}
               <div class="cart__item">
                 <div class="cart__itemProduct">
-                  <div class="cart__btnRemove" index="{{ forloop.index }}">x</div>
+                  <div class="cart__btnRemove" idProduct="{{ item.id }}" >x</div>
                   <div class="cart__itemProductImg">
                     <a href="{{ item.url }}" class="">
                       <img src="{{ item.image | img_url: 'medium' }}" alt="" width height>
@@ -65,13 +63,13 @@
               </div>
               <div class="cart__total-shipping">
                 <div class="cart__total-shipping-text">Shipping</div>
-                <div class="cart__total-shipping-content">Enter your address to view shipping options</div>
+                <div class="cart__total-shipping-content">{{ 'main-cart-items.cartTotal.shipping' | t }}</div>
               </div>
               <div class="cart__total-total">
                 <div class="cart__total-total-text">Total</div>
                 <div class="cart__total-total-content">{{ cart.total_price | money }}</div>
               </div>
-              <div class="cart__btnCheckout">Proceed to checkout!</div>
+              <div class="cart__btnCheckout">{{ 'main-cart-items.cartTotal.checkout' | t }}</div>
             </div>
 
           </div>

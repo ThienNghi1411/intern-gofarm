@@ -12,8 +12,14 @@ const init = () => {
       let quantity = e.target.parentElement.querySelector(
         ".cart__quantityLineItem"
       ).value;
-      let line = e.target.parentElement.getAttribute("index");
-      adjustCart(line, quantity * 1 - 1);
+      // 
+      let id = e.target.parentElement.getAttribute("idProduct");
+      if(quantity*1 > 1){
+        adjustCart(id, quantity * 1 - 1 , e.target);
+      }else{
+        adjustCart(id, quantity * 1 - 1 , e.target.parentElement.parentElement);
+      }
+      
     });
   });
 
@@ -22,32 +28,34 @@ const init = () => {
         let quantity = e.target.parentElement.querySelector(
           ".cart__quantityLineItem"
         ).value;
-        let line = e.target.parentElement.getAttribute("index");
-        adjustCart(line, quantity * 1 + 1);
+        let id = e.target.parentElement.getAttribute("idProduct");
+        adjustCart(id, quantity * 1 + 1 , e.target);
       });
   });
 
   inputQtys.forEach((inputQty) => {
     inputQty.addEventListener("change", (e) => {
       let quantity = e.target.value;
-      let line = e.target.parentElement.getAttribute("index");
-      adjustCart(line, quantity);
+      let id = e.target.parentElement.getAttribute("idProduct");
+      adjustCart(id, quantity, e.target);
     });
   });
 
-  if ( removeBtns){
-    removeBtns.forEach( (removeBtn) => {
-      removeBtn.addEventListener("click", (e) => {
-        let line = e.target.getAttribute("index");
-        adjustCart(line, 0);
-      });
-    })
-  }
+
+  removeBtns.forEach( (removeBtn ) => {
+    removeBtn.addEventListener("click", (e) => {
+      let id = e.target.getAttribute("idProduct");
+      adjustCart(id, 0 , e.target);
+     
+    });
+  })
+  
 
 }
 
-const updateLine = (data,line) => {
-  const lineItem = document.getElementsByClassName("cart__item")[line];
+const updateLine = (data,index) => {
+  console.log(data);
+  const lineItem = document.getElementsByClassName("cart__item")[index];
   const itemPrice = lineItem.querySelector(".cart__itemLastPrice");
   itemPrice.innerText = "$"+ data.price / 100;
   const linePrice = lineItem.querySelector(".cart__itemSubtotal-LastPrice");
@@ -56,20 +64,15 @@ const updateLine = (data,line) => {
   qtyLine.value = data.quantity;
 }
 
-const removeLine = (line) => {
-  const lineItem = document.getElementsByClassName("cart__item")[line];
-  lineItem.remove();
-}
+const adjustCart = (id, quantity , dom) => {
 
-const adjustCart = (line, quantity) => {
-    console.log(line);
     fetch(window.Shopify.routes.root + "cart/change.js", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            'line': line,
+            'id': id,
             'quantity': quantity,
             'sections': "main-cart-items",
             'sections_url': window.location.pathname
@@ -80,12 +83,21 @@ const adjustCart = (line, quantity) => {
           return response.json();
         })
         .then(data => {
-          console.log(data);
           if (quantity > 0){               // checking case delete item
-            updateLine(data.items[line-1] , line -1);
+            data.items.forEach( (tmp ,index) => {
+              if(tmp.id === id*1){
+                updateLine(tmp , index);
+              }
+            })
+           
           }else{
-            removeLine(line-1);
+            console.log(dom.parentElement.parentElement);
+            dom.parentElement.parentElement.remove();
           }
+          let qtyCarts = document.querySelectorAll(".qtyCart");
+          qtyCarts.forEach(qtyCart => {
+            qtyCart.innerText = data.item_count;
+          }) 
           const subTotal = document.querySelector(".cart__total-subTotal-content");
           const lastTotal = document.querySelector(".cart__total-total-content")
           subTotal.innerText =  "$" + data.original_total_price/100;
