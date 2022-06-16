@@ -256,6 +256,7 @@
         speed: 400
       });
       const dataProduct = datas;
+      const initData = pdSelected;
       const plusBtn = this.container.querySelector(".productPage__quantityAdjust-plus");
       const minusBtn = this.container.querySelector(".productPage__quantityAdjust-minus");
       const quantity = this.container.querySelector(".productPage__quantityAdjust-number");
@@ -284,7 +285,9 @@
       });
       const adjustTotal = () => {
         lastPrice.innerText = "$" + saveLastPrice * 1 * (quantity.innerText * 1) / 100;
-        basePrice.innerText = "$" + saveBasePrice * 1 * (quantity.innerText * 1) / 100;
+        if (saveBasePrice !== 0) {
+          basePrice.innerText = "$" + saveBasePrice * 1 * (quantity.innerText * 1) / 100;
+        }
       };
       var optionList = {
         option1: [],
@@ -390,30 +393,42 @@
       const updateProduct = (data) => {
         let btnAdd = document.querySelector(".btnAddtoCart");
         let btnUnavailable = document.querySelector(".unavailableProduct");
+        let qty = document.querySelector(".productPage__quantityCont-inStock");
         if (data !== void 0) {
           idProduct = data.id;
           qtyProduct = data.qty;
           let pdName = document.querySelector(".productPage__titleProduct-namePd");
           pdName.innerText = data.name;
-          lastPrice.innerText = "$" + data.price / 100;
-          saveLastPrice = data.price;
-          basePrice.innerText = "$" + data.price / 100;
-          saveBasePrice = data.price;
+          if (data.compare_at_price === null) {
+            lastPrice.innerText = "$" + data.price / 100;
+            saveLastPrice = data.price;
+            basePrice.innerText = "";
+            saveBasePrice = 0;
+          } else {
+            lastPrice.innerText = "$" + data.price / 100;
+            saveLastPrice = data.price;
+            basePrice.innerText = "$" + data.compare_at_price / 100;
+            saveBasePrice = data.compare_at_price;
+          }
           let sku = document.querySelector(".productPage__SKU-content");
           sku.innerText = data.sku;
-          let qty = document.querySelector(".productPage__quantityCont-inStock");
-          qty.innerText = `Only ${data.qty} left in stock`;
+          const url = new URL(window.location);
+          url.searchParams.set("variant", data.id);
+          window.history.pushState({}, "", url);
           adjustTotal();
           if (data.qty === "0") {
             btnAdd.style.display = "none";
             btnUnavailable.style.display = "flex";
             btnUnavailable.innerText = "Out Of Stock!!!";
+            qty.innerText = "";
           } else {
             btnAdd.style.display = "flex";
             btnUnavailable.style.display = "none";
+            qty.innerText = `Only ${data.qty} left in stock`;
           }
         } else {
           btnUnavailable.innerText = "Unavaliable";
+          qty.innerText = "";
         }
       };
       for (let key in optionList) {
@@ -435,17 +450,17 @@
         }
       }
       const init = () => {
-        if (optionList.option1[0] !== void 0) {
-          optionList.option1[0].classList.add("productPage__sizeOptionActive");
-          optionActive.option1 = optionList.option1[0].innerText;
-        }
-        if (optionList.option2[0] !== void 0) {
-          optionList.option2[0].classList.add("productPage__sizeOptionActive");
-          optionActive.option2 = optionList.option2[0].innerText;
-        }
-        if (optionList.option3[0] !== void 0) {
-          optionList.option3[0].classList.add("productPage__sizeOptionActive");
-          optionActive.option3 = optionList.option3[0].innerText;
+        initData.option1 !== null ? optionActive.option1 = initData.option1 : optionActive.option1 = "";
+        initData.option2 !== null ? optionActive.option2 = initData.option2 : optionActive.option2 = "";
+        initData.option3 !== null ? optionActive.option3 = initData.option3 : optionActive.option3 = "";
+        for (let key in optionList) {
+          if (optionList[key].length > 0) {
+            optionList[key].forEach((option) => {
+              if (option.innerText === optionActive[key]) {
+                option.classList.add("productPage__sizeOptionActive");
+              }
+            });
+          }
         }
         let title = getTitle(optionActive.option1, optionActive.option2, optionActive.option3);
         let dataPd = getProduct(dataProduct, title);

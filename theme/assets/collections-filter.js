@@ -339,23 +339,6 @@ function filterCollections() {
 
 
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         let ListItem = document.querySelectorAll(".grid__item");
 
         ListItem.forEach(e => {
@@ -366,13 +349,6 @@ function filterCollections() {
             e.classList.add('item_quanity1');
 
         })
-
-        //   $('#product-grid').empty();
-        //   products_on_page.append(new_products.html());
-        //   let ListItem = document.querySelectorAll('grid__item');
-        //   ListItem.forEach(e=>{
-        //     e.style.width = itemWidth+'px';
-        //  })
 
     })
 
@@ -479,15 +455,14 @@ if(slider){
     
 }
 
-$('#page__wrapper').pagination({
-    dataSource: [1, 2, 3, 4, 5, 6, 7, ... 195],
-    callback: function(data, pagination) {
-        // template method of yourself
-        var html = template(data);
-        dataContainer.html(html);
-    }
-})
-
+// $('#page__wrapper').pagination({
+//     dataSource: [1, 2, 3, 4, 5, 6, 7, ... 195],
+//     callback: function(data, pagination) {
+//         // template method of yourself
+//         var html = template(data);
+//         dataContainer.html(html);
+//     }
+// })
 // --page next and back---
 
 

@@ -29,5 +29,27 @@
       "shipping": "Enter your address to view shipping options",
       "checkout": "Proceed to checkout!"
     }
+  },
+  "collections-filter": {
+    "collection": {
+      "option1": "Vegetables",
+      "option2": {
+        "tittle": "Fruits",
+        "subItem1": "Apple",
+        "subItem2": "Pear",
+        "subItem3": "Banana",
+        "subItem4": "Avocado",
+        "subItem5": "Dargon fruits"
+      },
+      "option3": "Laboratory",
+      "option4": "Tools",
+      "option5": "Diagnosis",
+      "option6": "Equipment"
+    },
+    "tittle": {
+      "sort-tittle": "Sort By",
+      "filter-tittle": "Filter"
+    },
+    "main-title": "Fruits"
   }
 }

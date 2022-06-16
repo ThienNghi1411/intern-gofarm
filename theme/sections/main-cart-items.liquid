@@ -69,9 +69,8 @@
                 <div class="cart__total-total-text">Total</div>
                 <div class="cart__total-total-content">{{ cart.total_price | money }}</div>
               </div>
-              <div class="cart__btnCheckout">{{ 'main-cart-items.cartTotal.checkout' | t }}</div>
+              <input class="cart__btnCheckout" type="submit" name="checkout" value="{{ 'main-cart-items.cartTotal.checkout' | t }}">
             </div>
-
           </div>
         </div>
       </div>

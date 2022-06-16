@@ -49,6 +49,7 @@
                         </div>
                         <div class="productBundle__item-quantity">
                             {% for data in data.options_with_values %}
+                                <script>console.log({{ data | json }})</script>
                                 <label>
                                   {{ data.name }}
                                   <select class="selectOption">

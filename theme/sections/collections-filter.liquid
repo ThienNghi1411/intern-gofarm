@@ -274,8 +274,10 @@
                     {% for image in product.images %}
                     <div class="img_wrapper">
 
-                      <a href="/products/{{product.handle }}" class=""><img src="{{ image | image_url}} "
-                          class="Item_img" /></a>
+                      <a href="/products/{{product.handle }}" class="">
+                      
+                          <img src=" {{ product.featured_image.src | img_url:'medium' }} " width height   class="Item_img"/>   
+                        </a>
                     </div>
 
 
@@ -318,8 +320,8 @@
                   <div class="colRight_Item_quanity">       
                   </div>
                    <div class="colRight_Item_priceWrap">
-                    <div class="discount_price">${{ product.price | divided_by: 100.0 }} </div>
-                    <div class="base_price"> ${{ product.price_max | divided_by: 100.0 }}</div>
+                    <div class="discount_price">${{ product.compare_at_price | money }} </div>
+                    <div class="base_price"> ${{ product.price | money }}</div>
                   </div>
                 </div>
                 {%- endfor -%}

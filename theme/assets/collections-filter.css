@@ -363,12 +363,13 @@
 
 #product-grid {
     display: flex;
-    gap: 20px;
+ 
     flex-wrap: wrap;
 }
 
 .grid__item {
-    width: 18%;
+    width: 20%;
+    padding: 10px;
 }
 .img_wrapper img
 {
@@ -421,7 +422,31 @@
   
 
 }
-.img_wrapper:hover >img
+.img_wrapper img
+{
+    transition: all 1s cubic-bezier(0, 0.51, 0.25, 1);
+}
+
+.colRight_Item_priceWrap
+{
+    display: flex;
+    align-items: center;
+}
+.base_price
+{
+    color: #999999;
+    text-decoration: line-through;
+    line-height: 1.2em;
+    font-size: 16px;
+}
+.discount_price
+{
+    color: #05A845;
+    font-size: 16px;
+ 
+}
+
+.img_wrapper:hover img
 {
     transform: scale(1.2);
 }

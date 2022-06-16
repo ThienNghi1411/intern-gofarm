@@ -95,6 +95,7 @@
   }
   
   .productPage__priceCont {
+    width: 300px;
   }
   
   .productPage__priceProduct {
@@ -132,11 +133,12 @@
   .productPage__sizeList {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
   }
   
   .productPage__sizeOption {
-    padding: 5px 0px;
-    width: 75px;
+    padding: 5px 15px;
+    width: auto;
     display: flex;
     justify-content: center;
     background: #ffffff;
@@ -218,7 +220,7 @@
   }
   
   .productPage__btnAddtoCart {
-    width: 305px;
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 13px;
@@ -234,6 +236,9 @@
     transition: all 0.2s linear;
   }
   
+  .productPage__sizeCont-content{
+    margin-bottom: 20px;
+  }
   .productPage__btnAddtoCart:hover {
     opacity: 0.5;
   }
@@ -262,13 +267,14 @@
     border: 1px dashed #fe8f17;
     border-radius: 5px;
     display: flex;
+    align-items: center;
     gap: 13px;
     justify-content: center;
     padding: 10px 0px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.4;
-    color: #fe8f17;
+    color: #FE8F17;
     cursor: pointer;
     transition: all 0.2s linear;
   }
@@ -322,9 +328,9 @@
     }
 
     .productPage__titleAndShare{
-    width: 50%;
-    flex-direction: column;
-    justify-content: flex-start;
+      flex: 1;
+      flex-direction: column;
+      justify-content: flex-start;
     }
     .productPage__socialMedia{
         padding: 50px 0px 25px 0px;
@@ -333,9 +339,7 @@
         flex-direction: column;
         gap: 10px
     }
-    .productPage__priceCont{
-        width: 50%;
-    }
+
     .productPage__priceContWrap{
         padding: 30px;
         background: #F1FAF0;
